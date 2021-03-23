@@ -1,5 +1,5 @@
-<div class="main-section degradado">
-    <div class="modal-dialog text-center">
+<div class="main-section fondo-degradado">
+    <div class="modal-dialog text-center bordes">
         <div class="col-sm-g">
             <div class="modal-content transparente">
                 <div class="col-12 user-img">
@@ -9,15 +9,15 @@
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" name="login">
                     <div class="form-group col-12">
                         <label class="bold-font" for="exampleInputEmail1">Usuario</label>
-                        <input type="text" name="usuario" class="form-control text-center" placeholder="Nombre de Usuario">
+                        <input type="text" name="usuario" class="form-control text-center" placeholder="nombre de usuario">
                     </div>
                     <div class="form-group col-12">
                         <label class="bold-font" for="exampleInputPassword1">Contraseña</label>
-                        <input type="password" name="password" class="form-control text-center" placeholder="Contraseña">
+                        <input type="password" name="password" class="form-control text-center" placeholder="contraseña">
                     </div>
                     <button class="btn btn-primary" type="submit" onclick="login.submit()">Ingresar</button>
                 </form>
-                
+
             </div>
         </div>
     </div>

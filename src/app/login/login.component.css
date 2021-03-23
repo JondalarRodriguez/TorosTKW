@@ -28,7 +28,7 @@ header nav a {
 	opacity: .8;
 }
 
-.degradado{
+.fondo-degradado{
 	background:linear-gradient(30deg, crimson,sienna, royalblue, indianred, purple);
 }
 
@@ -89,7 +89,7 @@ header nav a {
 }
 
 .transparente{
-	opacity: .93;
+	opacity: .80;
 }
 
 .pegado{
@@ -131,3 +131,7 @@ header nav a {
 
 
 /*=====================================*/
+
+.bordes{
+	margin-top: 0px;
+}
