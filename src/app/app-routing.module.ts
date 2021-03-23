@@ -8,10 +8,10 @@ import { VentasComponent } from './ventas/ventas.component';
 
 const routes: Routes = [
   {path: "", component: PrincipalComponent},
-  {path: "Clientes", component: ClientesComponent},
-  {path: "Credito", component: CreditoComponent},
-  {path: "Login", component: LoginComponent},
-  {path: "Ventas", component: VentasComponent},
+  {path: "clientes", component: ClientesComponent},
+  {path: "credito", component: CreditoComponent},
+  {path: "login", component: LoginComponent},
+  {path: "ventas", component: VentasComponent},
 ];
 
 @NgModule({
