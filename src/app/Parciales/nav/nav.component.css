@@ -1,0 +1,133 @@
+/* === Header ===*/
+header {
+	background: #800000;
+}
+
+.chico{
+	width: 50px;
+}
+
+header nav a {
+	color: aliceblue !important;
+}
+
+/* === index.view ===*/
+
+.container{
+	margin: 15px;
+	padding: 5px;
+	background-color: rgb(231, 229, 229);
+		
+}
+
+.login{
+	width: 400px;
+	height: 300px;
+	margin: auto;
+	background-color: white;
+	opacity: .8;
+}
+
+.degradado{
+	background:linear-gradient(30deg, crimson,sienna, royalblue, indianred, purple);
+}
+
+.anchoMaximo{
+	width: 540px !important;
+}
+
+.contenedor{
+	background-color: rgb(243, 45, 10) !important;
+}
+
+.miniContainer{
+	padding: 5px;
+	background-color: white;
+	height: 195px;
+}
+
+.altoCard{
+	height: 180px;
+}
+
+.anchoCard{
+	width: 920px;
+	background-color: white;
+}
+
+.Wine{
+	background-color: #800000;
+}
+
+.letrasBlancas{
+	color: white !important;
+}
+
+.CenterButton{
+	margin-left: 48% !important; 
+	margin-right:auto;
+}
+
+.Center{
+	text-align:center;
+}
+
+.margen{
+	margin: 20px;
+}
+
+.ancho{
+	width: 150px;
+}
+
+.redondo{
+	border-radius: 50% !important;
+}
+
+.separacion{
+	margin-right: 20px;
+}
+
+.transparente{
+	opacity: .93;
+}
+
+.pegado{
+	margin-top: 0px !important;
+	margin-bottom: 0px !important;
+}
+
+/*==========LOGIN=============*/
+
+
+.main-section{
+    margin: 0px;
+    padding: 0%;
+
+}
+
+.model-content{
+    background-color: #3b4652;
+    opacity: -85;
+    padding: 0 20px;
+    box-shadow: 0px 0px 3px #848484;
+}
+
+.user-img{
+    margin-top: 100px;
+    margin-bottom: 35px;
+}
+
+.user-img img{
+    width: 100px;
+    height: 100px;
+    box-shadow: 0px 0px 3px #848484;
+    border-radius: 50%;
+}
+
+.forgot{
+    padding: 5px 0;
+}
+
+
+/*=====================================*/
