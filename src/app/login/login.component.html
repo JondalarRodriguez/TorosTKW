@@ -1,21 +1,19 @@
 <div class="main-section fondo-degradado">
-    <div class="modal-dialog text-center bordes">
+    <div class="modal-dialog text-center borde-contenedor">
         <div class="col-sm-g">
-            <div class="modal-content transparente">
+            <div class="modal-content transparencia borde-modal">
                 <div class="col-12 user-img">
-                    <img src="assets/img/logoTaekwondo.png" class="rounded-circle chico" alt="" />
+                    <img src="assets/img/logoTaekwondo.png" class="rounded-circle" alt="" />
                 </div>
 
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" name="login">
-                    <div class="form-group col-12">
-                        <label class="bold-font" for="exampleInputEmail1">Usuario</label>
-                        <input type="text" name="usuario" class="form-control text-center" placeholder="nombre de usuario">
+                    <div class="form-group col-12 borde-formulario">
+                        <input type="text" name="usuario" class="form-control text-center" placeholder="Usuario">
                     </div>
-                    <div class="form-group col-12">
-                        <label class="bold-font" for="exampleInputPassword1">Contraseña</label>
-                        <input type="password" name="password" class="form-control text-center" placeholder="contraseña">
+                    <div class="form-group col-12 borde-formulario">
+                        <input type="password" name="password" class="form-control text-center" placeholder="Contraseña">
                     </div>
-                    <button class="btn btn-primary" type="submit" onclick="login.submit()">Ingresar</button>
+                    <button class="btn btn-primary" type="submit" onclick="login.submit()">Iniciar sesión</button>
                 </form>
 
             </div>
