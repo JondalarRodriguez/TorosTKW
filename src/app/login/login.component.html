@@ -7,13 +7,19 @@
                 </div>
 
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" name="login">
-                    <div class="form-group col-12 borde-formulario">
+                    <div class="form-group col-12 borde-formulario " >
+                        <i class="fas fa-user fa-lg"></i>
                         <input type="text" name="usuario" class="form-control text-center" placeholder="Usuario">
                     </div>
                     <div class="form-group col-12 borde-formulario">
+                        <i class="fas fa-key fa-lg"></i>
                         <input type="password" name="password" class="form-control text-center" placeholder="Contraseña">
                     </div>
-                    <button class="btn btn-primary" type="submit" onclick="login.submit()">Iniciar sesión</button>
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="submit" onclick="login.submit()">
+                            <i class="fas fa-sign-in-alt"></i>  Iniciar Sesión
+                        </button>
+                    </div>
                 </form>
 
             </div>
