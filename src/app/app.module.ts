@@ -28,6 +28,8 @@ import { AdminNavComponent } from './Parciales/admin-nav/admin-nav.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,    
   ],
   providers: [],
   bootstrap: [AppComponent]
