@@ -10,6 +10,7 @@ import { NavComponent } from './Parciales/nav/nav.component';
 import { FooterComponent } from './Parciales/footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { PrincipalComponent } from './principal/principal.component';
+import { AdminNavComponent } from './Parciales/admin-nav/admin-nav.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PrincipalComponent } from './principal/principal.component';
     NavComponent,
     FooterComponent,
     LoginComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    AdminNavComponent
   ],
   imports: [
     BrowserModule,
