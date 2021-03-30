@@ -3,21 +3,21 @@
     <div class="modal-dialog text-center borde-contenedor">
         <div class="col-sm-g">
             <div class="modal-content transparencia borde-modal">
-                <div class="col-12 user-img">
+                <div class="col-12 user-img"> <!--IMAGEN CABECERA DE FORMULARIO-->
                     <img src="assets/img/logoTaekwondo.png" class="rounded-circle" alt="" />
                 </div>
 
-                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" name="login">
-                    <div class="form-group col-12 borde-formulario " >
+                <form (ngSubmit)="iniciarSesion(loginForm.value)" [formGroup]="loginForm">
+                    <div class="form-group col-12 borde-formulario " > <!--USUARIO-->
                         <i class="fas fa-user fa-lg"></i>
-                        <input type="text" name="usuario" class="form-control text-center" placeholder="Usuario">
+                        <input type="text" formControlName="username" class="form-control text-center" placeholder="Usuario">
                     </div>
-                    <div class="form-group col-12 borde-formulario">
+                    <div class="form-group col-12 borde-formulario"> <!--CONTRASEÑA-->
                         <i class="fas fa-key fa-lg"></i>
-                        <input type="password" name="password" class="form-control text-center" placeholder="Contraseña">
+                        <input type="password" formControlName ="password" class="form-control text-center" placeholder="Contraseña">
                     </div>
-                    <div class="form-group">
-                        <button class="btn btn-primary" type="submit" onclick="login.submit()">
+                    <div class="form-group"> <!--BOTÓN DE INICIO DE SESIÓN-->
+                        <button class="btn btn-primary" type="submit" [disabled]="!loginForm.valid" value="login">
                             <i class="fas fa-sign-in-alt"></i>  Iniciar Sesión
                         </button>
                     </div>

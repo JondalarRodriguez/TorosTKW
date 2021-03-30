@@ -10,6 +10,7 @@ import { NavComponent } from './Parciales/nav/nav.component';
 import { FooterComponent } from './Parciales/footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { PrincipalComponent } from './principal/principal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminNavComponent } from './Parciales/admin-nav/admin-nav.component';
 
 @NgModule({
@@ -26,7 +27,7 @@ import { AdminNavComponent } from './Parciales/admin-nav/admin-nav.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
