@@ -1,49 +1,5 @@
-/* === Header ===*/
-header {
-	background: #800000;
-}
-
-.chico{
-	width: 50px;
-}
-
-header nav a {
-	color: aliceblue !important;
-}
-
-/* === index.view ===*/
-
-.container{
-	margin: 15px;
-	padding: 5px;
-	background-color: rgb(231, 229, 229);
-		
-}
-
-.login{
-	width: 400px;
-	height: 300px;
-	margin: auto;
-	background-color: white;
-	opacity: .8;
-}
-
-.degradado{
-	background:linear-gradient(30deg, crimson,sienna, royalblue, indianred, purple);
-}
-
-.anchoMaximo{
-	width: 540px !important;
-}
-
 .contenedor{
 	background-color: rgb(243, 45, 10) !important;
-}
-
-.miniContainer{
-	padding: 5px;
-	background-color: white;
-	height: 195px;
 }
 
 .altoCard{
@@ -53,10 +9,6 @@ header nav a {
 .anchoCard{
 	width: 920px;
 	background-color: white;
-}
-
-.Wine{
-	background-color: #800000;
 }
 
 .letrasBlancas{
@@ -69,7 +21,7 @@ header nav a {
 }
 
 .Center{
-	text-align:center;
+	text-align:center  !important;
 }
 
 .margen{
@@ -90,9 +42,4 @@ header nav a {
 
 .transparente{
 	opacity: .93;
-}
-
-.pegado{
-	margin-top: 0px !important;
-	margin-bottom: 0px !important;
 }

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ClientesComponent } from './clientes/clientes.component';
 import { CreditoComponent } from './credito/credito.component';
 import { LoginComponent } from './login/login.component';
+import { PrincipalAdminComponent } from './principal-admin/principal-admin.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { VentasComponent } from './ventas/ventas.component';
 
@@ -12,6 +13,8 @@ const routes: Routes = [
   {path: "credito", component: CreditoComponent},
   {path: "login", component: LoginComponent},
   {path: "ventas", component: VentasComponent},
+  {path: "admn", component: PrincipalAdminComponent},
+
 ];
 
 @NgModule({

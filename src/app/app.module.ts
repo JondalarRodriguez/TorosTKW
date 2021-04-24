@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminNavComponent } from './Parciales/admin-nav/admin-nav.component';
+import { PrincipalAdminComponent } from './principal-admin/principal-admin.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AdminNavComponent } from './Parciales/admin-nav/admin-nav.component';
     FooterComponent,
     LoginComponent,
     PrincipalComponent,
-    AdminNavComponent
+    AdminNavComponent,
+    PrincipalAdminComponent
   ],
   imports: [
     BrowserModule,

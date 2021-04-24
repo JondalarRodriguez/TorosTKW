@@ -12,4 +12,7 @@ export class AdminNavComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public CerrarSesion(){
+    alert("Sesión Cerrada (función en proceso)");
+  }
 }
