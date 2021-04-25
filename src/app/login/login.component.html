@@ -1,6 +1,6 @@
 <app-nav></app-nav>
-<div class="main-section fondo-degradado">
-    <div class="modal-dialog text-center borde-contenedor">
+<div class="main-section fondo-degradado wrapper">
+    <div class="modal-dialog text-center formContent ">
         <div class="col-sm-g">
             <div class="modal-content transparencia borde-modal">
                 <div class="col-12 user-img"> <!--IMAGEN CABECERA DE FORMULARIO-->
@@ -32,8 +32,8 @@
                         </p>
                     </div>
                     <div class="form-group"> <!--BOTÓN DE INICIO DE SESIÓN-->
-                        <button class="btn btn-primary" type="submit" [disabled]="!loginForm.valid" value="login">
-                            <i class="fas fa-sign-in-alt"></i>  Iniciar Sesión
+                        <button class="btn btn-primary boton" type="submit" [disabled]="!loginForm.valid" value="login">
+                              Entrar
                         </button>
                     </div>
                 </form>
