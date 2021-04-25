@@ -21,10 +21,25 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
   public iniciarSesion(form: any){
-    console.log(form);
-    alert("Ya funciona!!");
+    if(
+      form.username == "antonio" &&
+      form.password == "170204021"
+    ){
+      alert("Inicio de sesión exitoso");
+      this.router.navigate(['admn']);
+    }else{
+      alert("Datos incorrectos");
+      this.limpiarCampos();
+    }
   }
+  private limpiarCampos(){
+    this.loginForm.setValue({
+      username: '',
+      password: ''
+    });
+  }
+
+
 
 }
