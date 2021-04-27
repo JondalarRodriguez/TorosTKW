@@ -1,20 +1,26 @@
 .mapa{
     height: 350px;
-    width: 90%;
-    padding: 1.5em;
-    border-radius: 30px;
+    width: 100%;
+    padding: 0em;
+    border-radius: 8px;
 }
 
 .fondo-tarjeta{
-    background-color: lightslategrey;
+ background-color: #2b3035;
+ padding-top: 15px;
 }
 
 .margen-tarjetas{
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    margin-top: 20px;
     padding-left: 15px;
     padding-right: 15px;
 }
 .borde{
-    padding: 10pxem;
+    padding: 10px;
     height: 150px;
+}
+
+.padfooter{
+    padding-top: 20px;
 }
