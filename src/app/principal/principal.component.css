@@ -1,132 +1,41 @@
-/* === Header ===*/
-header {
-	background: #800000;
+.carousel-inner img {
+    width: 100%;
+    max-height: 720px;
+	
 }
 
-.chico{
-	width: 50px;
+.carousel-inner{
+ height: 560px;
 }
 
-header nav a {
-	color: aliceblue !important;
+.card-header{
+	font-size: 1.7rem;
+	font-weight: bold;
+	text-align: center;
+	background-color: #c41628;
+	color: white;
+	box-shadow: 0 3px 3px 0 rgba(41, 41, 41, 0.4);
 }
 
-/* === index.view ===*/
-
-.container{
-	margin: 15px;
-	padding: 5px;
-	background-color: rgb(231, 229, 229);
-		
+.card-body{
+	font-size: 1rem;
+	font-weight: normal;
+	text-align: justify;
+	height: auto;
+	min-height: 180px;
 }
 
-.login{
-	width: 400px;
-	height: 300px;
-	margin: auto;
-	background-color: white;
-	opacity: .8;
+.card{
+	box-shadow: 0 10px 10px 0 rgba(41, 41, 41, 0.4);
+	margin-bottom: 30px;
 }
 
-.degradado{
-	background:linear-gradient(30deg, crimson,sienna, royalblue, indianred, purple);
+.imagen{
+	height: auto;
+	min-height: 200px;
+	max-height: 400px;
+	display:block;
+	margin:auto;
+	padding: 8px;
+	background-color: rgb(250, 250, 250);
 }
-
-.anchoMaximo{
-	width: 540px !important;
-}
-
-.contenedor{
-	background-color: rgb(243, 45, 10) !important;
-}
-
-.miniContainer{
-	padding: 5px;
-	background-color: white;
-	height: 195px;
-}
-
-.altoCard{
-	height: 180px;
-}
-
-.anchoCard{
-	width: 920px;
-	background-color: white;
-}
-
-.Wine{
-	background-color: #800000;
-}
-
-.letrasBlancas{
-	color: white !important;
-}
-
-.CenterButton{
-	margin-left: 48% !important; 
-	margin-right:auto;
-}
-
-.Center{
-	text-align:center;
-}
-
-.margen{
-	margin: 20px;
-}
-
-.ancho{
-	width: 150px;
-}
-
-.redondo{
-	border-radius: 50% !important;
-}
-
-.separacion{
-	margin-right: 20px;
-}
-
-.transparente{
-	opacity: .93;
-}
-
-.pegado{
-	margin-top: 0px !important;
-	margin-bottom: 0px !important;
-}
-
-/*==========LOGIN=============*/
-
-
-.main-section{
-    margin: 0px;
-    padding: 0%;
-
-}
-
-.model-content{
-    background-color: #3b4652;
-    opacity: -85;
-    padding: 0 20px;
-    box-shadow: 0px 0px 3px #848484;
-}
-
-.user-img{
-    margin-top: 100px;
-    margin-bottom: 35px;
-}
-
-.user-img img{
-    width: 100px;
-    height: 100px;
-    box-shadow: 0px 0px 3px #848484;
-    border-radius: 50%;
-}
-
-.forgot{
-    padding: 5px 0;
-}
-
-
