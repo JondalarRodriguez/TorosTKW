@@ -2,6 +2,11 @@
 	background-color: rgb(243, 45, 10) !important;
 }
 
+.Container{
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
 .altoCard{
 	height: 180px;
 }
@@ -29,7 +34,7 @@
 }
 
 .ancho{
-	width: 150px;
+	width: 150px !important;
 }
 
 .redondo{
