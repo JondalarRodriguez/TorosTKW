@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: "clientes", component: ClientesComponent},
   {path: "credito", component: CreditoComponent},
   {path: "login", component: LoginComponent},
-  {path: "ventas", component: VentasComponent},
+  {path: "inventario", component: VentasComponent},
   {path: "admn", component: PrincipalAdminComponent},
 
 ];
