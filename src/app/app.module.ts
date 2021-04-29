@@ -13,6 +13,8 @@ import { PrincipalComponent } from './principal/principal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminNavComponent } from './Parciales/admin-nav/admin-nav.component';
 import { PrincipalAdminComponent } from './principal-admin/principal-admin.component';
+import { EditarComponent } from './ventas/editar/editar.component';
+import { AgregarComponent } from './ventas/agregar/agregar.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { PrincipalAdminComponent } from './principal-admin/principal-admin.compo
     LoginComponent,
     PrincipalComponent,
     AdminNavComponent,
-    PrincipalAdminComponent
+    PrincipalAdminComponent,
+    EditarComponent,
+    AgregarComponent
   ],
   imports: [
     BrowserModule,

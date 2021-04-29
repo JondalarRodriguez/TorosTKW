@@ -96,9 +96,9 @@ padding:0px 10px;
 	font-size: 22px;*/
 }
 .contenedor3{
-	text-align: center;
-	margin: 30px;
-	padding: 5px 1px;	
-	background-color: rgb(231, 229, 229);
-
+	
+    text-align: center;
+	margin: 50px;
+	width: 85%;
+	/*background-color: rgb(231, 229, 229);*/
 }
