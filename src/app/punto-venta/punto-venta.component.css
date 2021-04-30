@@ -1,5 +1,5 @@
 .naranja{
-    background-color: orangered !important;
+    background-color: #3da6f0  !important;
 }
 .contenedor{
 	background-color: rgb(243, 45, 10) !important;
@@ -32,4 +32,8 @@
 }
 .redondo{
 	border-radius: 15px !important;
+}
+
+.anchoTable{
+	width: 450px !important;
 }
