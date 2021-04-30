@@ -115,4 +115,12 @@
 	-ms-transform: scale(0.97);
 	transform: scale(0.97);
   }
+
+  .form-control:focus, select:focus, select{
+	border: 2px solid #dc3545;
+	outline: none;
+	box-shadow: none;
+  }
+
+  
   

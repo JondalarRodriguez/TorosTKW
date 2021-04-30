@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <app-nav></app-nav>
 
 <html lang="es">
@@ -7,37 +5,43 @@
     <div class="modal-dialog text-center formContent ">
         <div class="col-sm-g">
             <div class="modal-content transparencia borde-modal">
-                <div class="col-12 user-img"> <!--IMAGEN CABECERA DE FORMULARIO-->
+                <div class="col-12 user-img">
+                    <!--IMAGEN CABECERA DE FORMULARIO-->
                     <img src="assets/img/logoTaekwondo.png" class="rounded-circle" alt="" />
                 </div>
                 <form (ngSubmit)="iniciarSesion(loginForm.value)" [formGroup]="loginForm">
-                    <div class="form-group col-12 borde-formulario " > <!--USUARIO-->
+                    <div class="form-group col-12 borde-formulario ">
+                        <!--USUARIO-->
                         <i class="fas fa-user fa-lg"></i>
-                        <input type="text" formControlName="username" class="form-control text-center" placeholder="Usuario">
+                        <input type="text" formControlName="username" class="form-control  text-center"
+                            placeholder="Usuario">
                         <p *ngIf="loginForm.controls['username'].hasError('minlength')"
                             class="=alert alert-danger mg-remove">
                             El nombre de usuario es demasiado corto
                         </p>
-                        <p *ngIf="loginForm.controls['username'].hasError('maxlength')" 
+                        <p *ngIf="loginForm.controls['username'].hasError('maxlength')"
                             class="=alert alert-danger mg-remove">
                             El nombre de usuario es demasiado largo
                         </p>
                     </div>
-                    <div class="form-group col-12 borde-formulario"> <!--CONTRASEÑA-->
+                    <div class="form-group col-12 borde-formulario">
+                        <!--CONTRASEÑA-->
                         <i class="fas fa-key fa-lg"></i>
-                        <input type="password" formControlName ="password" class="form-control text-center" placeholder="Contraseña">
+                        <input type="password" formControlName="password" class="form-control text-center"
+                            placeholder="Contraseña">
                         <p *ngIf="loginForm.controls['password'].hasError('minlength')"
                             class="=alert alert-danger mg-remove">
                             La contraseña de usuario es demasiado corto
                         </p>
-                        <p *ngIf="loginForm.controls['password'].hasError('maxlength')" 
+                        <p *ngIf="loginForm.controls['password'].hasError('maxlength')"
                             class="=alert alert-danger mg-remove">
                             La contraseña de usuario es demasiado largo
                         </p>
                     </div>
-                    <div class="form-group"> <!--BOTÓN DE INICIO DE SESIÓN-->
+                    <div class="form-group">
+                        <!--BOTÓN DE INICIO DE SESIÓN-->
                         <button class="btn btn-primary boton" type="submit" [disabled]="!loginForm.valid" value="login">
-                              Entrar
+                            Entrar
                         </button>
                     </div>
                 </form>

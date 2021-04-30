@@ -37,3 +37,13 @@
 .anchoTable{
 	width: 450px !important;
 }
+
+.form-control:focus, select:focus, select{
+	border: 2px solid #b6b6b6;
+	outline: none;
+	box-shadow: none;
+  }
+
+  .col{
+	  padding-top: 15px;
+  }

@@ -25,9 +25,9 @@ padding: 0px;
 	height:35px;
 	padding:0px 10px;
 	font-size:18px;
-	outline:none;
-	border:none;
-	border-radius:30px;
+	border: 2px solid #b6b6b6;
+	outline: none;
+	box-shadow: none;
 }
 
 p.a{
@@ -44,7 +44,7 @@ font-weight: bold;
 	margin: -19px 460px;
 	display: inline-block;
 	padding: 3px 30px;
-	font-size: 18px;
+	font-size: 20px;
 	cursor: pointer;
 	text-align: center;   
 	text-decoration: none;
@@ -52,7 +52,7 @@ font-weight: bold;
 	color: #fff;
 	border: none;
 	border-radius: 15px;
-	box-shadow: 0 3px #999;
+	/*box-shadow: 0 3px #999;*/
   }
 
 .btn2{
@@ -61,7 +61,7 @@ font-weight: bold;
 	
 	display: inline-block;
 	padding: 3px 30px;
-	font-size: 18px;
+	font-size: 20px;
 	cursor: pointer;
 	text-align: center;   
 	text-decoration: none;
@@ -69,8 +69,8 @@ font-weight: bold;
 	color: #fff;
 	border: none;
 	border-radius: 15px;
-	box-shadow: 0 3px #999;
-	/*margin: 10px;
+	/*box-shadow: 0 3px #999;
+	margin: 10px;
 	border:none;
 	border-radius: 3px;
 	font-size: 22px;*/
@@ -81,7 +81,7 @@ font-weight: bold;
 	margin: -19px 732px;
 	display: inline-block;
 	padding: 3px 20px;
-	font-size: 18px;
+	font-size: 20px;
 	cursor: pointer;
 	text-align: center;   
 	text-decoration: none;
@@ -89,8 +89,8 @@ font-weight: bold;
 	color: #fff;
 	border: none;
 	border-radius: 15px;
-	box-shadow: 0 3px #999;
-	/*border:none;
+	/*box-shadow: 0 3px #999;
+	border:none;
 	margin: 10px ;
 	border-radius: 3px;
 	font-size: 22px;*/
