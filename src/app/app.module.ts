@@ -16,6 +16,7 @@ import { PrincipalAdminComponent } from './principal-admin/principal-admin.compo
 import { EditarComponent } from './ventas/editar/editar.component';
 import { AgregarComponent } from './ventas/agregar/agregar.component';
 import { PuntoVentaComponent } from './punto-venta/punto-venta.component';
+import { FooterAdminComponent } from './Parciales/footer-admin/footer-admin.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PuntoVentaComponent } from './punto-venta/punto-venta.component';
     PrincipalAdminComponent,
     EditarComponent,
     AgregarComponent,
-    PuntoVentaComponent
+    PuntoVentaComponent,
+    FooterAdminComponent
   ],
   imports: [
     BrowserModule,
