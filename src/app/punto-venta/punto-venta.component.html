@@ -10,7 +10,9 @@
             <div class="input-group mb-3">
                 <h3>Buscar</h3>
                 <input type="text" class="form-control" id="Abono" aria-label="Buscar">
-
+                <Button type="submit" class="btn btn-danger">
+                    Buscar
+                </Button>
             </div>
         </div>
         <div class="col">
@@ -31,7 +33,7 @@
 <div class="Container">
     <div class="row">
         <div class="col">
-            <div class="mb-10">
+            <div class="mb-6">
 
                 <table class="table table-hover">
                     <thead>
@@ -70,12 +72,12 @@
             </div>
 
         </div>
-        <div class="col">
-            <div class="mb-3">
 
+        <div class="col">
+            <div class="mb-3 btn-group-vertical">
                 <!--================INICIO DEL MODAL=============================-->
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-danger CenterButton margen redondo" data-bs-toggle="modal"
+                <button type="button" class="btn btn-danger margen redondo" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
                     Cobrar
                 </button>
@@ -86,7 +88,7 @@
                     <div class="modal-dialog modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Añadir CLiente</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Añadir Cliente</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
@@ -127,12 +129,38 @@
                 </div>
 
                 <!--=====================FINAL DEL MODAL=======================-->
-                <button type="button" class="btn btn-danger redondo">
-                    Añadir Cliente
-                </button>
-
+                <div class="input-group">
+                    Buscar Cliente
+                    <input type="text" class="form-control" id="BuscarCliente" aria-label="Buscar">
+                    <Button type="submit" class="btn btn-danger">
+                        Buscar
+                    </Button>
+                </div>
             </div>
 
+            <table class="table table-hover anchoTable">
+                <thead>
+                    <tr class="naranja">
+                        <th scope="col"> Nombre </th>
+                        <th scope="col">Apellido</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Argelia</th>
+                        <td>Padilla</td>
+                    </tr>
+                </tbody>
+            </table>
+
         </div>
+
+
+        <!-- <div class="col">
+        </div>
+           -->
+
     </div>
+
+
 </div>
