@@ -7,6 +7,15 @@
 	margin-right: 100px;
 }
 
+.container2{
+	margin: 15px;
+	padding: 5px;
+	justify-content: center;
+	background-color: rgb(231, 229, 229);
+	padding-top: 18px;
+	/*width: 600px;*/
+}
+
 .altoCard{
 	height: 180px;
 }
@@ -47,4 +56,8 @@
 
 .transparente{
 	opacity: .93;
+}
+
+.altoBotones{
+	height: 50px;
 }
