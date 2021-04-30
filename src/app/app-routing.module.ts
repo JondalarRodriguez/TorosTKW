@@ -8,6 +8,7 @@ import { PrincipalComponent } from './principal/principal.component';
 import { VentasComponent } from './ventas/ventas.component';
 import { AgregarComponent } from './ventas/agregar/agregar.component';
 import { EditarComponent } from './ventas/editar/editar.component';
+import { PuntoVentaComponent } from './punto-venta/punto-venta.component';
 const routes: Routes = [
   {path: "", component: PrincipalComponent},
   {path: "clientes", component: ClientesComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: "admn", component: PrincipalAdminComponent},
   {path: "agregar", component: AgregarComponent},
   {path: "editar", component: EditarComponent},
+  {path: "ventas", component: PuntoVentaComponent},
 
 ];
 

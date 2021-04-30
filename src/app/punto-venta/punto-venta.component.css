@@ -1,0 +1,35 @@
+.naranja{
+    background-color: orangered !important;
+}
+.contenedor{
+	background-color: rgb(243, 45, 10) !important;
+}
+.container2{
+	margin: 15px;
+	padding: 5px;
+	justify-content: center;
+	background-color: rgb(231, 229, 229);
+		
+}
+.letrasBlancas{
+	color: white !important;
+}
+
+.Container{
+	margin-left: 50px;
+	margin-right: 50px;
+}
+
+.Center{
+	text-align:center  !important;
+}
+
+.margen{
+	margin: 20px;
+}
+.ancho{
+	width: 150px !important;
+}
+.redondo{
+	border-radius: 15px !important;
+}
