@@ -1,3 +1,7 @@
+body{
+	min-height: 80vh; 
+  }
+
 .contenedor2{
 	text-align: center;
 	margin: 30px 150px;
