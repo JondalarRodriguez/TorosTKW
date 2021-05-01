@@ -25,7 +25,7 @@ padding: 0px;
 .buscador input{
 	margin: -17px 84px;
 	position: absolute;
-	width:300px;
+	width:500px;
 	height:35px;
 	padding:0px 10px;
 	font-size:18px;
@@ -45,7 +45,7 @@ font-weight: bold;
 .btn1 {
 	position:absolute;
 	
-	margin: -19px 460px;
+	margin: -16px 650px;
 	display: inline-block;
 	padding: 3px 30px;
 	font-size: 20px;
@@ -61,7 +61,7 @@ font-weight: bold;
 
 .btn2{
 	position:absolute;
-	margin: -19px 600px;
+	margin: -16px 780px;
 	
 	display: inline-block;
 	padding: 3px 30px;
@@ -82,7 +82,7 @@ font-weight: bold;
 .btn3{
 	position:absolute;
 	
-	margin: -19px 732px;
+	margin: -16px 904px;
 	display: inline-block;
 	padding: 3px 20px;
 	font-size: 20px;
@@ -104,4 +104,76 @@ font-weight: bold;
     text-align: center;
 	margin: 50px 150px;
 	background-color: rgb(231, 229, 229);
+}
+.contenedor{
+	background-color:#d9534f !important;
+}
+
+.Container{
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
+.container2{
+	margin: 15px;
+	padding: 5px;
+	justify-content: center;
+	background-color: rgb(231, 229, 229);
+	padding-top: 18px;
+	/*width: 600px;*/
+}
+
+.altoCard{
+	height: 180px;
+}
+
+.anchoCard{
+	width: 920px;
+	background-color: white;
+}
+
+.letrasBlancas{
+	color: white !important;
+}
+
+.CenterButton{
+	margin-left: 48% !important; 
+	margin-right:auto;
+}
+
+.Center{
+	text-align:center  !important;
+}
+
+.margen{
+	margin: 20px;
+}
+
+.ancho{
+	width: 140px !important;
+}
+
+.redondo{
+	border-radius: 15px !important;
+}
+
+.separacion{
+	margin-right: 100px;
+}
+
+.transparente{
+	opacity: .93;
+}
+
+.altoBotones{
+	height: 50px;
+}
+
+.modal-header{
+	background: rgb(231, 229, 229);
+	text-align:center;
+}
+.modal-body{
+	text-align: center;
+	margin: 15px;
 }
