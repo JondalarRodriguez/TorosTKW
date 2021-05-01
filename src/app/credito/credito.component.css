@@ -7,15 +7,11 @@
 }
 
 #Abono{
-	position:absolute;
-	width: 50%;
-	left: 100px;
+	margin-left: 10px;
 }
 
 #Total{
-	position:absolute;
-	width: 50%;
-	left: 70px;
+	margin-left: 10px;
 }
 
 table {
@@ -26,7 +22,12 @@ table {
 }
 
 tr:nth-child(even){
-	background-color: white;
+	background-color: #ddd;
+}
+
+tr:hover td{
+	background-color:#C0C0C0;
+	color: white;
 }
 
 .login{
@@ -52,7 +53,7 @@ tr:nth-child(even){
 }
 
 .Center{
-	text-align:center;
+	justify-content: center;
 }
 
 .margen{
@@ -60,7 +61,7 @@ tr:nth-child(even){
 }
 
 .ancho{
-	width: 150px;
+	width: 50px;
 }
 
 .redondo{
@@ -68,7 +69,11 @@ tr:nth-child(even){
 }
 
 .separacion{
-	margin-right: 20px;
+	margin-right: 10px;
+}
+
+.separacion2{
+	margin-left: 10px;
 }
 
 .transparente{
@@ -116,14 +121,21 @@ tr:nth-child(even){
 /*=====================================*/
 
 
-.col-sm-4{
+.col-sm-6{
+	padding-top: 15px;
+	
+}
+.col-sm-3{
 	padding-top: 15px;
 	
 }
 
 .btn{
 	font-size: 20px;
-	margin-bottom: 10px;
+}
+.mg-btn{
+	margin-left: 8px;
+	margin-right: 8px;
 }
 
 .clientes{
@@ -132,3 +144,9 @@ tr:nth-child(even){
 	padding: 10px;
 	color: white;
 }
+
+.form-control:focus, select:focus, select{
+	border: 2px solid #b6b6b6;
+	outline: none;
+	box-shadow: none;
+  }

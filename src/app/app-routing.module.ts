@@ -6,8 +6,6 @@ import { LoginComponent } from './login/login.component';
 import { PrincipalAdminComponent } from './principal-admin/principal-admin.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { VentasComponent } from './ventas/ventas.component';
-import { AgregarComponent } from './ventas/agregar/agregar.component';
-import { EditarComponent } from './ventas/editar/editar.component';
 import { PuntoVentaComponent } from './punto-venta/punto-venta.component';
 const routes: Routes = [
   {path: "", component: PrincipalComponent},
@@ -16,8 +14,6 @@ const routes: Routes = [
   {path: "login", component: LoginComponent},
   {path: "inventario", component: VentasComponent},
   {path: "admn", component: PrincipalAdminComponent},
-  {path: "agregar", component: AgregarComponent},
-  {path: "editar", component: EditarComponent},
   {path: "ventas", component: PuntoVentaComponent},
 
 ];
