@@ -1,3 +1,7 @@
+body{
+	min-height: 80vh; 
+  }
+
 .naranja{
     background-color: #3da6f0  !important;
 }
