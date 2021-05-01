@@ -13,72 +13,63 @@
         <div class="d-grid gap-1">
             <h3 class="clientes">Clientes</h3>
         </div>
-        <table class="table table-hover table-bordered border">
-            <thead>
-                <tr>
-                    <th scope="col">RGI</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Historial</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td height= "17" bgcolor="#638cb5"><input type="submit" name="envio" value="Ver" class="boton2"></td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jonda</td>
-                    <td height= "17" bgcolor="#638cb5"><input type="submit" name="envio" value="Ver" class="boton2"></td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Toño</td>
-                    <td height= "17" bgcolor="#638cb5"><input type="submit" name="envio" value="Ver" class="boton2"></td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>Luz</td>
-                    <td height= "17" bgcolor="#638cb5"><input type="submit" name="envio" value="Ver" class="boton2"></td>
-                </tr>
-            </tbody>
-        </table>
+        <table>
+			<thead>
+				<tr>
+					<th>RGI</th><th>Nombres</th><th>Historial</th>
+				</tr>
+			</thead>
+
+			<tr>
+				<td>1</td><td>Jondalar</td><td><input type="submit" name="envio" value="Ver"
+                    class="boton2 ancho"></td>
+			</tr>
+			<tr>
+				<td>2</td><td>Toño</td><td><input type="submit" name="envio" value="Ver"
+                    class="boton2 ancho"></td>
+			</tr>
+			<tr>
+				<td>3</td><td>Lucero</td><td><input type="submit" name="envio" value="Ver"
+                    class="boton2 ancho"></td>
+			</tr>
+			<tr>
+				<td>4</td><td>Gabriel</td><td><input type="submit" name="envio" value="Ver"
+                    class="boton2 ancho"></td>
+			</tr>
+		</table>
     </div>
 
     <div class="container2">
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <div class="col">
                     <div class="input-group mb-3">
                         <h3>Abonar</h3>
-                        <input type="text" class="form-control" id="Abono" aria-label="First name">
+                        <input type="text" class="form-control separacion" id="Abono" aria-label="First name">
+                        <button class="btn btn-danger redondo">Aceptar</button>
                     </div>
                 </div>
 
             </div>
-            <div class="col-sm-4">
+            
+            <div class="col-sm-3">
                 <div class="col order-1">
                     <div class="input-group mb-3">
                         <h3>Total</h3>
-                        <input type="text" class="form-control" id="Total" aria-label="First name" >
+                        <input type="text" class="form-control" id="Total" aria-label="First name">
                     </div>
                 </div>
-                
+
             </div>
 
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <div class="col order-1">
-                    <button class="btn btn-danger redondo separacion">Abonar</button>
                     <button class="btn btn-danger redondo separacion">Imprimir</button>
                     <button class="btn btn-danger redondo separacion">Cancelar</button>
                 </div>
-                
             </div>
         </div>
     </div>
-
-    
-
 </div>
-    
+
+<app-footer-admin></app-footer-admin>

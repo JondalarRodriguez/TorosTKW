@@ -13,9 +13,8 @@ import { PrincipalComponent } from './principal/principal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminNavComponent } from './Parciales/admin-nav/admin-nav.component';
 import { PrincipalAdminComponent } from './principal-admin/principal-admin.component';
-import { EditarComponent } from './ventas/editar/editar.component';
-import { AgregarComponent } from './ventas/agregar/agregar.component';
 import { PuntoVentaComponent } from './punto-venta/punto-venta.component';
+import { FooterAdminComponent } from './Parciales/footer-admin/footer-admin.component';
 
 @NgModule({
   declarations: [
@@ -29,9 +28,8 @@ import { PuntoVentaComponent } from './punto-venta/punto-venta.component';
     PrincipalComponent,
     AdminNavComponent,
     PrincipalAdminComponent,
-    EditarComponent,
-    AgregarComponent,
-    PuntoVentaComponent
+    PuntoVentaComponent,
+    FooterAdminComponent
   ],
   imports: [
     BrowserModule,
