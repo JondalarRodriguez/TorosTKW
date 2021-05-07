@@ -1,103 +1,111 @@
 <app-admin-nav></app-admin-nav>
-<body>
-    <div class="contenedor2">
-        <div class="titulo">
-            <h1>Lista de productos</h1>
 
-        </div>
-
-    </div>
+<div class="container">
 
     <div class="contenedor1">
+        <div class="titulo">
+            <div class="tic" align="center">
+                <h1>Lista de productos</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="contenedor2">
+       
         <div class="row">
-
-            <div class="buscador">
-                <p class="a">Buscar</p>
-                <input type="text" placeholder="Buscar" id="BuscarProducto">
+            <div class="col-sm-6">
+                <div class="b">
+                    <div class="input-group mb-3">
+                        <h1 class="a">Buscar</h1>
+                        <input type="text" placeholder="Buscar" class="form-control separacion" id="Buscar" aria-label="First name" >
+                    </div>
+                </div>
             </div>
 
-            <div class="">
-                <button class="btn1 btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Añadir</button>
-                <button class="btn2 btn-danger">Editar</button>
-                <button class="btn3 btn-danger">Eliminar</button>
+        <div class="col-sm-3">
+            <div class="b order-1">
+                <button class="btn1 btn-danger redondo separacion" data-bs-toggle="modal" data-bs-target="#exampleModal">Añadir</button>
+                <!-- Modal -->
+ <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+ aria-hidden="true">
+ <div class="modal-dialog modal-dialog-scrollable">
+     <div class="modal-content">
+         <div class="modal-header">
+             <h5 class="modal-title" id="exampleModalLabel">AÑADIR PRODUCTO</h5>
+             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+         </div>
+         <div class="modal-body ">
+             Datos del producto
+             <div class="input-group mb-3">
+                 <span class="input-group-text ancho letrasBlancas contenedores" name="Nombre">Nombre</span>
+                 <input type="text" class="form-control" aria-label="Sizing example input"
+                     aria-describedby="inputGroup-sizing-default">
+             </div>
+             <div class="input-group mb-3">
+                 <span class="input-group-text ancho letrasBlancas contenedores" name="Nombre">Costo</span>
+                 <input type="text" class="form-control" aria-label="Sizing example input"
+                     aria-describedby="inputGroup-sizing-default">
+             </div>
+             <div class="input-group mb-3">
+                 <span class="input-group-text ancho letrasBlancas contenedores" name="Ingreso">Precio de
+                     venta</span>
+                 <input type="text" class="form-control" aria-label="Sizing example input"
+                     aria-describedby="inputGroup-sizing-default">
+             </div>
+             <div class="input-group mb-3">
+                 <span class="input-group-text ancho letrasBlancas contenedores"
+                     name="Direccion">Exitencia</span>
+                 <input type="text" class="form-control" aria-label="Sizing example input"
+                     aria-describedby="inputGroup-sizing-default">
+             </div>
+         </div>
+         <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+             <button type="button" class="btn btn-primary">Guardar</button>
+         </div>
+     </div>
+ </div>
+</div>
+                
+                <button class="btn2 btn-danger redondo separacion">Editar</button>
+                <button class="btn3 btn-danger redondo separacion">Eliminar</button>
             </div>
-
+        </div>
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header" >
-                    <h5 class="modal-title" id="exampleModalLabel">AÑADIR PRODUCTO</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body ">
-                    Datos del producto
-                    <div class="input-group mb-3">
-                        <span class="input-group-text ancho letrasBlancas contenedor" name="RGI">Nombre</span>
-                        <input type="text" class="form-control" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text ancho letrasBlancas contenedor" name="Nombre">Costo</span>
-                        <input type="text" class="form-control" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text ancho letrasBlancas contenedor" name="Ingreso">Precio de venta</span>
-                        <input type="text" class="form-control" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text ancho letrasBlancas contenedor" name="Direccion">Exitencia</span>
-                        <input type="text" class="form-control" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Guardar</button>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="contenedor1">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Folio</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Costo</th>
+                <th scope="col">Precio Venta</th>
+                <th scope="col">Existencia</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Peto Rojo</td>
+                <td>600</td>
+                <td>900</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>100</td>
+                <td>150</td>
+                <td>5</td>
+            </tr>
 
+        </tbody>
+    </table>
+</div>
+ 
+</div>
 
-    <div class="contenedor3">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Folio</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Costo</th>
-                    <th scope="col">Precio Venta</th>
-                    <th scope="col">Existencia</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Peto Rojo</td>
-                    <td>600</td>
-                    <td>900</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>100</td>
-                    <td>150</td>
-                    <td>5</td>
-                </tr>
-
-            </tbody>
-        </table>
-
-    </div>
-
-
-</body>
 
 <app-footer-admin></app-footer-admin>

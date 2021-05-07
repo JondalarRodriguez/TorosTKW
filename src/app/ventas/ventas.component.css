@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 body{
 	min-height: 80vh; 
   }
@@ -10,13 +11,16 @@ body{
 	
 	
 }
+=======
+>>>>>>> Stashed changes
 .contenedor1{
-	margin: 30px 150px;
-	margin-left: 150px;
-	padding: 30px 1px;
-	background-color: rgb(231, 229, 229);
-	
+	margin: 30px;
+
+	padding: 5px ;
+	justify-content: center;
+	background-color: rgb(231, 229, 229);	
 }
+<<<<<<< Updated upstream
 .buscador{
 position: left;
 margin-left: 10px;
@@ -100,8 +104,89 @@ font-weight: bold;
 	font-size: 22px;*/
 }
 .contenedor3{
+=======
+.contenedor2{
+	margin: 30px;
+>>>>>>> Stashed changes
 	
-    text-align: center;
-	margin: 50px 150px;
 	background-color: rgb(231, 229, 229);
+	
 }
+<<<<<<< Updated upstream
+=======
+h1.a{
+	margin-left: 10px;
+	font-size:25px;
+}
+#Buscar{
+
+ margin-left: 10px;
+
+}
+table {
+	width: 100%;
+	height: 150px;
+	
+	text-align: center;
+}
+
+.redondo{
+	border-radius: 10px !important;
+}
+
+.separacion{
+	margin-right: 10px;
+}
+
+.col-sm-6{
+	padding-top: 15px;
+	
+}
+.col-sm-3{
+	padding-top: 15px;
+	
+}
+.btn{
+ 	margin:55px;
+}
+
+/*ventana flotante*/
+
+.contenedores{
+	background-color:#d9534f !important;
+}
+
+.Container{
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
+.letrasBlancas{
+	color: white !important;
+}
+
+.ancho{
+	width: 140px !important;
+}
+
+.transparente{
+	opacity: .93;
+}
+
+.altoBotones{
+	height: 50px;
+}
+
+.modal-header{
+	background: rgb(231, 229, 229);
+	text-align:center;
+}
+.modal-body{
+	text-align: center;
+	margin: 15px;
+}
+
+
+
+
+>>>>>>> Stashed changes
