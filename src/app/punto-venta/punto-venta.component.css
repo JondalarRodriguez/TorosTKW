@@ -48,6 +48,14 @@ body{
 	box-shadow: none;
   }
 
-  .col{
-	  padding-top: 15px;
-  }
+
+  .titulo{
+	margin: 15px;
+	padding: 5px;
+	justify-content: center;
+	background-color: rgb(231, 229, 229);
+    text-align: center;
+}
+.margen-titulo{
+	margin: 3px;
+}
