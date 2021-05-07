@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+
 body{
 	min-height: 80vh; 
   }
@@ -11,8 +11,7 @@ body{
 	
 	
 }
-=======
->>>>>>> Stashed changes
+
 .contenedor1{
 	margin: 30px;
 
@@ -20,7 +19,7 @@ body{
 	justify-content: center;
 	background-color: rgb(231, 229, 229);	
 }
-<<<<<<< Updated upstream
+
 .buscador{
 position: left;
 margin-left: 10px;
@@ -103,9 +102,7 @@ font-weight: bold;
 	border-radius: 3px;
 	font-size: 22px;*/
 }
-.contenedor3{
-	
-}
+
 .contenedor2{
 	margin: 30px;
 	background-color: rgb(231, 229, 229);
@@ -183,8 +180,6 @@ table {
 	margin: 15px;
 }
 
-
-
 .titulo{
 	margin: 15px;
 	padding: 5px;
@@ -200,7 +195,6 @@ table {
 .fondo-degradado{
 	background:linear-gradient(30deg, crimson,sienna, royalblue, indianred, purple);
 }
-
 .wrapper {
 	display: flex;
 	align-items: center;
