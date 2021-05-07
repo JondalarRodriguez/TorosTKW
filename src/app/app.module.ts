@@ -15,6 +15,7 @@ import { AdminNavComponent } from './Parciales/admin-nav/admin-nav.component';
 import { PrincipalAdminComponent } from './principal-admin/principal-admin.component';
 import { PuntoVentaComponent } from './punto-venta/punto-venta.component';
 import { FooterAdminComponent } from './Parciales/footer-admin/footer-admin.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FooterAdminComponent } from './Parciales/footer-admin/footer-admin.comp
     AdminNavComponent,
     PrincipalAdminComponent,
     PuntoVentaComponent,
-    FooterAdminComponent
+    FooterAdminComponent,
+    UsuariosComponent
   ],
   imports: [
     BrowserModule,
