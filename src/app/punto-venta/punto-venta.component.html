@@ -1,166 +1,171 @@
 <app-admin-nav></app-admin-nav>
 
-<body>
-    <div class="container2">
-        <div class="row">
-            <div class="col">
-                <div class="input-group mb-3">
-                    <h3>Buscar</h3>
-                    <input type="text" class="form-control" id="Abono" aria-label="Buscar">
-                    <Button type="submit" class="btn btn-danger">
-                        Buscar
-                    </Button>
-                </div>
-            </div>
-            <div class="col">
-                <div class="input-group mb 3">
-                    Cajero
-                    <input type="text" class="form-control" id="Cajerp" aria-label="Cajero">
-                </div>
-            </div>
+<div class="fondo-degradado wrapper">
 
-            <div class="col">
-                <div class="input-group mb 3">
-                    Turno
-                    <input type="text" class="form-control" id="Turno" aria-label="Turno">
-                </div>
-            </div>
+
+    <div class="container">
+
+        <div class="titulo">
+            <h1 class="margen-titulo">Punto de venta</h1>
         </div>
-    </div>
-    <div class="Container">
-        <div class="row">
-            <div class="col">
-                <div class="mb-6">
 
-                    <table class="table table-hover">
-                        <thead>
-                            <tr class="naranja">
-                                <th scope="col"> Folio </th>
-                                <th scope="col">Cantidad</th>
-                                <th scope="col">Descripción</th>
-                                <th scope="col">Precio</th>
-                                <th scope="col">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>2</td>
-                                <td>Peto Rojo</td>
-                                <td>450</td>
-                                <td>900</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>1</td>
-                                <td>Uniforme T7</td>
-                                <td>600</td>
-                                <td>600</td>
-                            </tr>
-                            <tr>
-                                <th scope="row"></th>
-                                <td>Total</td>
-                                <td></td>
-                                <td></td>
-                                <td>1500</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-            </div>
-
-            <div class="col">
-                <div class="mb-3 btn-group-vertical">
-                    <!--================INICIO DEL MODAL=============================-->
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-danger margen redondo" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal">
-                        Cobrar
-                    </button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-scrollable">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Añadir Cliente</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body ">
-                                    Cobrar
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text ancho letrasBlancas contenedor"
-                                            name="RGI">Importe</span>
-                                        <input type="text" class="form-control" aria-label="Sizing example input"
-                                            aria-describedby="inputGroup-sizing-default">
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text ancho letrasBlancas contenedor"
-                                            name="Nombre">Total</span>
-                                        <input type="text" class="form-control" aria-label="Sizing example input"
-                                            aria-describedby="inputGroup-sizing-default">
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text ancho letrasBlancas contenedor"
-                                            name="Ingreso">Recibido</span>
-                                        <input type="text" class="form-control" aria-label="Sizing example input"
-                                            aria-describedby="inputGroup-sizing-default">
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text ancho letrasBlancas contenedor"
-                                            name="Direccion">Cambio</span>
-                                        <input type="text" class="form-control" aria-label="Sizing example input"
-                                            aria-describedby="inputGroup-sizing-default">
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="button" class="btn btn-primary">Cobrar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--=====================FINAL DEL MODAL=======================-->
-                    <div class="input-group">
-                        Buscar Cliente
-                        <input type="text" class="form-control" id="BuscarCliente" aria-label="Buscar">
+        <div class="container2">
+            <div class="row">
+                <div class="col">
+                    <div class="input-group mb-3">
+                        <h3>Buscar</h3>
+                        <input type="text" class="form-control" id="Abono" aria-label="Buscar">
                         <Button type="submit" class="btn btn-danger">
                             Buscar
                         </Button>
                     </div>
                 </div>
+                <div class="col">
+                    <div class="input-group mb 3">
+                        Cajero
+                        <input type="text" class="form-control" id="Cajerp" aria-label="Cajero">
+                    </div>
+                </div>
 
-                <table class="table table-hover anchoTable">
-                    <thead>
-                        <tr class="naranja">
-                            <th scope="col"> Nombre </th>
-                            <th scope="col">Apellido</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">Argelia</th>
-                            <td>Padilla</td>
-                        </tr>
-                    </tbody>
-                </table>
-
+                <div class="col">
+                    <div class="input-group mb 3">
+                        Turno
+                        <input type="text" class="form-control" id="Turno" aria-label="Turno">
+                    </div>
+                </div>
             </div>
-
-
-            <!-- <div class="col">
         </div>
-           -->
+        <div class="Container">
+            <div class="row">
+                <div class="col">
+                    <div class="mb-6">
 
+                        <table class="table table-hover">
+                            <thead>
+                                <tr class="naranja">
+                                    <th scope="col"> Folio </th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Descripción</th>
+                                    <th scope="col">Precio</th>
+                                    <th scope="col">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>2</td>
+                                    <td>Peto Rojo</td>
+                                    <td>450</td>
+                                    <td>900</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>1</td>
+                                    <td>Uniforme T7</td>
+                                    <td>600</td>
+                                    <td>600</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td>Total</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>1500</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                <div class="col">
+                    <div class="mb-3 btn-group-vertical">
+                        <!--================INICIO DEL MODAL=============================-->
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-danger margen redondo" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            Cobrar
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Añadir Cliente</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body ">
+                                        Cobrar
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text ancho letrasBlancas contenedor"
+                                                name="RGI">Importe</span>
+                                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                                aria-describedby="inputGroup-sizing-default">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text ancho letrasBlancas contenedor"
+                                                name="Nombre">Total</span>
+                                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                                aria-describedby="inputGroup-sizing-default">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text ancho letrasBlancas contenedor"
+                                                name="Ingreso">Recibido</span>
+                                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                                aria-describedby="inputGroup-sizing-default">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text ancho letrasBlancas contenedor"
+                                                name="Direccion">Cambio</span>
+                                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                                aria-describedby="inputGroup-sizing-default">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-primary">Cobrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--=====================FINAL DEL MODAL=======================-->
+                        <div class="input-group">
+                            Buscar Cliente
+                            <input type="text" class="form-control" id="BuscarCliente" aria-label="Buscar">
+                            <Button type="submit" class="btn btn-danger">
+                                Buscar
+                            </Button>
+                        </div>
+                    </div>
+
+                    <table class="table table-hover anchoTable">
+                        <thead>
+                            <tr class="naranja">
+                                <th scope="col"> Nombre </th>
+                                <th scope="col">Apellido</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Argelia</th>
+                                <td>Padilla</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- <div class="col">
+            </div>
+               -->
+            </div>
         </div>
-
-
     </div>
-</body>
+</div>
+
+
 
 <app-footer-admin></app-footer-admin>

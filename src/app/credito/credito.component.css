@@ -150,3 +150,32 @@ tr:hover td{
 	outline: none;
 	box-shadow: none;
   }
+
+
+
+  
+  .titulo{
+	margin: 15px;
+	padding: 5px;
+	justify-content: center;
+	background-color: rgb(231, 229, 229);
+    text-align: center;
+	border-radius: 5px;
+}
+.margen-titulo{
+	margin: 3px;
+}
+
+.fondo-degradado{
+	background:linear-gradient(30deg, crimson,sienna, royalblue, indianred, purple);
+}
+
+.wrapper {
+	display: flex;
+	align-items: center;
+	flex-direction: column; 
+	justify-content: center;
+	width: 100%;
+	min-height: 100%;
+	padding: 5px;
+  }

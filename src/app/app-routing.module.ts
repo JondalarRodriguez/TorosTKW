@@ -7,15 +7,17 @@ import { PrincipalAdminComponent } from './principal-admin/principal-admin.compo
 import { PrincipalComponent } from './principal/principal.component';
 import { VentasComponent } from './ventas/ventas.component';
 import { PuntoVentaComponent } from './punto-venta/punto-venta.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+
 const routes: Routes = [
   {path: "", component: PrincipalComponent},
   {path: "clientes", component: ClientesComponent},
   {path: "credito", component: CreditoComponent},
   {path: "login", component: LoginComponent},
   {path: "inventario", component: VentasComponent},
-  {path: "admn", component: PrincipalAdminComponent},
+  {path: "admin", component: PrincipalAdminComponent},
   {path: "ventas", component: PuntoVentaComponent},
-
+  {path: "usuarios", component: UsuariosComponent}
 ];
 
 @NgModule({
