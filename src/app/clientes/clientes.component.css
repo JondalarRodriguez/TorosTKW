@@ -1,22 +1,30 @@
 .contenedor{
-	background-color: rgb(243, 45, 10) !important;
+	background-color: #c41628 !important;
 	padding-bottom: 15px;
 }
 
 .Container{
 	margin-left: 100px;
 	margin-right: 100px;
+	background-color: #FAFAFA;
 }
 
 .container2{
 	margin: 15px;
 	padding: 5px;
 	justify-content: center;
-	background-color: rgb(231, 229, 229);
+	background-color: #FAFAFA;
 	padding-top: 18px;
 	/*width: 600px;*/
 }
 
+.hover{
+	form-control:focus #b6b6b6 !important;
+}
+
+.modalColor{
+	background-color: #c41628;
+}
 .altoCard{
 	height: 180px;
 }
@@ -48,22 +56,23 @@
 }
 
 .centradoResponsivo{
-	display: flex;
-	align-items: center;
+	display: flex !important;
+	align-items: center !important;
 }
 
 .anchoButtons{
 	width: 110px;
+	text-align: center !important;
 	display: flex;
   	align-items: center;
-	text-align: center;
 }
 .redondo{
 	border-radius: 15px !important;
 }
 
 .separacion{
-	margin-right: 20px;
+	margin-right: 10px;
+	margin-left: 10px !important;
 }
 
 .transparente{
@@ -71,7 +80,7 @@
 }
 
 .altoBotones{
-	height: 50px;
+	height: 42px;
 }
 
 .form-control:focus, select:focus, select{
@@ -81,16 +90,19 @@
   }
 
 
-
+.TamañoBuscar{
+	font-size: 20px;
+}
 
 
 .titulo{
 	margin: 15px;
 	padding: 5px;
 	justify-content: center;
-	background-color: rgb(231, 229, 229);
+	background-color: #FAFAFA;
     text-align: center;
 	border-radius: 5px;
+	color: #000000;
 }
 .margen-titulo{
 	margin: 3px;
@@ -109,3 +121,8 @@
 	min-height: 100%;
 	padding: 0px;
   }
+
+.buttonSize{
+	background-color: #c41628;
+	font-size: 15px;
+}

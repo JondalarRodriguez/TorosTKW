@@ -9,16 +9,16 @@
 		<div class="container2">
 			<div class="row">
 				<div class="col">
-					<div class="input-group mb-6">
-						<h3>Buscar</h3>
+					<div class="input-group mb-6 TamañoBuscar">
+						Buscar
 						<input type="text" class="form-control" id="Abono" aria-label="Buscar">
 						<Button type="submit" class="btn btn-danger">
 							Buscar
 						</Button>
 					</div>
 				</div>
-				<div class="col">
-					<div class="input-group mb-3 centradoResponsivo">
+				<div class="col centradoResponsivo">
+					<div class="input-group mb-6 centradoResponsivo">
 						<!--================INICIO DEL MODAL=============================-->
 						<!-- Button trigger modal -->
 						<button type="button" class="btn btn-danger anchoButtons separacion redondo altoBotones"
@@ -31,7 +31,7 @@
 							aria-hidden="true">
 							<div class="modal-dialog modal-dialog-scrollable">
 								<div class="modal-content">
-									<div class="modal-header">
+									<div class="modal-header modalColor">
 										<h5 class="modal-title" id="exampleModalLabel">Añadir CLiente</h5>
 										<button type="button" class="btn-close" data-bs-dismiss="modal"
 											aria-label="Close"></button>
@@ -105,14 +105,14 @@
 
 						<!--=====================FINAL DEL MODAL=======================-->
 
-						<button class="btn btn-danger anchoButtons separacion redondo altoBotones"
+						<button class="btn btn-danger buttonSize anchoButtons separacion redondo altoBotones"
 							type="button">Guardar</button>
-						<button class="btn btn-danger anchoButtons separacion redondo altoBotones" (click)="direccionCredito()"
-							type="button">Crédito</button>
+						<button class="btn btn-danger buttonSize anchoButtons separacion redondo altoBotones"
+							(click)="direccionCredito()" type="button">Crédito</button>
 
-						<button class="btn btn-danger anchoButtons separacion redondo altoBotones"
+						<button class="btn btn-danger buttonSize anchoButtons separacion redondo altoBotones"
 							type="button">Eliminar</button>
-						
+
 
 
 					</div>
@@ -126,20 +126,22 @@
 		<div class="card mb-12 transparente margen">
 			<div class="row g-0 opaco">
 				<div class="col-md-6 row">
-					<div class="container opaco">
-						<table class="table table-hover">
-							<thead>
-								<tr>
-									<th scope="col">RGI</th>
-									<th scope="col">Nombre</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th scope="row">1</th>
-									<td>Mark</td>
-								</tr>
-						</table>
+					<div class="container2 opaco">
+						
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th scope="col">RGI</th>
+										<th scope="col">Nombre</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="row">1</th>
+										<td>Mark</td>
+									</tr>
+							</table>
+						
 					</div>
 				</div>
 				<div class="col-md-6">
