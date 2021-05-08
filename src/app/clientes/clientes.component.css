@@ -47,6 +47,11 @@
 	width: 150px !important;
 }
 
+.centradoResponsivo{
+	display: flex;
+	align-items: center;
+}
+
 .anchoButtons{
 	width: 110px;
 	display: flex;
