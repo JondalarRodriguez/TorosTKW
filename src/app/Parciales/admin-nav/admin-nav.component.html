@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="">
-        <img src="/assets/img/TorosLogo.jpeg" class="rounded-circle chico margenIzquierdo" alt="">
+    <a class="navbar-brand">
+        <img src="/assets/img/TorosLogo.jpeg" class="rounded-circle logo" alt="">
         Toros</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,25 +11,25 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav nav justify-content-end">
             <li class="nav-item active Blanco">
-                <a class="nav-link Blanco" href="admin">Inicio <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active Blanco">
-                <a class="nav-link Blanco" href="/clientes">Clientes</a>
+                <a class="nav-link" href="admin">Inicio <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link Blanco" href="/inventario">Inventario</a>
+                <a class="nav-link" href="/clientes">Clientes</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link Blanco" href="/credito">Creditos</a>
+                <a class="nav-link" href="/inventario">Inventario</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link Blanco" href="/ventas">Punto de Venta</a>
+                <a class="nav-link" href="/credito">Creditos</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link Blanco" href="/usuarios">Usuarios</a>
+                <a class="nav-link" href="/ventas">Punto de Venta</a>
             </li>
-            <li class="nav-item active separacion">
-                <button type="button" class="btn btn-bs-gray-dark letrasBlancas" (click)="CerrarSesion()">Cerrar Sesión</button>
+            <li class="nav-item active">
+                <a class="nav-link" href="/usuarios">Usuarios</a>
+            </li>
+            <li class="nav-item active margen-der-nav">
+                <button type="button" class="btn letrasBlancas boton" (click)="CerrarSesion()">Cerrar Sesión</button>
             </li>
         </ul>
     </div>
