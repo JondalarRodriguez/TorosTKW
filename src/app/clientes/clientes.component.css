@@ -1,5 +1,6 @@
 .contenedor{
 	background-color: rgb(243, 45, 10) !important;
+	padding-bottom: 15px;
 }
 
 .Container{
@@ -46,6 +47,12 @@
 	width: 150px !important;
 }
 
+.anchoButtons{
+	width: 110px;
+	display: flex;
+  	align-items: center;
+	text-align: center;
+}
 .redondo{
 	border-radius: 15px !important;
 }
