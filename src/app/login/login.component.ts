@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       form.password == "170204021"
     ){
       alert("Inicio de sesión exitoso");
-      this.router.navigate(['admn']);
+      this.router.navigate(['admin']);
     }else{
       alert("Datos incorrectos");
       this.limpiarCampos();
