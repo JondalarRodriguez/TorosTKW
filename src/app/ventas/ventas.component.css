@@ -174,15 +174,15 @@ table {
 	text-align:center;
 }
 .modal-body{
-	text-align: center;
-	margin: 15px;
+	text-align: left;
+	margin: 0px;
 }
 
 .titulo{
 	margin: 15px;
 	padding: 5px;
 	justify-content: center;
-	background-color: rgb(231, 229, 229);
+	background-color: #FAFAFA;
     text-align: center;
 	border-radius: 5px;
 }
@@ -234,4 +234,30 @@ table {
 }
 .alinear{
 	height: 48px;
+}
+
+  /* Modal */
+
+.modalColor{
+	background-color: #c41628;
+}
+.modal-title{
+	color: white;
+}
+.modal-body{
+	text-align: center;
+	margin: 0px;
+}
+
+.modal-title{
+	color: white;
+}
+
+.titulo2{
+	margin-bottom: 15px;
+}
+
+.contenedor{
+	background-color: #c41628 !important;
+	padding-bottom: 15px;
 }

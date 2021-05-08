@@ -159,3 +159,16 @@
 .alinear{
 	height: 48px;
 }
+
+/* Modal */
+.modal-title{
+	color: white;
+}
+.modal-body{
+	text-align: center;
+	margin: 0px;
+}
+
+.titulo2{
+	margin-bottom: 15px;
+}
