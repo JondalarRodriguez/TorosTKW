@@ -21,7 +21,7 @@
 					<div class="input-group mb-3">
 						<!--================INICIO DEL MODAL=============================-->
 						<!-- Button trigger modal -->
-						<button type="button" class="btn btn-danger CenterButton redondo altoBotones ancho"
+						<button type="button" class="btn btn-danger separacion redondo altoBotones"
 							data-bs-toggle="modal" data-bs-target="#exampleModal">
 							Añadir Cliente
 						</button>
@@ -105,6 +105,14 @@
 
 						<!--=====================FINAL DEL MODAL=======================-->
 
+						<button class="btn btn-danger  separacion redondo altoBotones"
+							type="button">Guardar</button>
+						<button class="btn btn-danger separacion redondo altoBotones" (click)="direccionCredito()"
+							type="button">Crédito</button>
+
+						<button class="btn btn-danger separacion redondo altoBotones"
+							type="button">Eliminar</button>
+						
 
 
 					</div>
@@ -193,15 +201,7 @@
 						<!--=======================FINAL DE LAS TABLAS===============================-->
 
 					</div>
-					<div class="d-grid gap-4 d-md-block Center margen">
-						<button class="btn btn-danger redondo separacion ancho altoBotones" (click)="direccionCredito()"
-							type="button">Crédito</button>
 
-						<button class="btn btn-danger redondo separacion ancho altoBotones"
-							type="button">Eliminar</button>
-						<button class="btn btn-danger redondo separacion ancho altoBotones"
-							type="button">Guardar</button>
-					</div>
 				</div>
 			</div>
 		</div>
