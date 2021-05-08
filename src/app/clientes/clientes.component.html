@@ -5,26 +5,9 @@
 		<div class="titulo">
 			<h1 class="margen-titulo"> Clientes</h1>
 		</div>
-
-		<div class="container2">
-			<div class="row">
-				<div class="col">
-					<div class="input-group mb-6 TamañoBuscar">
-						Buscar
-						<input type="text" class="form-control" id="Abono" aria-label="Buscar">
-						<Button type="submit" class="btn btn-danger">
-							Buscar
-						</Button>
-					</div>
-				</div>
-				<div class="col centradoResponsivo">
-					<div class="input-group mb-6 centradoResponsivo">
-						<!--================INICIO DEL MODAL=============================-->
+							<!--================INICIO DEL MODAL=============================-->
 						<!-- Button trigger modal -->
-						<button type="button" class="btn btn-danger anchoButtons separacion redondo altoBotones"
-							data-bs-toggle="modal" data-bs-target="#exampleModal">
-							Añadir Cliente
-						</button>
+
 
 						<!-- Modal -->
 						<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -32,7 +15,7 @@
 							<div class="modal-dialog modal-dialog-scrollable">
 								<div class="modal-content">
 									<div class="modal-header modalColor">
-										<h5 class="modal-title" id="exampleModalLabel">Añadir CLiente</h5>
+										<h5 class="modal-title" id="exampleModalLabel">Añadir Cliente</h5>
 										<button type="button" class="btn-close" data-bs-dismiss="modal"
 											aria-label="Close"></button>
 									</div>
@@ -105,22 +88,20 @@
 
 						<!--=====================FINAL DEL MODAL=======================-->
 
-						<button class="btn btn-danger buttonSize anchoButtons separacion redondo altoBotones"
-							type="button">Guardar</button>
-						<button class="btn btn-danger buttonSize anchoButtons separacion redondo altoBotones"
-							(click)="direccionCredito()" type="button">Crédito</button>
 
-						<button class="btn btn-danger buttonSize anchoButtons separacion redondo altoBotones"
-							type="button">Eliminar</button>
-
-
-
-					</div>
-				</div>
+		<div class="row align-items-center contenedor3 justify-content-around">
+			<div class="col input-group mb-6 align-items-center">
+				<h5>Buscar</h5>
+				<input type="text" class="form-control margen-izq alinear" id="Abono" aria-label="Buscar">
+				<Button type="submit" class="btn btn-danger boton-buscar">Buscar</Button>
+			</div>
+			<div class="col btn-group btn-group-toggle mb-6 botones align-items-center" data-toggle="buttons">
+				<button type="button" class="btn btn-danger btns borde-boton" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo cliente</button>
+				<button type="button" class="btn btn-danger btns borde-boton margen-izq">Guardar</button>
+				<button type="button" class="btn btn-danger btns borde-boton margen-izq" (click)="direccionCredito()">Crédito</button>
+				<button type="button" class="btn btn-danger btns borde-boton margen-izq">Eliminar</button>
 			</div>
 		</div>
-
-
 
 
 		<div class="card mb-12 transparente margen">

@@ -1,5 +1,5 @@
 
-
+/* Barra de título */
 .titulo{
 	margin: 15px;
 	padding: 5px;
@@ -15,7 +15,7 @@
 .fondo-degradado{
 	background:linear-gradient(30deg, crimson,sienna, royalblue, indianred, purple);
 }
-
+/* Contenedor principal */
 .wrapper {
 	display: flex;
 	align-items: center;
@@ -26,6 +26,9 @@
 	padding: 0px;
   }
 
+
+/* Barra de búsqueda */
+
 .contenedor{
 	background-color: #FAFAFA;
 	justify-content: center;
@@ -34,25 +37,24 @@
 	padding: 10px;
 	margin: 15px;
 }
-
 .botones{
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
-
-.btn{
- padding: 10px;
+.btns{
+ padding: 0px;
 }
-
+.boton-buscar{
+	padding: 10px;
+   }
 .margen-izq{
 	margin-left: 8px !important;
 }
-
 .borde-boton{
 	border-radius: 15px !important;
 	font-size: 15px;
+	height: 50px
 }
-
 .alinear{
 	height: 48px;
 }
