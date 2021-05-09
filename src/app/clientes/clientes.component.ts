@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class ClientesComponent implements OnInit {
 
+  
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -17,5 +18,12 @@ export class ClientesComponent implements OnInit {
     this.router.navigate(['credito']);
 
   }
+
+  clientesArray = [
+    {RGI:"1", Nombre:"Jondalar"},
+    {RGI:"2", Nombre:"Antonio"},
+    {RGI:"3", Nombre:"Lucero"},
+    {RGI:"4", Nombre:"Angel"},
+    ];
 
 }
