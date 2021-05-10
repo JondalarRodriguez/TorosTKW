@@ -6,71 +6,121 @@
             <h1 class="margen-titulo"> Crédito</h1>
         </div>
 
-        <div class="container2">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="col">
-                        <div class="input-group mb-3">
-                            <h3>Abonar</h3>
-                            <input type="text" class="form-control separacion" id="Abono" aria-label="First name">
-                            <button class="btn btn-danger redondo">Aceptar</button>
+        <!--================INICIO DEL MODAL=============================-->
+        <!-- Button trigger modal -->
+
+
+        <!-- Modal -->
+        <div class="doNotPrint">
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header modalColor">
+                            <h5 class="modal-title" id="exampleModalLabel">Historial de pagos</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                    </div>
-    
-                </div>
-                
-                <div class="col-sm-3">
-                    <div class="col order-1">
-                        <div class="input-group mb-3">
-                            <h3>Total</h3>
-                            <input type="text" class="form-control" id="Total" aria-label="First name">
+                        <div class="modal-body ">
+                            <h6 class="titulo2">
+                                Jondalar
+                            </h6>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Monto</th>
+                                    </tr>
+                                </thead>
+
+                                <tr>
+                                    <td>01/01/2021</td>
+                                    <td>300</td>
+                                </tr>
+                                <tr>
+                                    <td>01/02/2021</td>
+                                    <td>200</td>
+                                </tr>
+                                <tr>
+                                    <td>01/03/2021</td>
+                                    <td>100</td>
+                                </tr>
+                                <tr>
+                                    <td>01/04/2021</td>
+                                    <td>0</td>
+                                </tr>
+                            </table>
                         </div>
-                    </div>
-    
-                </div>
-    
-                <div class="col-sm-3">
-                    <div class="col order-1">
-                        <button class="btn btn-danger redondo separacion">Imprimir</button>
-                        <button class="btn btn-danger redondo separacion">Cancelar</button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
+                            <button type="button" class="btn btn-primary">Imprimir</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    
+
+        <!--=====================FINAL DEL MODAL=======================-->
+
+        <div class="row align-items-center contenedor3 justify-content-around">
+            <div class="col input-group mb-6 align-items-center">
+                <h5>Abono</h5>
+                <input type="text" class="form-control margen-izq alinear" id="Abono" aria-label="Buscar">
+                <button type="button" class="btn btn-danger margen-izq">Aceptar</button>
+            </div>
+            <div class="col btn-group btn-group-toggle mb-6 botones align-items-center" data-toggle="buttons">
+                <h5>Total</h5>
+                <input type="text" class="form-control margen-izq alinear" id="Total" aria-label="Buscar">
+            </div>
+            <div class="col btn-group btn-group-toggle mb-6 botones align-items-center" data-toggle="buttons">
+                <button type="button" class="btn btn-danger btns borde-boton margen-izq"
+                    (click)="onPrint()">Imprimir</button>
+                <button type="button" class="btn btn-danger btns borde-boton margen-izq"
+                    (click)="direccionCliente()">Cancelar</button>
+            </div>
+        </div>
+
+
         <div class="container2">
             <div class="d-grid gap-1">
                 <h3 class="clientes">Clientes</h3>
             </div>
-            <table>
-                <thead>
+
+            <div class="doNotPrint">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>RGI</th>
+                            <th>Nombres</th>
+                            <th>Historial</th>
+                        </tr>
+                    </thead>
+
                     <tr>
-                        <th>RGI</th><th>Nombres</th><th>Historial</th>
+                        <td>1</td>
+                        <td>Jondalar</td>
+                        <td><input type="submit" name="envio" value="Ver" class="boton2 ancho" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal"></td>
                     </tr>
-                </thead>
-    
-                <tr>
-                    <td>1</td><td>Jondalar</td><td><input type="submit" name="envio" value="Ver"
-                        class="boton2 ancho"></td>
-                </tr>
-                <tr>
-                    <td>2</td><td>Toño</td><td><input type="submit" name="envio" value="Ver"
-                        class="boton2 ancho"></td>
-                </tr>
-                <tr>
-                    <td>3</td><td>Lucero</td><td><input type="submit" name="envio" value="Ver"
-                        class="boton2 ancho"></td>
-                </tr>
-                <tr>
-                    <td>4</td><td>Gabriel</td><td><input type="submit" name="envio" value="Ver"
-                        class="boton2 ancho"></td>
-                </tr>
-            </table>
+                    <tr>
+                        <td>2</td>
+                        <td>Toño</td>
+                        <td><input type="submit" name="envio" value="Ver" class="boton2 ancho"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Lucero</td>
+                        <td><input type="submit" name="envio" value="Ver" class="boton2 ancho"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Gabriel</td>
+                        <td><input type="submit" name="envio" value="Ver" class="boton2 ancho"></td>
+                    </tr>
+                </table>
+            </div>
+
         </div>
     </div>
 </div>
-
-
-
 
 <app-footer-admin></app-footer-admin>
