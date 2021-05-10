@@ -18,12 +18,7 @@
 /* Contenedor principal */
 .wrapper {
 	display: flex;
-	align-items: center;
-	flex-direction: column; 
-	justify-content: center;
-	width: 100%;
-	min-height: 100%;
-	padding: 0px;
+	min-height: calc(100vh - 76.16px - 56px);
   }
 
 
