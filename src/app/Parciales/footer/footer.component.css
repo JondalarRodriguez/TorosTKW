@@ -6,8 +6,8 @@
 }
 
 .fondo-tarjeta{
- background-color: #2b3035;
- padding-top: 15px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding-top: 15px;
 }
 
 .margen-tarjetas{
@@ -23,4 +23,12 @@
 
 .padfooter{
     padding-top: 20px;
+}
+.fondo{
+background-image: url("src/assets/img/fondo-footer.jpg");
+}
+
+.row{
+    --bs-gutter-x: 0.rem !important;
+    --bs-gutter-y: 0;
 }
