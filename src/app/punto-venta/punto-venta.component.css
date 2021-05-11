@@ -39,7 +39,7 @@ body{
 }
 
 .anchoTable{
-	width: 450px !important;
+	width: 100% !important;
 }
 
 .form-control:focus, select:focus, select{
@@ -116,4 +116,16 @@ body{
 }
 .altura-entrada{
 	height: 30px;
+}
+
+.buttonSize{
+	background-color: #c41628;
+	font-size: 15px;
+	width: 120px;
+	height: 45px;
+	margin: 15px;
+}
+
+.AjusteDerecha{
+	margin-left: 70%;
 }
