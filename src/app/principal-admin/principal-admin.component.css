@@ -1,11 +1,8 @@
 .carousel-inner img {
     width: 100%;
-    max-height: 720px;
-	
-}
-
-.carousel-inner{
- height: 560px;
+	height: auto;
+    max-height: 570px;
+	min-height: 100px;
 }
 
 .card-header{
