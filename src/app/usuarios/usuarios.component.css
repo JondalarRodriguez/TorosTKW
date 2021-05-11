@@ -53,3 +53,16 @@
 .alinear{
 	height: 48px;
 }
+
+.ancho{
+	width: 120px;
+}
+
+.letrasBlancas{
+	color: white !important;
+	background-color: #c41628;
+}
+
+.modalColor{
+	background-color: #c41628;
+}
