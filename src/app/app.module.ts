@@ -16,6 +16,7 @@ import { PrincipalAdminComponent } from './principal-admin/principal-admin.compo
 import { PuntoVentaComponent } from './punto-venta/punto-venta.component';
 import { FooterAdminComponent } from './Parciales/footer-admin/footer-admin.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,    
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

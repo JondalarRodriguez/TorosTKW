@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ClientesService } from '../services/clienteservice/clientes.service';
 
 @Component({
   selector: 'app-clientes',
@@ -9,9 +10,11 @@ import { Router } from '@angular/router';
 export class ClientesComponent implements OnInit {
 
   
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private sesioncliente: ClientesService) { }
 
   ngOnInit(): void {
+
   }
 
   public direccionCredito(){
@@ -25,5 +28,14 @@ export class ClientesComponent implements OnInit {
     {RGI:"3", Nombre:"Lucero"},
     {RGI:"4", Nombre:"Angel"},
     ];
+
+   public obtenerClientes(){
+     console.log("obtener cliente");
+     this.sesioncliente.getCliente().subscribe(
+       data =>{
+         console.log(data);
+       }
+     );
+   }
 
 }
