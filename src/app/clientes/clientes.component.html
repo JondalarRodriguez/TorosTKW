@@ -104,7 +104,8 @@
 				<button type="button" class="btn btn-danger btns borde-boton" data-bs-toggle="modal"
 					data-bs-target="#exampleModal">Nuevo cliente</button>
 				<!--=========-->
-				<button onClick={this.actualizarCliente} type="button" class="btn btn-danger btns borde-boton margen-izq">Guardar</button>
+				<button onClick={this.actualizarCliente} type="button"
+					class="btn btn-danger btns borde-boton margen-izq">Guardar</button>
 				<button type="button" class="btn btn-danger btns borde-boton margen-izq"
 					(click)="direccionCredito()">Crédito</button>
 				<button type="button" class="btn btn-danger btns borde-boton margen-izq">Eliminar</button>
@@ -128,6 +129,10 @@
 								<tr *ngFor="let cliente of clientes">
 									<th>{{cliente.RGI}}</th>
 									<td>{{cliente.Nombre}}</td>
+									<td>
+										<button type="button" class="btn btn-warning">Editar</button>
+										<button type="button" class="btn btn-danger" (click)="deleteCliente(cliente.folio)">eliminar</button>
+									</td>
 								</tr>
 						</table>
 

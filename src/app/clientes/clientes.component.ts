@@ -12,6 +12,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class ClientesComponent implements OnInit {
 
   public clienteForm = new FormGroup({
+    folio: new FormControl(''),
     RGI: new FormControl(''),
     Nombre: new FormControl(''),
     FechaIngreso: new FormControl(''),
@@ -84,8 +85,19 @@ export class ClientesComponent implements OnInit {
 
   }
 
-
   public actualizarCliente(form: String){
     console.log(form);
   }
+
+  public deleteCliente(folio: String){
+    console.log("valor",  folio);
+    this.sesioncliente.eliminarCliente(folio).subscribe(
+      data =>{
+        console.log("result: ", data);
+      }
+
+    );
+    location.reload();
+  }
+
 }

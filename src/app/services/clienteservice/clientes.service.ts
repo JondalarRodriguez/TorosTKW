@@ -18,4 +18,9 @@ export class ClientesService {
     console.log(cliente);
     return this.http.post<any>("http://localhost:4000/add", cliente, {observe: "response"});
   }
+
+  public eliminarCliente(id: String){
+    return this.http.delete<boolean>("http://localhost:4000/clientes/" + id, {observe: 'response'});
+    
+  }
 }
