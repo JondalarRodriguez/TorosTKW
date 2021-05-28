@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, observable } from 'rxjs';
+import { Cliente } from '../../interfaces/clientes.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,12 @@ export class ClientesService {
 
   constructor( private http: HttpClient) { }
 
-  getCliente():Observable<any>{
-    return this.http.get<any>('http://localhost:4000/clientes');
+  getCliente(){
+    return this.http.get<Cliente>('http://localhost:4000/clientes');
+  }
+
+  PostCliente(cliente: any){
+    console.log(cliente);
+    return this.http.post<any>("http://localhost:4000/add", cliente, {observe: "response"});
   }
 }

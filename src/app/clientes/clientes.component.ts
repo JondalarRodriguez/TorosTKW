@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClientesService } from '../services/clienteservice/clientes.service';
+import { Cliente } from '../interfaces/clientes.interface';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-clientes',
@@ -9,26 +11,38 @@ import { ClientesService } from '../services/clienteservice/clientes.service';
 })
 export class ClientesComponent implements OnInit {
 
+  public clienteForm = new FormGroup({
+    RGI: new FormControl(''),
+    Nombre: new FormControl(''),
+    FechaIngreso: new FormControl(''),
+    Direccion: new FormControl(''),
+    Telefono: new FormControl(''),
+    Edad: new FormControl(''),
+    Horario: new FormControl(''),
+    Clase: new FormControl(''),
+    Mensualidad: new FormControl('')
+  });
+
+  public clientes: any = [];
   
   constructor(private router: Router,
               private sesioncliente: ClientesService) { }
 
   ngOnInit(): void {
-
+    this.sesioncliente.getCliente().subscribe(
+      (resp) =>{
+        console.log(resp);
+        this.clientes = resp;
+        console.log(this.clientes);
+      }
+    );
   }
 
   public direccionCredito(){
     this.router.navigate(['credito']);
 
   }
-
-  clientesArray = [
-    {RGI:"1", Nombre:"Jondalar"},
-    {RGI:"2", Nombre:"Antonio"},
-    {RGI:"3", Nombre:"Lucero"},
-    {RGI:"4", Nombre:"Angel"},
-    ];
-
+/*
    public obtenerClientes(){
      console.log("obtener cliente");
      this.sesioncliente.getCliente().subscribe(
@@ -37,5 +51,16 @@ export class ClientesComponent implements OnInit {
        }
      );
    }
+*/
 
+public nuevoCliente(form: String){
+  this.sesioncliente.PostCliente(form).subscribe(
+    data =>{
+      console.log(data);
+    },
+    error =>{
+      console.log(error);
+    }
+  );
+}
 }
