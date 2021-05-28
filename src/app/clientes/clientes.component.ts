@@ -25,7 +25,7 @@ export class ClientesComponent implements OnInit {
   });
 
   public clienteFormActualizar = new FormGroup({
-    Folio: new FormControl(''),
+    folio: new FormControl(''),
     RGI: new FormControl(''),
     Nombre: new FormControl(''),
     FechaIngreso: new FormControl(''),
@@ -95,8 +95,19 @@ export class ClientesComponent implements OnInit {
   }
 
   public actualizarCliente(form: String){
+    var id = this.forUpdate.folio;
     console.log(form);
+    console.log(id);
+
+    this.sesioncliente.putCliente(id, form).subscribe(
+      resp =>{
+        console.log("result: ", resp);
+      }
+
+    );
+    location.reload();
   }
+  
 
   public deleteCliente(folio: String){
     console.log("valor",  folio);
@@ -108,5 +119,4 @@ export class ClientesComponent implements OnInit {
     );
     location.reload();
   }
-
 }

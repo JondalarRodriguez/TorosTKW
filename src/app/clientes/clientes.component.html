@@ -130,11 +130,10 @@
 									<th>{{cliente.RGI}}</th>
 									<td>{{cliente.Nombre}}</td>
 									<td>
-										<button type="button" class="btn btn-warning" 
-										(click) = "obtenerDato(cliente)"> 
+										<button type="button" class="btn btn-warning" (click)="obtenerDato(cliente)">
 											Editar</button>
 										<button type="button" class="btn btn-danger"
-										 (click)="deleteCliente(cliente.folio)">
+											(click)="deleteCliente(cliente.folio)">
 											eliminar</button>
 									</td>
 								</tr>
@@ -150,60 +149,72 @@
 
 						<div class="contenedor opaco margen">
 							<p class="Center letrasBlancas">Detalles de clientes</p>
-							<div class="input-group mb-3">
-								<span class="input-group-text ancho letrasBlancas contenedor" id="Folio">Folio</span>
-								<input type="text" [(ngModel)]="forUpdate.folio"class="form-control" formControlName="Folio"
+							<!---->
+								<div class="input-group mb-3">
+								<span class="input-group-text ancho letrasBlancas contenedor"  id="Folio">Folio</span>
+								<input type="text" readonly="readonly" [(ngModel)]="forUpdate.folio"class="form-control" formControlName="folio"
 									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 							</div>
+							
+
 							<div class="input-group mb-3">
 								<span class="input-group-text ancho letrasBlancas contenedor" id="RGI">RGI</span>
-								<input type="text" [(ngModel)]="forUpdate.RGI" class="form-control" formControlName="RGI"
-									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+								<input type="text" [(ngModel)]="forUpdate.RGI" class="form-control"
+									formControlName="RGI" aria-label="Sizing example input"
+									aria-describedby="inputGroup-sizing-default">
 							</div>
 							<div class="input-group mb-3">
 								<span class="input-group-text ancho letrasBlancas contenedor" id="Nombre">Nombre</span>
-								<input type="text" [(ngModel)]="forUpdate.Nombre" class="form-control" formControlName="Nombre"
-									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+								<input type="text" [(ngModel)]="forUpdate.Nombre" class="form-control"
+									formControlName="Nombre" aria-label="Sizing example input"
+									aria-describedby="inputGroup-sizing-default">
 							</div>
 							<div class="input-group mb-3">
 								<span class="input-group-text ancho letrasBlancas contenedor" id="Ingreso">Fecha de
 									Ingreso</span>
-								<input type="text" [(ngModel)]="forUpdate.FechaIngreso" class="form-control" formControlName="FechaIngreso"
-									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+								<input type="text" [(ngModel)]="forUpdate.FechaIngreso" class="form-control"
+									formControlName="FechaIngreso" aria-label="Sizing example input"
+									aria-describedby="inputGroup-sizing-default">
 							</div>
 							<div class="input-group mb-3">
 								<span class="input-group-text ancho letrasBlancas contenedor"
 									id="Direccion">Dirección</span>
-								<input type="text" [(ngModel)]="forUpdate.Direccion" class="form-control" formControlName="Direccion"
-									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+								<input type="text" [(ngModel)]="forUpdate.Direccion" class="form-control"
+									formControlName="Direccion" aria-label="Sizing example input"
+									aria-describedby="inputGroup-sizing-default">
 							</div>
 							<div class="input-group mb-3">
 								<span class="input-group-text ancho letrasBlancas contenedor"
 									id="Telefono">Teléfono</span>
-								<input type="text" [(ngModel)]="forUpdate.Telefono" class="form-control" formControlName="Telefono"
-									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+								<input type="text" [(ngModel)]="forUpdate.Telefono" class="form-control"
+									formControlName="Telefono" aria-label="Sizing example input"
+									aria-describedby="inputGroup-sizing-default">
 							</div>
 							<div class="input-group mb-3">
 								<span class="input-group-text ancho letrasBlancas contenedor" id="Edad">Edad</span>
-								<input type="text" [(ngModel)]="forUpdate.Edad" class="form-control" formControlName="Telefono"
-									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+								<input type="text" [(ngModel)]="forUpdate.Edad" class="form-control"
+									formControlName="Edad" aria-label="Sizing example input"
+									aria-describedby="inputGroup-sizing-default">
 							</div>
 							<div class="input-group mb-3">
 								<span class="input-group-text ancho letrasBlancas contenedor"
 									id="Horario">Horario</span>
-								<input type="text" [(ngModel)]="forUpdate.Horario" class="form-control" formControlName="Horario"
-									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+								<input type="text" [(ngModel)]="forUpdate.Horario" class="form-control"
+									formControlName="Horario" aria-label="Sizing example input"
+									aria-describedby="inputGroup-sizing-default">
 							</div>
 							<div class="input-group mb-3">
 								<span class="input-group-text ancho letrasBlancas contenedor" id="Clase">Clase</span>
-								<input type="text" [(ngModel)]="forUpdate.Clase" class="form-control" formControlName="Clase"
-									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+								<input type="text" [(ngModel)]="forUpdate.Clase" class="form-control"
+									formControlName="Clase" aria-label="Sizing example input"
+									aria-describedby="inputGroup-sizing-default">
 							</div>
 							<div class="input-group mb-3">
 								<span class="input-group-text ancho letrasBlancas contenedor"
 									id="Mensualidad">Mensualidad</span>
-								<input type="text" [(ngModel)]="forUpdate.Mensualidad" class="form-control" formControlName="Mensualidad"
-									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+								<input type="text" [(ngModel)]="forUpdate.Mensualidad" class="form-control"
+									formControlName="Mensualidad" aria-label="Sizing example input"
+									aria-describedby="inputGroup-sizing-default">
 							</div>
 							<div>
 								<button type="submit" class="btn btn-primary  margen-izq">Guardar</button>

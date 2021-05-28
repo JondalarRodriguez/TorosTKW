@@ -23,4 +23,8 @@ export class ClientesService {
     return this.http.delete<boolean>("http://localhost:4000/clientes/" + id, {observe: 'response'});
     
   }
+  public putCliente(id: String, cliente: any){
+    return this.http.put<boolean>("http://localhost:4000/clientes/" + id, cliente, {observe: 'response'});
+    
+  }
 }
