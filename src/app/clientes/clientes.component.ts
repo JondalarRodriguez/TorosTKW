@@ -38,6 +38,7 @@ export class ClientesComponent implements OnInit {
   });
 
   public clientes: any = [];
+  public forUpdate: any = [];
 
   constructor(private router: Router,
     private sesioncliente: ClientesService) { }
@@ -82,6 +83,14 @@ export class ClientesComponent implements OnInit {
         console.log(error);
       }
     );
+
+  }
+
+
+
+  public obtenerDato(cliente : any){
+    this.forUpdate = cliente;
+    console.log(cliente);
 
   }
 
