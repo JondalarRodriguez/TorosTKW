@@ -56,11 +56,18 @@ export class ClientesComponent implements OnInit {
 public nuevoCliente(form: String){
   this.sesioncliente.PostCliente(form).subscribe(
     data =>{
+      if(data.status == 200){
+        alert("Datos guardados exitosmente");
+        
+      }else{
+        alert("Los datos no se pudieron guardr");
+      }
       console.log(data);
     },
     error =>{
       console.log(error);
     }
   );
+  
 }
 }

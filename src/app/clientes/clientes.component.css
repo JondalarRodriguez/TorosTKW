@@ -172,3 +172,8 @@
 .titulo2{
 	margin-bottom: 15px;
 }
+
+.scroll{
+	overflow:scroll;
+    height:700px;
+}

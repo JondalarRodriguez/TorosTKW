@@ -79,7 +79,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-						<button type="submit" class="btn btn-primary">Guardar</button>
+						<button type="submit" class="btn btn-primary" >Guardar</button>
 					</div>
 
 				</div>
@@ -109,19 +109,19 @@
 		</div>
 
 
-		<div class="card mb-12 transparente margen">
+		<div class="card mb-12 transparente margen ">
 			<div class="row g-0 opaco">
 				<div class="col-md-6 row">
-					<div class="container2 opaco">
+					<div class="container2 opaco scroll">
 
-						<table class="table table-hover">
+						<table class="table table-hover ">
 							<thead>
 								<tr>
 									<th scope="col">RGI</th>
 									<th scope="col">Nombre</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody class="">
 								<tr *ngFor="let cliente of clientes">
 									<th>{{cliente.RGI}}</th>
 									<td>{{cliente.Nombre}}</td>
