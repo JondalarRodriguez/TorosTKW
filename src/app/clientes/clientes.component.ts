@@ -41,7 +41,9 @@ export class ClientesComponent implements OnInit {
   public forUpdate: any = [];
   public folioMayorString = "";
   public folioNumero: number = 0;
+  public Busqueda: string = "";
 
+  
   constructor(private router: Router,
     private sesioncliente: ClientesService) { }
 

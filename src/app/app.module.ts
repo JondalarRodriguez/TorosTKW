@@ -17,6 +17,7 @@ import { PuntoVentaComponent } from './punto-venta/punto-venta.component';
 import { FooterAdminComponent } from './Parciales/footer-admin/footer-admin.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PipeClientesPipe } from './pipes/pipe-clientes.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     PrincipalAdminComponent,
     PuntoVentaComponent,
     FooterAdminComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    PipeClientesPipe
   ],
   imports: [
     BrowserModule,

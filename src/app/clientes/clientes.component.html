@@ -101,8 +101,9 @@
 		<div class="row align-items-center contenedor3 justify-content-around">
 			<div class="col input-group mb-6 align-items-center">
 				<h5>Buscar</h5>
-				<input type="text" class="form-control margen-izq alinear" id="Abono" aria-label="Buscar">
-				<Button type="submit" class="btn btn-danger boton-buscar">Buscar</Button>
+				<input type="text" class="form-control margen-izq alinear" [(ngModel)]="Busqueda" name="pipeClientes"
+				id="Abono" aria-label="Buscar" > 
+				
 			</div>
 			<div class="col btn-group btn-group-toggle mb-6 botones align-items-center" data-toggle="buttons">
 				<!-- Button trigger modal -->
@@ -130,9 +131,9 @@
 								</tr>
 							</thead>
 							<tbody class="">
-								<tr *ngFor="let cliente of clientes">
+								<tr *ngFor="let cliente of clientes | pipeClientes:Busqueda">
 									<th>{{cliente.RGI}}</th>
-									<td>{{cliente.Nombre}}</td>
+									<td>{{cliente.Nombre }}</td>
 									<td>
 										<button type="button" class="btn btn-warning" (click)="obtenerDato(cliente)">
 											Editar</button>
