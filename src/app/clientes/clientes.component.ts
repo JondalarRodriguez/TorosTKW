@@ -10,7 +10,7 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./clientes.component.css']
 })
 export class ClientesComponent implements OnInit {
-
+  
   public clienteForm = new FormGroup({
     folio: new FormControl(''),
     RGI: new FormControl(''),
@@ -39,6 +39,8 @@ export class ClientesComponent implements OnInit {
 
   public clientes: any = [];
   public forUpdate: any = [];
+  public folioMayorString = "";
+  public folioNumero: number = 0;
 
   constructor(private router: Router,
     private sesioncliente: ClientesService) { }
@@ -46,11 +48,31 @@ export class ClientesComponent implements OnInit {
   ngOnInit(): void {
     this.sesioncliente.getCliente().subscribe(
       (resp) => {
-        console.log(resp);
+        //console.log(resp);
         this.clientes = resp;
-        console.log(this.clientes);
+        //console.log(this.clientes);
+
+        this.nextFolio();
       }
     );
+  }
+  
+
+  public nextFolio() {
+    let element;
+    for (let index = 0; index < this.clientes.length; index++) {
+      element = this.clientes[index];
+      let folioObtener = element.folio;
+      if (folioObtener < element.folio) {
+        this.folioMayorString = element.folio;
+      }else{
+        this.folioMayorString = folioObtener
+      }
+    }
+
+    this.folioNumero = parseInt(this.folioMayorString);
+    this.folioNumero += 1;
+    this.folioMayorString = String(this.folioNumero);
   }
 
   public direccionCredito() {
@@ -69,11 +91,12 @@ export class ClientesComponent implements OnInit {
   */
 
   public nuevoCliente(form: String) {
+
     this.sesioncliente.PostCliente(form).subscribe(
       data => {
         if (data.status == 200) {
           alert("Datos guardados exitosmente");
-
+          location.reload();
         } else {
           alert("Los datos no se pudieron guardr");
         }
@@ -88,31 +111,31 @@ export class ClientesComponent implements OnInit {
 
 
 
-  public obtenerDato(cliente : any){
+  public obtenerDato(cliente: any) {
     this.forUpdate = cliente;
     console.log(cliente);
 
   }
 
-  public actualizarCliente(form: String){
+  public actualizarCliente(form: String) {
     var id = this.forUpdate.folio;
     console.log(form);
     console.log(id);
 
     this.sesioncliente.putCliente(id, form).subscribe(
-      resp =>{
+      resp => {
         console.log("result: ", resp);
       }
 
     );
     location.reload();
   }
-  
 
-  public deleteCliente(folio: String){
-    console.log("valor",  folio);
+
+  public deleteCliente(folio: String) {
+    console.log("valor", folio);
     this.sesioncliente.eliminarCliente(folio).subscribe(
-      data =>{
+      data => {
         console.log("result: ", data);
       }
 

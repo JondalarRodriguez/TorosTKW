@@ -26,59 +26,60 @@
 								Datos del cliente
 							</h6>
 							<div class="form-group mb-3">
-								<span class="input-group-text ancho letrasBlancas contenedor" name="folio">Folio</span>
-								<input type="text" formControlName="folio" class="form-control"
+								<span class="input-group-text letrasBlancas contenedor" name="folio">Folio</span>
+								<input type="text" formControlName="folio" class="form-control" placeholder="folio"
+								[(ngModel)]="folioMayorString" aria-label="Sizing example input" 
+								aria-describedby="inputGroup-sizing-default" readonly="readonly">
+							</div>
+							<div class="form-group mb-3">
+								<span class="input-group-text letrasBlancas contenedor" name="RGI">RGI</span>
+								<input type="text" formControlName="RGI" class="form-control" placeholder="RGI"
 									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 							</div>
 							<div class="form-group mb-3">
-								<span class="input-group-text ancho letrasBlancas contenedor" name="RGI">RGI</span>
-								<input type="text" formControlName="RGI" class="form-control"
-									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-							</div>
-							<div class="form-group mb-3">
-								<span class="input-group-text ancho letrasBlancas contenedor"
+								<span class="input-group-text letrasBlancas contenedor"
 									name="Nombre">Nombre</span>
-								<input type="text" class="form-control" formControlName="Nombre"
+								<input type="text" class="form-control" formControlName="Nombre" placeholder="Nombre"
 									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 							</div>
 							<div class="form-group mb-3">
-								<span class="input-group-text ancho letrasBlancas contenedor" name="Ingreso">Fecha de
+								<span class="input-group-text letrasBlancas contenedor" name="Ingreso">Fecha de
 									Ingreso</span>
-								<input type="text" class="form-control" formControlName="FechaIngreso"
+								<input type="text" class="form-control" formControlName="FechaIngreso" placeholder="Fecha de Ingreso"
 									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 							</div>
 							<div class="form-group mb-3">
-								<span class="input-group-text ancho letrasBlancas contenedor"
+								<span class="input-group-text letrasBlancas contenedor"
 									name="Direccion">Dirección</span>
-								<input type="text" class="form-control" formControlName="Direccion"
+								<input type="text" class="form-control" formControlName="Direccion" placeholder="Dirección"
 									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 							</div>
 							<div class="form-group mb-3">
-								<span class="input-group-text ancho letrasBlancas contenedor"
+								<span class="input-group-text letrasBlancas contenedor"
 									name="Telefono">Teléfono</span>
-								<input type="text" class="form-control" formControlName="Telefono"
+								<input type="text" class="form-control" formControlName="Telefono" placeholder="Teléfono"
 									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 							</div>
 							<div class="form-group mb-3">
-								<span class="input-group-text ancho letrasBlancas contenedor" name="Edad">Edad</span>
-								<input type="text" class="form-control" formControlName="Edad"
+								<span class="input-group-text letrasBlancas contenedor" name="Edad">Edad</span>
+								<input type="text" class="form-control" formControlName="Edad" placeholder="Edad"
 									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 							</div>
 							<div class="form-group mb-3">
-								<span class="input-group-text ancho letrasBlancas contenedor"
+								<span class="input-group-text letrasBlancas contenedor"
 									name="Horario">Horario</span>
-								<input type="text" class="form-control" formControlName="Horario"
+								<input type="text" class="form-control" formControlName="Horario" placeholder="Horario"
 									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 							</div>
 							<div class="form-group mb-3">
-								<span class="input-group-text ancho letrasBlancas contenedor" name="Clase">Clase</span>
-								<input type="text" class="form-control" formControlName="Clase"
+								<span class="input-group-text letrasBlancas contenedor" name="Clase">Clase</span>
+								<input type="text" class="form-control" formControlName="Clase" placeholder="Clase"
 									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 							</div>
 							<div class="form-group mb-3">
-								<span class="input-group-text ancho letrasBlancas contenedor"
+								<span class="input-group-text letrasBlancas contenedor"
 									name="Mensualidad">Mensualidad</span>
-								<input type="text" class="form-control" formControlName="Mensualidad"
+								<input type="text" class="form-control" formControlName="Mensualidad" placeholder="Mensualidad"
 									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 							</div>
 
@@ -108,11 +109,10 @@
 				<button type="button" class="btn btn-danger btns borde-boton" data-bs-toggle="modal"
 					data-bs-target="#exampleModal">Nuevo cliente</button>
 				<!--=========-->
-				<button onClick={this.actualizarCliente} type="button"
-					class="btn btn-danger btns borde-boton margen-izq">Guardar</button>
+		
 				<button type="button" class="btn btn-danger btns borde-boton margen-izq"
 					(click)="direccionCredito()">Crédito</button>
-				<button type="button" class="btn btn-danger btns borde-boton margen-izq">Eliminar</button>
+				
 			</div>
 		</div>
 
