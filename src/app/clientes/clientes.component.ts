@@ -119,7 +119,7 @@ export class ClientesComponent implements OnInit {
 
   }
 
-  public actualizarCliente(form: String) {
+  public actualizarCliente(form: any) {
     var id = this.forUpdate.folio;
     console.log(form);
     console.log(id);
