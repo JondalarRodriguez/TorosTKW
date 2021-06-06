@@ -13,8 +13,9 @@
         <div class="row align-items-center contenedor3 justify-content-around">
             <div class="col input-group mb-6 align-items-center">
                 <h5>Buscar</h5>
-                <input type="text" class="form-control margen-izq alinear" id="Abono" aria-label="Buscar">
-                <Button type="submit" class="btn btn-danger boton-buscar">Buscar</Button>
+                <input type="text" class="form-control margen-izq alinear" [(ngModel)]="Busqueda" id="Abono"
+                    aria-label="Buscar" name="pipeInventario">
+
             </div>
             <div class="col btn-group btn-group-toggle mb-6 botones align-items-center" data-toggle="buttons">
                 <button type="button" class="btn btn-danger btns borde-boton" data-bs-toggle="modal"
@@ -25,47 +26,57 @@
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header modalColor">
-                        <h5 class="modal-title" id="exampleModalLabel">Añadir producto</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <h6 class="titulo2">Datos del producto</h6>
-                        
-                        <div class="input-group mb-3">
-                            <span class="input-group-text ancho letrasBlancas contenedor" name="Nombre">Nombre</span>
-                            <input type="text" class="form-control" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default">
+        <form (ngSubmit)="nuevoProducto(inventarioForm.value)" [formGroup]="inventarioForm">
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header modalColor">
+                            <h5 class="modal-title" id="exampleModalLabel">Añadir producto</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text ancho letrasBlancas contenedor" name="Nombre">Costo</span>
-                            <input type="text" class="form-control" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default">
+                        <div class="modal-body">
+                            <h6 class="titulo2">Datos del producto</h6>
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text ancho letrasBlancas contenedor" name="folio">Folio</span>
+                                <input type="text" formControlName="Folio" class="form-control" placeholder="folio" [(ngModel)]="folioMayorString"
+                                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
+                                    readonly="readonly">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text ancho letrasBlancas contenedor"
+                                    name="Nombre">Nombre</span>
+                                <input type="text" formControlName="Nombre" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text ancho letrasBlancas contenedor" name="Nombre">Costo</span>
+                                <input type="text"formControlName="Costo" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text ancho letrasBlancas contenedor" name="Ingreso">Precio de
+                                    venta</span>
+                                <input type="text" formControlName="Precio" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text ancho letrasBlancas contenedor"
+                                    name="Direccion">Exitencia</span>
+                                <input type="text" formControlName="Existencia" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default">
+                            </div>
                         </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text ancho letrasBlancas contenedor" name="Ingreso">Precio de
-                                venta</span>
-                            <input type="text" class="form-control" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary">Guardar</button>
                         </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text ancho letrasBlancas contenedor"
-                                name="Direccion">Exitencia</span>
-                            <input type="text" class="form-control" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary">Guardar</button>
                     </div>
                 </div>
             </div>
-        </div>
 
+        </form>
 
         <div class="contenedor1">
             <table class="table table-hover">
@@ -79,21 +90,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr *ngFor="let cliente of productos ">
                         <th scope="row">1</th>
-                        <td>Peto Rojo</td>
+                        <td>{{cliente.Nombre}}</td>
                         <td>600</td>
                         <td>900</td>
                         <td>3</td>
+                        <td>
+
+                        </td>
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>100</td>
-                        <td>150</td>
-                        <td>5</td>
-                    </tr>
-        
+                  
+
                 </tbody>
             </table>
         </div>
