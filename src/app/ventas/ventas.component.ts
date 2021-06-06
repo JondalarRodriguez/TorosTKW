@@ -18,15 +18,15 @@ export class VentasComponent implements OnInit {
     Precio: new FormControl('', Validators.required),
     Existencia: new FormControl('', Validators.required)
   });
-/*
+
   public inventarioFormActualizar = new FormGroup({
-    folio: new FormControl(''),
+    Folio: new FormControl(''),
     Nombre: new FormControl(''),
     Costo: new FormControl(''),
     Precio: new FormControl(''),
     Existencia: new FormControl('')
   });
-*/
+
   public productos: any = [];
   public forUpdate: any = [];
   public folioMayorString = "";
@@ -53,9 +53,9 @@ export class VentasComponent implements OnInit {
     let element;
     for (let index = 0; index < this.productos.length; index++) {
       element = this.productos[index];
-      let folioObtener = element.folio;
-      if (folioObtener < element.folio) {
-        this.folioMayorString= element.folio;
+      let folioObtener = element.Folio;
+      if (folioObtener < element.Folio) {
+        this.folioMayorString= element.Folio;
       }else{
         this.folioMayorString = folioObtener
       }
@@ -65,7 +65,7 @@ export class VentasComponent implements OnInit {
     this.folioNumero += 1;
     this.folioMayorString = String(this.folioNumero);
   }
-
+/* se añaden nuevos producto a la tabla de inventario */
   public nuevoProducto(form: String) {
 
     this.inventarioService.PostProducto(form).subscribe(
@@ -85,10 +85,30 @@ export class VentasComponent implements OnInit {
 
   }
 
+/* se obtienen los datos de productos en editar  en inventario*/
+  public obtenerDato(cliente: any) {
+    this.forUpdate = cliente;
+    console.log(cliente);
+
+  }
+
+  public actualizarCliente(form: any) {
+    var id = this.forUpdate.Folio;
+    console.log(form);
+    console.log(id);
+
+    this.inventarioService.putProducto(id, form).subscribe(
+      resp => {
+        console.log("result: ", resp);
+      }
+
+    );
+    location.reload();
+  }
 
 
 
-  
+  /* borrar datos de la tabla de inventario */
   public deleteProducto(Folio: String) {
     console.log("valor", Folio);
     this.inventarioService.eliminarProducto(Folio).subscribe(
