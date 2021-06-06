@@ -130,3 +130,10 @@ body{
 .AjusteDerecha{
 	margin-left: 70%;
 }
+
+/*Tabla de productos*/
+
+/* input Number*/
+.inputNumber{
+	width: 50px;
+}

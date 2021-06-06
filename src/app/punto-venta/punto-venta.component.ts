@@ -54,6 +54,16 @@ export class PuntoVentaComponent implements OnInit {
     //console.log(this.ClienteVenta);
 
   }
+  public TotalCobrar: string = "";
+  public total: number = 0;
+  public CantidadPorProducto: any = [];
+  public calcularTotal(){
+
+    console.log(this.CantidadPorProducto)
+
+
+  }
+
 
   public obtenerDatoProducto(producto: any) {
     //Obtiene el cliente seleccionado y lo guarda para mandarlo en caso de ser necesario
@@ -62,25 +72,21 @@ export class PuntoVentaComponent implements OnInit {
       this.Productventas.push(producto);
     } else {
       for (let productoRevisar of this.Productventas) {
-        if (productoRevisar.Folio == producto.Folio){
+        if (productoRevisar.Folio == producto.Folio) {
           console.log("Hay coninsidencia");
           coinsidencia = 0;
           break;
-        }else{
+        } else {
           coinsidencia += 1;
         }
       }
-      if(coinsidencia != 0){
+      if (coinsidencia != 0) {
         this.Productventas.push(producto);
-        
+
       }
     }
-
-
-
-    //console.log(this.Productventas);
-
-
+    this.calcularTotal();
   }
+  
 }
 
