@@ -13,7 +13,7 @@ export class InventarioService {
     return this.http.get<Inventario>('http://localhost:4000/inventario');
   }
 
-  PostProducto(product: Inventario){
+  PostProducto(product: any){
     console.log(product);
     return this.http.post<any>("http://localhost:4000/add/Inventario", product, {observe: "response"});
   }

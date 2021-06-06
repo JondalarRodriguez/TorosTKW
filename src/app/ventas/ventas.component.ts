@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClientesService } from '../services/clienteservice/clientes.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { InventarioService } from '../services/inventario.service';
+import { InventarioService } from '../services/inventarioService/inventario.service';
+
 @Component({
   selector: 'app-ventas',
   templateUrl: './ventas.component.html',
@@ -37,10 +38,13 @@ export class VentasComponent implements OnInit {
     private inventarioService: InventarioService) { }
 
   ngOnInit(): void {
-    this.inventarioService.getInventario().subscribe(
+    this.inventarioService.getProductos().subscribe(
       (resp) => {
+        //console.log(resp);
         this.productos = resp;
-          this.nextFolio();
+        //console.log(this.clientes);
+
+        this.nextFolio();
       }
     );
   }
@@ -64,7 +68,7 @@ export class VentasComponent implements OnInit {
 
   public nuevoProducto(form: String) {
 
-    this.inventarioService.PostInventario(form).subscribe(
+    this.inventarioService.PostProducto(form).subscribe(
       data => {
         if (data.status == 200) {
           alert("Datos guardados exitosmente");
