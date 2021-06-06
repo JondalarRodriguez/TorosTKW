@@ -14,7 +14,10 @@
             <div class="col input-group mb-6 align-items-center">
                 <h5>Buscar</h5>
                 <input type="text" class="form-control margen-izq alinear" id="Abono" aria-label="Buscar">
-                <Button type="submit" class="btn btn-danger boton-buscar">Buscar</Button>
+                <a class="btn btn-danger boton-buscar" data-bs-toggle="collapse" href="#collapseExample" 
+                role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Buscar
+                  </a>
             </div>
             <div class="col-md-auto">
                 <h3 class="tb">Cajero</h3>
@@ -26,6 +29,40 @@
                 <input type="text" readonly="readonly" class="form-control altura-entrada" id="Turno"
                     aria-label="Turno">
             </div>
+
+
+        </div>
+        <div class="collapse container2" id="collapseExample">
+
+        <div class="contenedor1">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Folio</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio Venta</th>
+                        <th scope="col">Existencia</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Peto Rojo</td>
+                        <td>900</td>
+                        <td>3</td>
+                        
+                        <td>
+                            <button type = "button" class="btn btn-danger">
+                                Agregar
+                            </button>
+                        </td>
+                    </tr>
+                  
+
+                </tbody>
+            </table>
+        </div>
 
         </div>
         <div class="container2">
@@ -91,7 +128,7 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body ">
-                                            
+
                                             <div class="input-group mb-3">
                                                 <span class="input-group-text ancho letrasBlancas contenedor"
                                                     name="RGI">Importe</span>
@@ -133,10 +170,12 @@
                             <!--=====================FINAL DEL MODAL=======================-->
                             <div class="input-group">
                                 Buscar Cliente
-                                <input type="text" class="form-control" id="BuscarCliente" aria-label="Buscar">
-                                <Button type="submit" class="btn btn-danger">
+                                <input type="text" class="form-control" id="BuscarCliente" 
+                                [(ngModel)]="Busqueda" name="pipeClientes" aria-label="Buscar">
+                                <button type = "button" class = "btn btn-danger borde-boton"
+                                (click)="getClientes()">
                                     Buscar
-                                </Button>
+                                </button>
                             </div>
                         </div>
 
@@ -144,13 +183,20 @@
                             <thead>
                                 <tr class="naranja">
                                     <th scope="col"> Nombre </th>
-                                    <th scope="col">Apellido</th>
+
+                                    <th scope="col"> </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">Argelia</th>
-                                    <td>Padilla</td>
+                                <tr *ngFor="let cliente of clientes | pipeClientes:Busqueda">
+                                    <th scope="row">{{cliente.Nombre}}</th>
+
+                                    <td>
+                                        <button type="button" class="btn btn-danger"
+                                        (click)="obtenerDato(cliente)">
+                                            Seleccionar
+                                        </button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -168,8 +214,8 @@
             Reportes
         </button>
     </div>
-    
-    
+
+
     <!-- Modal -->
     <div class="modal fade" id="Reportes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
