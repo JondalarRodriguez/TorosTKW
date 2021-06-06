@@ -55,7 +55,7 @@ export class VentasComponent implements OnInit {
       element = this.productos[index];
       let folioObtener = element.folio;
       if (folioObtener < element.folio) {
-        this.folioMayorString = element.folio;
+        this.folioMayorString= element.folio;
       }else{
         this.folioMayorString = folioObtener
       }
@@ -83,6 +83,21 @@ export class VentasComponent implements OnInit {
       }
     );
 
+  }
+
+
+
+
+  
+  public deleteProducto(folio: String) {
+    console.log("valor", folio);
+    this.inventarioService.eliminarProducto(folio).subscribe(
+      data => {
+        console.log("result: ", data);
+      }
+
+    );
+    location.reload();
   }
 
 }

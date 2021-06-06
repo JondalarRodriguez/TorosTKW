@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Usuario } from '../interfaces/usuarios.interface';
+import { UsuarioI } from '../interfaces/usuarios.interface';
 
 @Pipe({
   name: 'pipeUsuarios'

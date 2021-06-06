@@ -1,4 +1,4 @@
-export interface Usuario{
+export interface UsuarioI{
     id: String;
     usuario: String;
     password: String;
