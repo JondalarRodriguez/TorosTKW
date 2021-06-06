@@ -4,7 +4,7 @@
 
 
     <div class="container">
-
+        
         <div class="titulo">
             <h1 class="margen-titulo">Lista de productos</h1>
         </div>
@@ -19,15 +19,13 @@
             </div>
             <div class="col btn-group btn-group-toggle mb-6 botones align-items-center" data-toggle="buttons">
                 <button type="button" class="btn btn-danger btns borde-boton" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">Nuevo producto</button>
-                <button type="button" class="btn btn-danger btns borde-boton margen-izq">Editar</button>
-                <button type="button" class="btn btn-danger btns borde-boton margen-izq">Eliminar</button>
+                    data-bs-target="#exampleModalAÑADIR">Nuevo producto</button>
             </div>
         </div>
 
-        <!-- Modal -->
+        <!-- Modal Nuevo Producto-->
         <form (ngSubmit)="nuevoProducto(inventarioForm.value)" [formGroup]="inventarioForm">
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            <div class="modal fade" id="exampleModalAÑADIR" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-dialog-scrollable">
                     <div class="modal-content">
@@ -35,9 +33,96 @@
                             <h5 class="modal-title" id="exampleModalLabel">Añadir producto</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
+
                         <div class="modal-body">
                             <h6 class="titulo2">Datos del producto</h6>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text ancho letrasBlancas contenedor" name="folio">Folio</span>
+                                <input type="text" formControlName="Folio" class="form-control" placeholder="folio"
+                                    [(ngModel)]="folioMayorString" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" readonly="readonly">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text ancho letrasBlancas contenedor"
+                                    name="Nombre">Nombre</span>
+                                <input type="text" formControlName="Nombre" class="form-control"
+                                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text ancho letrasBlancas contenedor" name="Nombre">Costo</span>
+                                <input type="text" formControlName="Costo" class="form-control"
+                                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text ancho letrasBlancas contenedor" name="Ingreso">Precio de
+                                    venta</span>
+                                <input type="text" formControlName="Precio" class="form-control"
+                                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text ancho letrasBlancas contenedor"
+                                    name="Direccion">Exitencia</span>
+                                <input type="text" formControlName="Existencia" class="form-control"
+                                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+        </form>
+        <!--            FIN DEL MODAL NUEVO PRODUCTO               -->
+
+        <div class="contenedor1">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Folio</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Costo</th>
+                        <th scope="col">Precio Venta</th>
+                        <th scope="col">Existencia</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cliente of productos ">
+                        <th scope="row">1</th>
+                        <td>{{cliente.Nombre}}</td>
+                        <td>{{cliente.Costo}}</td>
+                        <td>{{cliente.Precio}}</td>
+                        <td>{{cliente.Existencia}}</td>
+                        <td>
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                data-bs-target="#exampleModalEDITAR">Editar</button>
+
+                            <button type="button" class="btn btn-danger"
+                                (click)="deleteProducto(cliente.folio)">eliminar</button>
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+                <!---------  Modal Editar Producto  ---------->
+        <form (ngSubmit)="nuevoProducto(inventarioForm.value)" [formGroup]="inventarioForm">
+            <div class="modal fade" id="exampleModalEDITAR" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header modalColor">
+                            <h5 class="modal-title" id="exampleModalLabel">Añadir producto</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <h6 class="titulo2">Datos del producto</h6>
                             <div class="input-group mb-3">
                                 <span class="input-group-text ancho letrasBlancas contenedor" name="folio">Folio</span>
                                 <input type="text" formControlName="Folio" class="form-control" placeholder="folio" [(ngModel)]="folioMayorString"
@@ -70,47 +155,16 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary">Guardar</button>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
                         </div>
                     </div>
                 </div>
             </div>
 
         </form>
-
-        <div class="contenedor1">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">Folio</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Costo</th>
-                        <th scope="col">Precio Venta</th>
-                        <th scope="col">Existencia</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let cliente of productos ">
-                        <th scope="row">1</th>
-                        <td>{{cliente.Nombre}}</td>
-                        <td>600</td>
-                        <td>900</td>
-                        <td>3</td>
-                        <td>
-
-                        </td>
-                    </tr>
-                  
-
-                </tbody>
-            </table>
-        </div>
-
-
-
-
-
+        <!--            FIN DEL MODAL EDITAR PRODUCTO               -->
     </div>
+
 </div>
 
 
