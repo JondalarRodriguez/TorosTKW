@@ -13,7 +13,9 @@
         <div class="row align-items-center contenedor3 justify-content-around">
             <div class="col input-group mb-6 align-items-center">
                 <h5>Buscar</h5>
-                <input type="text" class="form-control margen-izq alinear" id="Abono" aria-label="Buscar">
+                <input type="text" class="form-control margen-izq alinear" 
+                id="BuscarProducto" aria-label="Buscar"
+                [(ngModel)]="findProduct" name="pipePuntoVenta">
                 <a class="btn btn-danger boton-buscar" data-bs-toggle="collapse" href="#collapseExample" 
                 role="button" aria-expanded="false" aria-controls="collapseExample">
                     Buscar
@@ -46,14 +48,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Peto Rojo</td>
-                        <td>900</td>
-                        <td>3</td>
+                    <tr *ngFor="let producto of productos | pipePuntoVenta:findProduct">
+                        <th scope="row"> {{producto.Folio}} </th>
+                        <td>{{producto.Nombre}}</td>
+                        <td> {{producto.Precio}} </td>
+                        <td> {{producto.Existencia}} </td>
                         
                         <td>
-                            <button type = "button" class="btn btn-danger">
+                            <button type = "button" class="btn btn-danger"
+                            (click) = "obtenerDatoProducto(producto)">
                                 Agregar
                             </button>
                         </td>
@@ -82,19 +85,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>2</td>
-                                        <td>Peto Rojo</td>
-                                        <td>450</td>
-                                        <td>900</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>1</td>
-                                        <td>Uniforme T7</td>
-                                        <td>600</td>
-                                        <td>600</td>
+                                    <tr *ngFor="let venta of Productventas">
+                                        <th scope="row"> {{venta.Folio}} </th>
+                                        <td>Cantidad</td>
+                                        <td> {{venta.Nombre}} </td>
+                                        <td> {{venta.Precio}}</td>
+                                        <td>TOTAL</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -193,7 +189,7 @@
 
                                     <td>
                                         <button type="button" class="btn btn-danger"
-                                        (click)="obtenerDato(cliente)">
+                                        (click)="obtenerDatoCliente(cliente)">
                                             Seleccionar
                                         </button>
                                     </td>

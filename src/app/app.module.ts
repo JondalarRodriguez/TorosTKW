@@ -19,6 +19,7 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PipeClientesPipe } from './pipes/pipe-clientes.pipe';
 import { PipeUsuariosPipe } from './pipes/pipe-usuarios.pipe';
+import { PipePuntoVentaPipe } from './pipes/pipe-punto-venta.pipe';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { PipeUsuariosPipe } from './pipes/pipe-usuarios.pipe';
     FooterAdminComponent,
     UsuariosComponent,
     PipeClientesPipe,
-    PipeUsuariosPipe
+    PipeUsuariosPipe,
+    PipePuntoVentaPipe
   ],
   imports: [
     BrowserModule,
