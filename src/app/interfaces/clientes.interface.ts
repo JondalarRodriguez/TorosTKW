@@ -10,11 +10,3 @@ export interface Cliente{
     Clase: String;
     Mensualidad: String;
 }
-export interface Inventario{
-    Folio: String;
-    Nombre: String;
-    Costo: String;
-    Precio: String;
-    Existencia: String;
-   
-}
