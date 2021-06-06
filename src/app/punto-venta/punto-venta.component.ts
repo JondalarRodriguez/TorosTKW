@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientesService } from '../services/clienteservice/clientes.service';
+import { InventarioService } from '../services/inventarioService/inventario.service';
 
 @Component({
   selector: 'app-punto-venta',
@@ -13,7 +14,8 @@ export class PuntoVentaComponent implements OnInit {
   public ClienteVenta: any = [];
 
   constructor(
-    private sesioncliente: ClientesService
+    private sesioncliente: ClientesService,
+    private serviceInventario: InventarioService
   ) { }
 
   ngOnInit(): void {
@@ -22,6 +24,16 @@ export class PuntoVentaComponent implements OnInit {
 
   public getClientes(){
     this.sesioncliente.getCliente().subscribe(
+      (resp) => {
+        //console.log(resp);
+        this.clientes = resp;
+        //console.log(this.clientes);
+      }
+    );
+  }
+
+  public getProducts(){
+    this.serviceInventario.getProductos().subscribe(
       (resp) => {
         //console.log(resp);
         this.clientes = resp;
