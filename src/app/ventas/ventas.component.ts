@@ -89,9 +89,9 @@ export class VentasComponent implements OnInit {
 
 
   
-  public deleteProducto(folio: String) {
-    console.log("valor", folio);
-    this.inventarioService.eliminarProducto(folio).subscribe(
+  public deleteProducto(Folio: String) {
+    console.log("valor", Folio);
+    this.inventarioService.eliminarProducto(Folio).subscribe(
       data => {
         console.log("result: ", data);
       }
