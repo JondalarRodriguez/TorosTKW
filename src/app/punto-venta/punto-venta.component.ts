@@ -55,38 +55,35 @@ export class PuntoVentaComponent implements OnInit {
 
   }
   public TotalCobrar: string = "";
-  public total: number = 0;
-  public CantidadPorProducto: any = [];
-  public calcularTotal(){
-
-    console.log(this.CantidadPorProducto)
 
 
+  public calcularTotal() {
+    var precio = 0;
+    if (this.Productventas == 0) {
+      this.TotalCobrar = "0";
+    } else {
+      for (var suma of this.Productventas) {
+        precio = parseInt(suma.Precio) + precio;
+      };
+
+      this.TotalCobrar = String(precio);
+    }
+
+  }
+
+  public eliminarVenta(venta: any) {
+    this.Productventas.splice(venta, 1);
+    console.log(this.Productventas);
+    this.calcularTotal();
   }
 
 
   public obtenerDatoProducto(producto: any) {
-    //Obtiene el cliente seleccionado y lo guarda para mandarlo en caso de ser necesario
-    var coinsidencia = 0
-    if (this.Productventas.length == 0) {
-      this.Productventas.push(producto);
-    } else {
-      for (let productoRevisar of this.Productventas) {
-        if (productoRevisar.Folio == producto.Folio) {
-          console.log("Hay coninsidencia");
-          coinsidencia = 0;
-          break;
-        } else {
-          coinsidencia += 1;
-        }
-      }
-      if (coinsidencia != 0) {
-        this.Productventas.push(producto);
+    this.Productventas.push(producto);
+    alert(producto.Nombre + " agregado");
 
-      }
-    }
     this.calcularTotal();
   }
-  
+
 }
 

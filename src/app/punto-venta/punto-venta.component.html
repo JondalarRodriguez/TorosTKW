@@ -13,13 +13,12 @@
         <div class="row align-items-center contenedor3 justify-content-around">
             <div class="col input-group mb-6 align-items-center">
                 <h5>Buscar</h5>
-                <input type="text" class="form-control margen-izq alinear" 
-                id="BuscarProducto" aria-label="Buscar"
-                [(ngModel)]="findProduct" name="pipePuntoVenta">
-                <a class="btn btn-danger boton-buscar" data-bs-toggle="collapse" href="#collapseExample" 
-                role="button" aria-expanded="false" aria-controls="collapseExample">
+                <input type="text" class="form-control margen-izq alinear" id="BuscarProducto" aria-label="Buscar"
+                    [(ngModel)]="findProduct" name="pipePuntoVenta">
+                <a class="btn btn-danger boton-buscar" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                    aria-expanded="false" aria-controls="collapseExample">
                     Buscar
-                  </a>
+                </a>
             </div>
             <div class="col-md-auto">
                 <h3 class="tb">Cajero</h3>
@@ -36,36 +35,35 @@
         </div>
         <div class="collapse container2" id="collapseExample">
 
-        <div class="contenedor1">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">Folio</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Precio Venta</th>
-                        <th scope="col">Existencia</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let producto of productos | pipePuntoVenta:findProduct">
-                        <th scope="row"> {{producto.Folio}} </th>
-                        <td>{{producto.Nombre}}</td>
-                        <td> {{producto.Precio}} </td>
-                        <td> {{producto.Existencia}} </td>
-                        
-                        <td>
-                            <button type = "button" class="btn btn-danger"
-                            (click) = "obtenerDatoProducto(producto)">
-                                Agregar
-                            </button>
-                        </td>
-                    </tr>
-                  
+            <div class="contenedor1">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Folio</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Precio Venta</th>
+                            <th scope="col">Existencia</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let producto of productos | pipePuntoVenta:findProduct">
+                            <th scope="row"> {{producto.Folio}} </th>
+                            <td>{{producto.Nombre}}</td>
+                            <td> {{producto.Precio}} </td>
+                            <td> {{producto.Existencia}} </td>
 
-                </tbody>
-            </table>
-        </div>
+                            <td>
+                                <button type="button" class="btn btn-danger" (click)="obtenerDatoProducto(producto)">
+                                    Agregar
+                                </button>
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
 
         </div>
         <div class="container2">
@@ -78,22 +76,23 @@
                                 <thead>
                                     <tr class="naranja">
                                         <th scope="col"> Folio </th>
-                                        <th scope="col">Cantidad</th>
                                         <th scope="col">Descripción</th>
                                         <th scope="col">Precio</th>
-                                        
+                                        <th></th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let venta of Productventas">
                                         <th scope="row"> {{venta.Folio}} </th>
-                                        <td>
-                                        <input type="number" class = "inputNumber" min = "1" value = "1"
-                                        id = "Cantidad" [(ngModel)]="CantidadPorProducto" >   
-                                        </td>
                                         <td> {{venta.Nombre}} </td>
                                         <td> {{venta.Precio}}</td>
-                                        
+                                        <td>
+                                            <button type="button" class="btn btn-danger" (click)="eliminarVenta(venta)">
+                                                eliminar
+                                            </button>
+                                        </td>
+
                                     </tr>
                                 </tbody>
                             </table>
@@ -106,7 +105,7 @@
                             <div class="col input-group mb-6 align-items-center">
                                 <h4>Total</h4>
                                 <input type="text" class="form-control margen-izq" id="Abono" aria-label="Buscar"
-                                [(ngModel)]="TotalCobrar" readonly="readonly">
+                                    [(ngModel)]="TotalCobrar" readonly="readonly">
 
                                 <!--================INICIO DEL MODAL=============================-->
                                 <!-- Button trigger modal -->
@@ -170,10 +169,9 @@
                             <!--=====================FINAL DEL MODAL=======================-->
                             <div class="input-group">
                                 Buscar Cliente
-                                <input type="text" class="form-control" id="BuscarCliente" 
-                                [(ngModel)]="Busqueda" name="pipeClientes" aria-label="Buscar">
-                                <button type = "button" class = "btn btn-danger borde-boton"
-                                (click)="getClientes()">
+                                <input type="text" class="form-control" id="BuscarCliente" [(ngModel)]="Busqueda"
+                                    name="pipeClientes" aria-label="Buscar">
+                                <button type="button" class="btn btn-danger borde-boton" (click)="getClientes()">
                                     Buscar
                                 </button>
                             </div>
@@ -193,7 +191,7 @@
 
                                     <td>
                                         <button type="button" class="btn btn-danger"
-                                        (click)="obtenerDatoCliente(cliente)">
+                                            (click)="obtenerDatoCliente(cliente)">
                                             Seleccionar
                                         </button>
                                     </td>
