@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuariosService } from '../services/usuarioservice/usuarios.service';
-import { Usuario } from '../interfaces/usuarios.interface';
+import { UsuarioI } from '../interfaces/usuarios.interface';
 
 @Component({
   selector: 'app-usuarios',
@@ -48,7 +48,7 @@ export class UsuariosComponent implements OnInit {
 
   }
 
-  public nuevoUsuario(form: String) {
+  public nuevoUsuario(form:UsuarioI) {
 
     this.sesionUsuario.PostUsuario(form).subscribe(
       data => {
@@ -67,13 +67,13 @@ export class UsuariosComponent implements OnInit {
 
   }
 
-  public obtenerDato(usuario: any) {
+  public obtenerDato(usuario:UsuarioI) {
     this.forUpdate = usuario;
     console.log(usuario);
   }
 
 
-  public actualizarUsuario(form: String) {
+  public actualizarUsuario(form: UsuarioI) {
     var id = this.forUpdate.usuario;
     console.log(form);
     console.log(id);
