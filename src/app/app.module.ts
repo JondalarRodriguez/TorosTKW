@@ -18,6 +18,7 @@ import { FooterAdminComponent } from './Parciales/footer-admin/footer-admin.comp
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PipeClientesPipe } from './pipes/pipe-clientes.pipe';
+import { PipeUsuariosPipe } from './pipes/pipe-usuarios.pipe';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { PipeClientesPipe } from './pipes/pipe-clientes.pipe';
     PuntoVentaComponent,
     FooterAdminComponent,
     UsuariosComponent,
-    PipeClientesPipe
+    PipeClientesPipe,
+    PipeUsuariosPipe
   ],
   imports: [
     BrowserModule,

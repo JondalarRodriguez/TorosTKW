@@ -6,79 +6,148 @@
 			<h1 class="margen-titulo">Usuarios</h1>
 		</div>
 		<!--================INICIO DEL MODAL=============================-->
+		<form (ngSubmit)="nuevoUsuario(usuarioForm.value)" [formGroup]="usuarioForm">
 
-
-
-		<!-- Modal -->
-		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-scrollable">
-				<div class="modal-content">
-					<div class="modal-header modalColor">
-						<h5 class="modal-title" id="exampleModalLabel">Añadir Usuario</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body ">
-						<h6 class="titulo2">
-							Datos
-						</h6>
-						<div class="input-group mb-3">
-							<span class="input-group-text ancho letrasBlancas" name="usuario">Usuario</span>
-							<input type="text" class="form-control" aria-label="Sizing example input"
-								aria-describedby="inputGroup-sizing-default">
+			<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog modal-dialog-scrollable">
+					<div class="modal-content">
+						<div class="modal-header modalColor">
+							<h5 class="modal-title" id="exampleModalLabel">Añadir Usuario</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
-						<div class="input-group mb-3">
-							<span class="input-group-text ancho letrasBlancas" name="contraseña">Contraseña</span>
-							<input type="text" class="form-control" aria-label="Sizing example input"
-								aria-describedby="inputGroup-sizing-default">
+						<div class="modal-body ">
+							<h6 class="titulo2">
+								Datos
+							</h6>
+							<div class="input-group mb-3">
+								<span class="input-group-text ancho letrasBlancas" name="usuario">Usuario</span>
+								<input type="text" formControlName="usuario" class="form-control"
+									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+							</div>
+							<div class="input-group mb-3">
+								<span class="input-group-text ancho letrasBlancas" name="contraseña">Contraseña</span>
+								<input type="text" formControlName="password" class="form-control"
+									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+							</div>
+							<div class="input-group mb-3">
+								<span class="input-group-text ancho letrasBlancas" name="Nombre">Nombre</span>
+								<input type="text" formControlName="nombre" class="form-control"
+									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+							</div>
+							<div class="input-group mb-3">
+								<span class="input-group-text ancho letrasBlancas" name="apellido">Apellido</span>
+								<input type="text" formControlName="apellido" class="form-control"
+									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+							</div>
+							<div class="input-group mb-3">
+								<span class="input-group-text ancho letrasBlancas" name="Direccion">Dirección</span>
+								<input type="text" formControlName="direccion" class="form-control"
+									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+							</div>
+							<div class="input-group mb-3">
+								<span class="input-group-text ancho letrasBlancas" name="Telefono">Teléfono</span>
+								<input type="text" formControlName="telefono" class="form-control"
+									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+							</div>
 						</div>
-						<div class="input-group mb-3">
-							<span class="input-group-text ancho letrasBlancas" name="Nombre">Nombre</span>
-							<input type="text" class="form-control" aria-label="Sizing example input"
-								aria-describedby="inputGroup-sizing-default">
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+							<button type="submit" class="btn btn-primary">Guardar</button>
 						</div>
-						<div class="input-group mb-3">
-							<span class="input-group-text ancho letrasBlancas" name="apellido">Apellido</span>
-							<input type="text" class="form-control" aria-label="Sizing example input"
-								aria-describedby="inputGroup-sizing-default">
-						</div>
-						<div class="input-group mb-3">
-							<span class="input-group-text ancho letrasBlancas"
-								name="Direccion">Dirección</span>
-							<input type="text" class="form-control" aria-label="Sizing example input"
-								aria-describedby="inputGroup-sizing-default">
-						</div>
-						<div class="input-group mb-3">
-							<span class="input-group-text ancho letrasBlancas"
-								name="Telefono">Teléfono</span>
-							<input type="text" class="form-control" aria-label="Sizing example input"
-								aria-describedby="inputGroup-sizing-default">
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-						<button type="button" class="btn btn-primary">Guardar</button>
 					</div>
 				</div>
 			</div>
-		</div>
+
+		</form>
+
+
+		<!-- Modal -->
+
 
 		<!--=====================FINAL DEL MODAL=======================-->
+
+
+
+		<!--================INICIO DEL MODAL ACTUALIZAR=============================-->
+		<form (ngSubmit)="actualizarUsuario(actualizarUsuarioForm.value)" [formGroup]="actualizarUsuarioForm">
+
+			<div class="modal fade" id="modalActualizar" tabindex="-1" aria-labelledby="exampleModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog modal-dialog-scrollable">
+					<div class="modal-content">
+						<div class="modal-header modalColor">
+							<h5 class="modal-title" id="exampleModalLabel">Actualizar Usuario</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body ">
+							<h6 class="titulo2">
+								Datos
+							</h6>
+							<div class="input-group mb-3">
+								<span class="input-group-text ancho letrasBlancas" name="usuario">Usuario</span>
+								<input type="text" formControlName="usuario" [(ngModel)]="forUpdate.usuario"
+									class="form-control" aria-label="Sizing example input"
+									aria-describedby="inputGroup-sizing-default">
+							</div>
+							<div class="input-group mb-3">
+								<span class="input-group-text ancho letrasBlancas" name="contraseña">Contraseña</span>
+								<input type="text" formControlName="password" [(ngModel)]="forUpdate.password"
+									class="form-control" aria-label="Sizing example input"
+									aria-describedby="inputGroup-sizing-default">
+							</div>
+							<div class="input-group mb-3">
+								<span class="input-group-text ancho letrasBlancas" name="Nombre">Nombre</span>
+								<input type="text" formControlName="nombre" [(ngModel)]="forUpdate.nombre"
+									class="form-control" aria-label="Sizing example input"
+									aria-describedby="inputGroup-sizing-default">
+							</div>
+							<div class="input-group mb-3">
+								<span class="input-group-text ancho letrasBlancas" name="apellido">Apellido</span>
+								<input type="text" formControlName="apellido" [(ngModel)]="forUpdate.apellido"
+									class="form-control" aria-label="Sizing example input"
+									aria-describedby="inputGroup-sizing-default">
+							</div>
+							<div class="input-group mb-3">
+								<span class="input-group-text ancho letrasBlancas" name="Direccion">Dirección</span>
+								<input type="text" formControlName="direccion" [(ngModel)]="forUpdate.direccion"
+									class="form-control" aria-label="Sizing example input"
+									aria-describedby="inputGroup-sizing-default">
+							</div>
+							<div class="input-group mb-3">
+								<span class="input-group-text ancho letrasBlancas" name="Telefono">Teléfono</span>
+								<input type="text" formControlName="telefono" [(ngModel)]="forUpdate.telefono"
+									class="form-control" aria-label="Sizing example input"
+									aria-describedby="inputGroup-sizing-default">
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+							<button type="submit" class="btn btn-primary">Guardar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</form>
+
+
+		<!-- Modal -->
+
+
+		<!--=====================FINAL DEL MODAL ACTUALIZAR=======================-->
 
 
 		<div class="row align-items-center contenedor justify-content-around">
 			<div class="col input-group mb-6 align-items-center">
 				<h5>Buscar</h5>
-				<input type="text" class="form-control margen-izq alinear" id="Abono" aria-label="Buscar">
-				<Button type="submit" class="btn btn-danger boton-buscar">Buscar</Button>
+				<input type="text" class="form-control margen-izq alinear" [(ngModel)]="Busqueda" name="pipeUsuarios"id="Abono" aria-label="Buscar">
 			</div>
 			<div class="col btn-group btn-group-toggle mb-6 botones align-items-center" data-toggle="buttons">
 				<!-- Button trigger modal -->
 				<button type="button" class="btn btn-danger btns borde-boton" data-bs-toggle="modal"
 					data-bs-target="#exampleModal">Nuevo Usuario</button>
 				<!--=========-->
-				
-				<button type="button" class="btn btn-danger btns borde-boton margen-izq">Editar</button>
-				<button type="button" class="btn btn-danger btns borde-boton margen-izq">Eliminar</button>
 			</div>
 		</div>
 
@@ -93,17 +162,18 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<th scope="row">ToñitoBana</th>
-						<td>Antonio</td>
-						<td>Geronimo</td>
-						<td>9811464646</td>
-					</tr>
-					<tr>
-						<th scope="row">AngelLee</th>
-						<td>Angel Alexis</td>
-						<td>May</td>
-						<td>9811466879</td>
+					<tr *ngFor="let usuario of usuarios | pipeUsuarios:Busqueda">
+						<th scope="row">{{usuario.usuario}}</th>
+						<td>{{usuario.nombre}}</td>
+						<td>{{usuario.apellido}}</td>
+						<td>{{usuario.telefono}}</td>
+						<td>
+							<button type="button" class="btn btn-success btnsTabla" data-bs-toggle="modal"
+							data-bs-target="#modalActualizar" (click)="obtenerDato(usuario)">
+								Editar</button>
+							<button type="button" class="btn btn-warning btnsTabla" (click)="eliminarUsuario(usuario.usuario)">
+								Eliminar</button>
+						</td>
 					</tr>
 			</table>
 
