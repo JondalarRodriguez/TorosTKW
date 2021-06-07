@@ -111,13 +111,13 @@
                                 <!-- Button trigger modal -->
 
                                 <button type="button" class="btn btn-danger margen" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
+                                    data-bs-target="#ModalCobrar">
                                     Cobrar
                                 </button>
                             </div>
 
                             <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            <div class="modal fade" id="ModalCobrar" tabindex="-1" aria-labelledby="exampleModalLabel"
                                 aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-scrollable">
                                     <div class="modal-content">
@@ -127,40 +127,37 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body ">
-
-                                            <div class="input-group mb-3">
-                                                <span class="input-group-text ancho letrasBlancas contenedor"
-                                                    name="RGI">Importe</span>
-                                                <input type="text" class="form-control"
-                                                    aria-label="Sizing example input"
-                                                    aria-describedby="inputGroup-sizing-default">
-                                            </div>
+                                            
                                             <div class="input-group mb-3">
                                                 <span class="input-group-text ancho letrasBlancas contenedor"
                                                     name="Nombre">Total</span>
                                                 <input type="text" class="form-control"
                                                     aria-label="Sizing example input"
-                                                    aria-describedby="inputGroup-sizing-default">
+                                                    aria-describedby="inputGroup-sizing-default"
+                                                    [(ngModel)]="TotalCobrar" readonly="readonly">
                                             </div>
                                             <div class="input-group mb-3">
                                                 <span class="input-group-text ancho letrasBlancas contenedor"
                                                     name="Ingreso">Recibido</span>
-                                                <input type="text" class="form-control"
+                                                <input type="number" class="form-control"
                                                     aria-label="Sizing example input"
-                                                    aria-describedby="inputGroup-sizing-default">
+                                                    aria-describedby="inputGroup-sizing-default"
+                                                    [(ngModel)]="recibido">
                                             </div>
                                             <div class="input-group mb-3">
                                                 <span class="input-group-text ancho letrasBlancas contenedor"
                                                     name="Direccion">Cambio</span>
-                                                <input type="text" class="form-control"
+                                                <input type="number" class="form-control"
                                                     aria-label="Sizing example input"
-                                                    aria-describedby="inputGroup-sizing-default">
+                                                    aria-describedby="inputGroup-sizing-default"
+                                                    [(ngModel)]="cambio">
                                             </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Cancelar</button>
-                                            <button type="button" class="btn btn-primary">Cobrar</button>
+                                            <button type="button" class="btn btn-primary"
+                                            (click) = "Cobrar()">Cobrar</button>
                                         </div>
                                     </div>
                                 </div>

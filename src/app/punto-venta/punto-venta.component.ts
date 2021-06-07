@@ -84,6 +84,27 @@ export class PuntoVentaComponent implements OnInit {
 
     this.calcularTotal();
   }
+  public recibido: number = 0;
+  public cambio: number = 0;
 
+  public Cobrar() {
+
+    if (this.recibido >= parseInt(this.TotalCobrar)) {
+      this.cambio = this.recibido - parseInt(this.TotalCobrar);
+      for (var i of this.Productventas) {
+        i.Existencia = parseInt(i.Existencia) - 1;
+        this.serviceInventario.putProducto(i.Folio, i)
+      }
+      this.productos = [];
+      this.getProducts();
+
+    } else {
+      alert("Compra añadida a credito");
+    }
+
+
+  }
 }
+
+
 

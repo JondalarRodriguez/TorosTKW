@@ -22,8 +22,8 @@ export class InventarioService {
     return this.http.delete<boolean>("http://localhost:4000/product/" + id, {observe: 'response'});
     
   }
-  public putProducto(id: String, cliente: any){
-    return this.http.put<boolean>("http://localhost:4000/product/" + id, cliente, {observe: 'response'});
+  public putProducto(id: String, product: any){
+    return this.http.put<boolean>("http://localhost:4000/product/" + id, product, {observe: 'response'});
     
   }
 }
