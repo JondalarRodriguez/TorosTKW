@@ -172,14 +172,14 @@ export class PuntoVentaComponent implements OnInit {
           + ', Concepto : Compra }');*/
 
         //console.log(this.folioMayorString);
-        SendCredito = JSON.stringify({
+        SendCredito = {
           "Folio": this.folioMayorString,
           "RGI": this.ClienteVenta.RGI,
           "Nombre": this.ClienteVenta.Nombre,
-          "Total": this.cambio,
+          "Total": String(this.cambio),
           "Fecha": fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear(),
           "Concepto": "Compra"
-        });
+        };
         console.log(SendCredito);
         this.serviceCreditos.PostCredito(SendCredito).subscribe(
           data => {
