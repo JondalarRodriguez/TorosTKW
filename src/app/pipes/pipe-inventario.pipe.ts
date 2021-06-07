@@ -8,9 +8,9 @@ export class PipeInventarioPipe implements PipeTransform {
   transform(value: any[], Busqueda: string): any {
     const resultBusqueda = [];
 
-    for (const producto of value ){
-      if (producto.Nombre.indexOf(Busqueda) > -1 ){
-        resultBusqueda.push(producto);
+    for (const cliente of value ){
+      if (cliente.Nombre.indexOf(Busqueda) > -1 ){
+        resultBusqueda.push(cliente);
       };
     };
     return resultBusqueda

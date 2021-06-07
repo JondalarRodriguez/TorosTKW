@@ -4,7 +4,7 @@
 
 
     <div class="container">
-        
+
         <div class="titulo">
             <h1 class="margen-titulo">Lista de productos</h1>
         </div>
@@ -13,8 +13,8 @@
         <div class="row align-items-center contenedor3 justify-content-around">
             <div class="col input-group mb-6 align-items-center">
                 <h5>Buscar</h5>
-                <input type="text" class="form-control margen-izq alinear" [(ngModel)]="Busqueda" id="Abono"
-                    aria-label="Buscar" name="pipeInventario">
+                <input type="text" class="form-control margen-izq alinear" [(ngModel)]="Busqueda" name="pipeInventario"
+                    id="Abono" id="Abono" aria-label="Buscar">
 
             </div>
             <div class="col btn-group btn-group-toggle mb-6 botones align-items-center" data-toggle="buttons">
@@ -37,9 +37,9 @@
                         <div class="modal-body">
                             <h6 class="titulo2">Datos del producto</h6>
                             <div class="input-group mb-3">
-                                <span class="input-group-text ancho letrasBlancas contenedor" name="folio">Folio</span>
-                                <input type="text" formControlName="Folio" class="form-control" placeholder="folio"
-                                    [(ngModel)]="folioMayorString" aria-label="Sizing example input"
+                                <span class="input-group-text ancho letrasBlancas contenedor" name="Folio">Folio</span>
+                                <input type="text" formControlName="Folio" class="form-control" 
+                                    [(ngModel)]="folioInventario" aria-label="Sizing example input"
                                     aria-describedby="inputGroup-sizing-default" readonly="readonly">
                             </div>
                             <div class="input-group mb-3">
@@ -97,8 +97,8 @@
                         <td>{{cliente.Precio}}</td>
                         <td>{{cliente.Existencia}}</td>
                         <td>
-                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" 
-                            (click)="obtenerDato(cliente)" data-bs-target="#exampleModalEDITAR">Editar</button>
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                (click)="obtenerDato(cliente)" data-bs-target="#exampleModalEDITAR">Editar</button>
 
                             <button type="button" class="btn btn-danger"
                                 (click)="deleteProducto(cliente.Folio)">eliminar</button>
@@ -110,7 +110,7 @@
                 </tbody>
             </table>
         </div>
-                <!---------  Modal Editar Producto  ---------->
+        <!---------  Modal Editar Producto  ---------->
         <form (ngSubmit)="nuevoProducto(inventarioForm.value)" [formGroup]="inventarioForm">
             <div class="modal fade" id="exampleModalEDITAR" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
@@ -132,24 +132,28 @@
                             <div class="input-group mb-3">
                                 <span class="input-group-text ancho letrasBlancas contenedor"
                                     name="Nombre">Nombre</span>
-                                <input type="text" [(ngModel)]="forUpdate.Nombre" formControlName="Nombre" class="form-control" aria-label="Sizing example input"
+                                <input type="text" [(ngModel)]="forUpdate.Nombre" formControlName="Nombre"
+                                    class="form-control" aria-label="Sizing example input"
                                     aria-describedby="inputGroup-sizing-default">
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text ancho letrasBlancas contenedor" name="Nombre">Costo</span>
-                                <input type="text" [(ngModel)]="forUpdate.Costo" formControlName="Costo" class="form-control" aria-label="Sizing example input"
+                                <input type="text" [(ngModel)]="forUpdate.Costo" formControlName="Costo"
+                                    class="form-control" aria-label="Sizing example input"
                                     aria-describedby="inputGroup-sizing-default">
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text ancho letrasBlancas contenedor" name="Ingreso">Precio de
                                     venta</span>
-                                <input type="text" [(ngModel)]="forUpdate.Precio" formControlName="Precio" class="form-control" aria-label="Sizing example input"
+                                <input type="text" [(ngModel)]="forUpdate.Precio" formControlName="Precio"
+                                    class="form-control" aria-label="Sizing example input"
                                     aria-describedby="inputGroup-sizing-default">
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text ancho letrasBlancas contenedor"
                                     name="Direccion">Exitencia</span>
-                                <input type="text" [(ngModel)]="forUpdate.Existencia" formControlName="Existencia" class="form-control" aria-label="Sizing example input"
+                                <input type="text" [(ngModel)]="forUpdate.Existencia" formControlName="Existencia"
+                                    class="form-control" aria-label="Sizing example input"
                                     aria-describedby="inputGroup-sizing-default">
                             </div>
                         </div>

@@ -29,7 +29,7 @@ export class VentasComponent implements OnInit {
 
   public productos: any = [];
   public forUpdate: any = [];
-  public folioMayorString = "";
+  public folioInventario = "";
   public folioNumero: number = 0;
   public Busqueda: string = "";
 
@@ -55,15 +55,15 @@ export class VentasComponent implements OnInit {
       element = this.productos[index];
       let folioObtener = element.Folio;
       if (folioObtener < element.Folio) {
-        this.folioMayorString= element.Folio;
+        this.folioInventario= element.Folio;
       }else{
-        this.folioMayorString = folioObtener
+        this.folioInventario = folioObtener
       }
     }
 
-    this.folioNumero = parseInt(this.folioMayorString);
+    this.folioNumero = parseInt(this.folioInventario);
     this.folioNumero += 1;
-    this.folioMayorString = String(this.folioNumero);
+    this.folioInventario = String(this.folioNumero);
   }
 /* se añaden nuevos producto a la tabla de inventario */
   public nuevoProducto(form: String) {
@@ -89,7 +89,6 @@ export class VentasComponent implements OnInit {
   public obtenerDato(cliente: any) {
     this.forUpdate = cliente;
     console.log(cliente);
-
   }
 
   public actualizarCliente(form: any) {
