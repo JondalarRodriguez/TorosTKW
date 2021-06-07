@@ -14,7 +14,6 @@ export class InventarioService {
   }
 
   PostProducto(product: any){
-    console.log(product);
     return this.http.post<any>("http://localhost:4000/add/Inventario", product, {observe: "response"});
   }
 

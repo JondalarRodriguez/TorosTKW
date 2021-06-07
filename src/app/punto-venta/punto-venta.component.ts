@@ -16,6 +16,7 @@ export class PuntoVentaComponent implements OnInit {
   public productos: any = [];
   public Productventas: any = [];
   public findProduct: string = "";
+  public creditos: any = [];
 
   constructor(
     private sesioncliente: ClientesService,
@@ -48,6 +49,16 @@ export class PuntoVentaComponent implements OnInit {
     );
   }
 
+  public getCreditos() {
+    this.serviceCreditos.getCreditos().subscribe(
+      (resp) => {
+
+        this.creditos = resp;
+
+      }
+    );
+  }
+
   public obtenerDatoCliente(cliente: any) {
     //Obtiene el cliente seleccionado y lo guarda para mandarlo en caso de ser necesario
     this.ClienteVenta = cliente;
@@ -75,7 +86,7 @@ export class PuntoVentaComponent implements OnInit {
 
   public eliminarVenta(venta: any) {
     this.Productventas.splice(venta, 1);
-    console.log(this.Productventas);
+    //console.log(this.Productventas);
     this.calcularTotal();
   }
 
@@ -89,23 +100,55 @@ export class PuntoVentaComponent implements OnInit {
   public recibido: number = 0;
   public cambio: number = 0;
 
-  public compra(){
+  public compra() {
     for (var i of this.Productventas) {
       var restandoExistencia = parseInt(i.Existencia) - 1;
       i.Existencia = String(restandoExistencia);
-      console.log(i.Folio)
-      console.log(i)
+      //console.log(i.Folio)
+      //console.log(i)
       this.serviceInventario.putProducto(i.Folio, i).subscribe(
         resp => {
           console.log("result: ", resp);
         }
-  
+
       );
     }
     this.productos = [];
     this.getProducts();
 
   }
+  public folioMayorString: string = "";
+  public folioNumero: number = 0;
+
+  public nextFolio() {
+    
+    
+    for (const iterator of this.creditos) {
+      var folioObtener = iterator.Folio;
+      if (folioObtener <= iterator.Folio) {
+        this.folioMayorString = iterator.Folio;
+      } else {
+        this.folioMayorString = folioObtener
+      }
+    }
+
+    this.folioNumero = parseInt(this.folioMayorString) + 1;
+    this.folioMayorString = String(this.folioNumero);
+    }
+    /*for (let index = 0; index < this.creditos.length; index++) {
+      element = this.creditos[index];
+      let folioObtener = element.Folio;
+      if (folioObtener < element.Folio) {
+        this.folioMayorString = element.Folio;
+      } else {
+        this.folioMayorString = folioObtener
+      }
+    }
+
+    this.folioNumero = parseInt(this.folioMayorString);
+    this.folioNumero += 1;
+    this.folioMayorString = String(this.folioNumero);
+  }*/
 
   public Cobrar() {
 
@@ -116,13 +159,31 @@ export class PuntoVentaComponent implements OnInit {
     } else {
       alert("Compra añadida a credito");
       this.compra();
-      this.cambio = parseInt(this.TotalCobrar) -this.recibido;
+      this.cambio = parseInt(this.TotalCobrar) - this.recibido;
+      //Obteniendo Fecha
+      const fecha = new Date();
+      //Obtengo ultimo Folio
+      this.nextFolio();
+      //Genero el dato para mandar el nuevo credito
+      var SendCredito: string = "";
 
-      //Agregar Servicio Creditos
+      SendCredito = ('{ '
+        + 'Folio:  ' + this.folioMayorString
+        + ', RGI: ' + this.ClienteVenta.RGI
+        + ', Nombre: ' + this.ClienteVenta.Nombre
+        + ', Total: ' + this.cambio
+        + ', Fecha: ' + fecha.getDate() + '/' + (fecha.getMonth() + 1) + '/' + fecha.getFullYear()
+        + ', Concepto : Compra }');
+        console.log(this.folioMayorString);
+        console.log(JSON.stringify(SendCredito));
+
     }
 
 
   }
+
+  
+ 
 }
 
 
