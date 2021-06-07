@@ -27,14 +27,15 @@ export class PuntoVentaComponent implements OnInit {
   ngOnInit(): void {
     this.getClientes();
     this.getProducts();
+    this.getCreditos();
   }
 
   public getClientes() {
     this.sesioncliente.getCliente().subscribe(
       (resp) => {
-        //console.log(resp);
+
         this.clientes = resp;
-        //console.log(this.clientes);
+
       }
     );
   }
@@ -42,19 +43,18 @@ export class PuntoVentaComponent implements OnInit {
   public getProducts() {
     this.serviceInventario.getProductos().subscribe(
       (resp) => {
-        //console.log(resp);
+
         this.productos = resp;
-        //console.log(this.clientes);
+
       }
     );
   }
 
   public getCreditos() {
+
     this.serviceCreditos.getCreditos().subscribe(
       (resp) => {
-
         this.creditos = resp;
-
       }
     );
   }
@@ -62,7 +62,7 @@ export class PuntoVentaComponent implements OnInit {
   public obtenerDatoCliente(cliente: any) {
     //Obtiene el cliente seleccionado y lo guarda para mandarlo en caso de ser necesario
     this.ClienteVenta = cliente;
-    alert("Cliente seleccionado " + cliente.Nombre);
+    alert("Cliente seleccionado " + this.ClienteVenta.Nombre);
     this.clientes = [];
     //console.log(this.ClienteVenta);
 
@@ -108,7 +108,7 @@ export class PuntoVentaComponent implements OnInit {
       //console.log(i)
       this.serviceInventario.putProducto(i.Folio, i).subscribe(
         resp => {
-          console.log("result: ", resp);
+          var respuestaCompra = resp;
         }
 
       );
@@ -121,10 +121,9 @@ export class PuntoVentaComponent implements OnInit {
   public folioNumero: number = 0;
 
   public nextFolio() {
-    
-    
     for (const iterator of this.creditos) {
       var folioObtener = iterator.Folio;
+      //console.log(folioObtener)
       if (folioObtener <= iterator.Folio) {
         this.folioMayorString = iterator.Folio;
       } else {
@@ -134,21 +133,8 @@ export class PuntoVentaComponent implements OnInit {
 
     this.folioNumero = parseInt(this.folioMayorString) + 1;
     this.folioMayorString = String(this.folioNumero);
-    }
-    /*for (let index = 0; index < this.creditos.length; index++) {
-      element = this.creditos[index];
-      let folioObtener = element.Folio;
-      if (folioObtener < element.Folio) {
-        this.folioMayorString = element.Folio;
-      } else {
-        this.folioMayorString = folioObtener
-      }
-    }
-
-    this.folioNumero = parseInt(this.folioMayorString);
-    this.folioNumero += 1;
-    this.folioMayorString = String(this.folioNumero);
-  }*/
+    //console.log(this.folioMayorString);  
+  }
 
   public Cobrar() {
 
@@ -157,33 +143,66 @@ export class PuntoVentaComponent implements OnInit {
       this.compra();
 
     } else {
-      alert("Compra añadida a credito");
-      this.compra();
-      this.cambio = parseInt(this.TotalCobrar) - this.recibido;
-      //Obteniendo Fecha
-      const fecha = new Date();
-      //Obtengo ultimo Folio
-      this.nextFolio();
-      //Genero el dato para mandar el nuevo credito
-      var SendCredito: string = "";
+      if (this.ClienteVenta == 0) {
+        alert("Selecciona un cliente")
+      } else {
+        
+        this.compra();
+        this.cambio = parseInt(this.TotalCobrar) - this.recibido;
+        //Obteniendo Fecha
+        const fecha = new Date();
+        //Obtengo ultimo Folio
+        this.nextFolio();
+        //Genero el dato para mandar el nuevo credito
+        var SendCredito: any;
+        /*SendCredito.push("Folio : "  + this.folioMayorString,
+        'RGI: ' + this.ClienteVenta.RGI,
+        'Nombre: ' + this.ClienteVenta.Nombre,
+        'Total: ' + this.cambio,
+        'Fecha: ' + fecha.getDate() + '/' + (fecha.getMonth() + 1) + '/' + fecha.getFullYear(),
+        'Concepto:  Compra ')*/
 
-      SendCredito = ('{ '
-        + 'Folio:  ' + this.folioMayorString
-        + ', RGI: ' + this.ClienteVenta.RGI
-        + ', Nombre: ' + this.ClienteVenta.Nombre
-        + ', Total: ' + this.cambio
-        + ', Fecha: ' + fecha.getDate() + '/' + (fecha.getMonth() + 1) + '/' + fecha.getFullYear()
-        + ', Concepto : Compra }');
-        console.log(this.folioMayorString);
-        console.log(JSON.stringify(SendCredito));
+
+        /*SendCredito = ('{ '
+          + 'Folio:  ' + this.folioMayorString
+          + ', RGI: ' + this.ClienteVenta.RGI
+          + ', Nombre: ' + this.ClienteVenta.Nombre
+          + ', Total: ' + this.cambio
+          + ', Fecha: ' + fecha.getDate() + '/' + (fecha.getMonth() + 1) + '/' + fecha.getFullYear()
+          + ', Concepto : Compra }');*/
+
+        //console.log(this.folioMayorString);
+        SendCredito = JSON.stringify({
+          "Folio": this.folioMayorString,
+          "RGI": this.ClienteVenta.RGI,
+          "Nombre": this.ClienteVenta.Nombre,
+          "Total": this.cambio,
+          "Fecha": fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear(),
+          "Concepto": "Compra"
+        });
+        console.log(SendCredito);
+        this.serviceCreditos.PostCredito(SendCredito).subscribe(
+          data => {
+          if(data.status == 200){
+            alert("Compra añadida a credito");
+            location.reload();
+          }else{
+            alert("Error al añadir Credito");
+          } console.log(data);
+        }, 
+        error => {
+          console.log(error);
+        }
+        )
+
+      }
 
     }
-
-
   }
 
-  
- 
+
+
+
 }
 
 

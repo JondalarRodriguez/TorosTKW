@@ -65,7 +65,7 @@ export class ClientesComponent implements OnInit {
     for (let index = 0; index < this.clientes.length; index++) {
       element = this.clientes[index];
       let folioObtener = element.folio;
-      if (folioObtener < element.folio) {
+      if (folioObtener <= element.folio) {
         this.folioMayorString = element.folio;
       }else{
         this.folioMayorString = folioObtener
@@ -100,7 +100,7 @@ export class ClientesComponent implements OnInit {
           alert("Datos guardados exitosmente");
           location.reload();
         } else {
-          alert("Los datos no se pudieron guardr");
+          alert("Los datos no se pudieron guardar");
         }
         console.log(data);
       },
