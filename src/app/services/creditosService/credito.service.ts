@@ -16,7 +16,7 @@ export class CreditoService {
   }
 
   PostCredito(Credito: any){
-    return this.http.post<any>("http://localhost:4000/add//add/Credito", Credito, {observe: "response"});
+    return this.http.post<any>("http://localhost:4000/add/Credito", Credito, {observe: "response"});
   }
   ///Eliminar no esta disponible en el back end hay que ver como eliminar
   // los creditos en abonos no en creditos
