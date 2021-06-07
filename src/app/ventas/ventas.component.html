@@ -38,9 +38,8 @@
                             <h6 class="titulo2">Datos del producto</h6>
                             <div class="input-group mb-3">
                                 <span class="input-group-text ancho letrasBlancas contenedor" name="Folio">Folio</span>
-                                <input type="text" formControlName="Folio" class="form-control" 
-                                    [(ngModel)]="folioInventario" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default" readonly="readonly">
+                                <input type="text" [(ngModel)]="folioInventario" formControlName="Folio" class="form-control" 
+                             aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly="readonly">
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text ancho letrasBlancas contenedor"
@@ -90,7 +89,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let cliente of productos">
+                    <tr *ngFor="let cliente of productos  | pipeInventario:Busqueda">
                         <th scope="row">{{cliente.Folio}}</th>
                         <td>{{cliente.Nombre}}</td>
                         <td>{{cliente.Costo}}</td>
@@ -111,13 +110,13 @@
             </table>
         </div>
         <!---------  Modal Editar Producto  ---------->
-        <form (ngSubmit)="nuevoProducto(inventarioForm.value)" [formGroup]="inventarioForm">
+        <form (ngSubmit)="actualizarProducto(inventarioFormActualizar.value)" [formGroup]="inventarioFormActualizar">
             <div class="modal fade" id="exampleModalEDITAR" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-dialog-scrollable">
                     <div class="modal-content">
                         <div class="modal-header modalColor">
-                            <h5 class="modal-title" id="exampleModalLabel">Añadir producto</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Editar producto</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
 
@@ -125,7 +124,7 @@
                             <h6 class="titulo2">Datos del producto</h6>
                             <div class="input-group mb-3">
                                 <span class="input-group-text ancho letrasBlancas contenedor" name="folio">Folio</span>
-                                <input type="text" formControlName="Folio" class="form-control" placeholder="folio"
+                                <input type="text" [(ngModel)]="forUpdate.Folio" formControlName="Folio" class="form-control" placeholder="folio"
                                     aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
                                     readonly="readonly">
                             </div>

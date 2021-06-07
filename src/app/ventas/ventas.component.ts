@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ClientesService } from '../services/clienteservice/clientes.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { InventarioService } from '../services/inventarioService/inventario.service';
 
@@ -13,10 +12,10 @@ export class VentasComponent implements OnInit {
   
   public inventarioForm = new FormGroup({
     Folio: new FormControl(''),
-    Nombre: new FormControl('', Validators.required),
-    Costo: new FormControl('', Validators.required),
-    Precio: new FormControl('', Validators.required),
-    Existencia: new FormControl('', Validators.required)
+    Nombre: new FormControl(''),
+    Costo: new FormControl(''),
+    Precio: new FormControl(''),
+    Existencia: new FormControl('')
   });
 
   public inventarioFormActualizar = new FormGroup({
@@ -40,10 +39,7 @@ export class VentasComponent implements OnInit {
   ngOnInit(): void {
     this.inventarioService.getProductos().subscribe(
       (resp) => {
-        //console.log(resp);
         this.productos = resp;
-        //console.log(this.clientes);
-
         this.nextFolio();
       }
     );
@@ -64,6 +60,10 @@ export class VentasComponent implements OnInit {
     this.folioNumero = parseInt(this.folioInventario);
     this.folioNumero += 1;
     this.folioInventario = String(this.folioNumero);
+  }
+    public direccionCredito() {
+    this.router.navigate(['credito']);
+
   }
 /* se añaden nuevos producto a la tabla de inventario */
   public nuevoProducto(form: String) {
@@ -86,13 +86,13 @@ export class VentasComponent implements OnInit {
   }
 
 /* se obtienen los datos de productos en editar  en inventario*/
-  public obtenerDato(cliente: any) {
-    this.forUpdate = cliente;
-    console.log(cliente);
+  public obtenerDato(inventario: any) {
+    this.forUpdate = inventario;
+    console.log(inventario);
   }
 
-  public actualizarCliente(form: any) {
-    var id = this.forUpdate.Folio;
+  public actualizarProducto(form: any) {
+    var id = this.forUpdate.folio;
     console.log(form);
     console.log(id);
 

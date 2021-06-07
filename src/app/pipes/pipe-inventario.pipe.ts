@@ -14,6 +14,6 @@ export class PipeInventarioPipe implements PipeTransform {
       };
     };
     return resultBusqueda
-}
+  }
 
 }
