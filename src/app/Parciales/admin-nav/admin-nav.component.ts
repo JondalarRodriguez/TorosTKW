@@ -15,6 +15,9 @@ export class AdminNavComponent implements OnInit {
 
   public CerrarSesion(){
     alert("Sesión Cerrada");
+
+    sessionStorage.removeItem('sesion');
+
     this.router.navigate(['login']);
   }
 }

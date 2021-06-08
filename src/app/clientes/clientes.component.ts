@@ -10,7 +10,7 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./clientes.component.css']
 })
 export class ClientesComponent implements OnInit {
-  
+
   public clienteForm = new FormGroup({
     folio: new FormControl(''),
     RGI: new FormControl(''),
@@ -43,7 +43,7 @@ export class ClientesComponent implements OnInit {
   public folioNumero: number = 0;
   public Busqueda: string = "";
 
-  
+
   constructor(private router: Router,
     private sesioncliente: ClientesService) { }
 
@@ -57,8 +57,15 @@ export class ClientesComponent implements OnInit {
         this.nextFolio();
       }
     );
+    this.comprobarSesion()
   }
-  
+
+  public comprobarSesion() {
+    if (sessionStorage.getItem('sesion') == undefined) {
+      this.router.navigate(['login'])
+    }
+  }
+
 
   public nextFolio() {
     let element;
@@ -67,7 +74,7 @@ export class ClientesComponent implements OnInit {
       let folioObtener = element.folio;
       if (folioObtener <= element.folio) {
         this.folioMayorString = element.folio;
-      }else{
+      } else {
         this.folioMayorString = folioObtener
       }
     }

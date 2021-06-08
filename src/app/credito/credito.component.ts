@@ -38,6 +38,14 @@ export class CreditoComponent implements OnInit {
         this.nextFolio();
       }
     );
+    this.comprobarSesion();
+  }
+
+
+  public comprobarSesion() {
+    if (sessionStorage.getItem('sesion') == undefined) {
+      this.router.navigate(['login'])
+    }
   }
 
   public nextFolio() {
@@ -69,10 +77,10 @@ export class CreditoComponent implements OnInit {
 
   }
 
-/*
-  ngOnInit(): void {
-  }
-*/
+  /*
+    ngOnInit(): void {
+    }
+  */
 
   onPrint() {
     window.print();

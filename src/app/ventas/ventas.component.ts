@@ -9,7 +9,7 @@ import { InventarioService } from '../services/inventarioService/inventario.serv
   styleUrls: ['./ventas.component.css']
 })
 export class VentasComponent implements OnInit {
-  
+
   public inventarioForm = new FormGroup({
     Folio: new FormControl(''),
     Nombre: new FormControl(''),
@@ -32,7 +32,7 @@ export class VentasComponent implements OnInit {
   public folioNumero: number = 0;
   public Busqueda: string = "";
 
-  
+
   constructor(private router: Router,
     private inventarioService: InventarioService) { }
 
@@ -43,16 +43,24 @@ export class VentasComponent implements OnInit {
         this.nextFolio();
       }
     );
+    this.comprobarSesion();
   }
-  
+
+
+  public comprobarSesion() {
+    if (sessionStorage.getItem('sesion') == undefined) {
+      this.router.navigate(['login'])
+    }
+  }
+
   public nextFolio() {
     let element;
     for (let index = 0; index < this.productos.length; index++) {
       element = this.productos[index];
       let folioObtener = element.Folio;
       if (folioObtener < element.Folio) {
-        this.folioInventario= element.Folio;
-      }else{
+        this.folioInventario = element.Folio;
+      } else {
         this.folioInventario = folioObtener
       }
     }
@@ -62,7 +70,7 @@ export class VentasComponent implements OnInit {
     this.folioInventario = String(this.folioNumero);
   }
 
-/* se añaden nuevos producto a la tabla de inventario */
+  /* se añaden nuevos producto a la tabla de inventario */
   public nuevoProducto(form: String) {
 
     this.inventarioService.PostProducto(form).subscribe(
@@ -82,7 +90,7 @@ export class VentasComponent implements OnInit {
 
   }
 
-/* se obtienen los datos de productos en editar  en inventario*/
+  /* se obtienen los datos de productos en editar  en inventario*/
   public obtenerDato(inventario: any) {
     this.forUpdate = inventario;
     console.log(inventario);
