@@ -9,11 +9,11 @@ export class RegistroVentasService {
 
   constructor(private http: HttpClient) { }
 
-  getProductos(){
+  getRegistrosVentas(){
     return this.http.get<registroVentas>('http://localhost:4000/Ventas');
   }
 
-  PostProducto(registro: any){
+  PostRegistroVenta(registro: any){
     return this.http.post<any>("http://localhost:4000/add/Venta", registro, {observe: "response"});
   }
 

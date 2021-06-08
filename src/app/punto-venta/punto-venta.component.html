@@ -217,12 +217,16 @@
                         Reporte a Generar
                     </h5>
                     <button type="button" class="btn buttonSize"data-bs-target="#Detalles" data-bs-toggle="modal"
-                    data-bs-dismiss="modal">
+                    data-bs-dismiss="modal" (click) = "generarReportesDiarios()">
                         Día
                     </button>
                     <button type="button" class="btn buttonSize" data-bs-target="#Detalles" data-bs-toggle="modal"
-                    data-bs-dismiss="modal">
+                    data-bs-dismiss="modal" (click) = "generarReportesMensuales()">
                         Mes
+                    </button>
+                    <button type="button" class="btn buttonSize" data-bs-target="#Detalles" data-bs-toggle="modal"
+                    data-bs-dismiss="modal" (click) = "generarReportesAnteriores()" >
+                        Anteriores
                     </button>
                 </div>
                 <div class="modal-footer">
@@ -242,7 +246,22 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Hide this modal and show the first with the button below.
+                    <table class="table table-hover anchoTable">
+                        <thead>
+                            <tr class="naranja">
+                                <th scope="col">Total </th>
+                                <th scope="col">Efectivo</th>
+                                <th scope="col">Vendedor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let reporte of Reportes">
+                                <th scope="row">{{reporte.Total}}</th>
+                                <td> {{reporte.Efectivo}} </td>
+                                <td> {{reporte.Vendedor}} </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-gray" data-bs-target="#Reportes" data-bs-toggle="modal"
@@ -251,8 +270,10 @@
             </div>
         </div>
     </div>
+    <!--========== BOTON MODAL ======================-->
     <div class = "AjusteDerecha">
-        <a class="btn buttonSize" data-bs-toggle="modal" href="#Reportes" role="button">Reportes</a>
+        <a class="btn buttonSize" data-bs-toggle="modal" href="#Reportes" role="button"
+        (click) = "getReportes()" >Reportes</a>
     </div>
 
 </div>

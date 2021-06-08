@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClientesService } from '../services/clienteservice/clientes.service';
 import { CreditoService } from '../services/creditosService/credito.service';
 import { InventarioService } from '../services/inventarioService/inventario.service';
+import { RegistroVentasService } from '../services/registroVentasService/registro-ventas.service';
 
 @Component({
   selector: 'app-punto-venta',
@@ -17,11 +18,17 @@ export class PuntoVentaComponent implements OnInit {
   public Productventas: any = [];
   public findProduct: string = "";
   public creditos: any = [];
+  public folioMayorString: string = "";
+  public folioNumero: number = 0;
+  public TotalCobrar: string = "";
+  public recibido: number = 0;
+  public cambio: number = 0;
 
   constructor(
     private sesioncliente: ClientesService,
     private serviceInventario: InventarioService,
-    private serviceCreditos: CreditoService
+    private serviceCreditos: CreditoService,
+    private serviceRegistro: RegistroVentasService
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +36,8 @@ export class PuntoVentaComponent implements OnInit {
     this.getProducts();
     this.getCreditos();
   }
+
+
 
   public getClientes() {
     this.sesioncliente.getCliente().subscribe(
@@ -40,6 +49,8 @@ export class PuntoVentaComponent implements OnInit {
     );
   }
 
+
+
   public getProducts() {
     this.serviceInventario.getProductos().subscribe(
       (resp) => {
@@ -50,6 +61,8 @@ export class PuntoVentaComponent implements OnInit {
     );
   }
 
+
+
   public getCreditos() {
 
     this.serviceCreditos.getCreditos().subscribe(
@@ -59,6 +72,8 @@ export class PuntoVentaComponent implements OnInit {
     );
   }
 
+
+
   public obtenerDatoCliente(cliente: any) {
     //Obtiene el cliente seleccionado y lo guarda para mandarlo en caso de ser necesario
     this.ClienteVenta = cliente;
@@ -67,7 +82,7 @@ export class PuntoVentaComponent implements OnInit {
     //console.log(this.ClienteVenta);
 
   }
-  public TotalCobrar: string = "";
+
 
 
   public calcularTotal() {
@@ -84,11 +99,16 @@ export class PuntoVentaComponent implements OnInit {
 
   }
 
+
+
+
   public eliminarVenta(venta: any) {
     this.Productventas.splice(venta, 1);
     //console.log(this.Productventas);
     this.calcularTotal();
   }
+
+
 
 
   public obtenerDatoProducto(producto: any) {
@@ -97,8 +117,9 @@ export class PuntoVentaComponent implements OnInit {
 
     this.calcularTotal();
   }
-  public recibido: number = 0;
-  public cambio: number = 0;
+
+
+
 
   public compra() {
     for (var i of this.Productventas) {
@@ -117,8 +138,9 @@ export class PuntoVentaComponent implements OnInit {
     this.getProducts();
 
   }
-  public folioMayorString: string = "";
-  public folioNumero: number = 0;
+
+
+
 
   public nextFolio() {
     for (const iterator of this.creditos) {
@@ -136,73 +158,151 @@ export class PuntoVentaComponent implements OnInit {
     //console.log(this.folioMayorString);  
   }
 
-  public Cobrar() {
 
-    if (this.recibido >= parseInt(this.TotalCobrar)) {
-      this.cambio = this.recibido - parseInt(this.TotalCobrar);
-      this.compra();
-      
-    } else {
-      if (this.ClienteVenta == 0) {
-        alert("Selecciona un cliente")
-      } else {
-        
-        this.compra();
-        this.cambio = parseInt(this.TotalCobrar) - this.recibido;
-        //Obteniendo Fecha
-        const fecha = new Date();
-        //Obtengo ultimo Folio
-        this.nextFolio();
-        //Genero el dato para mandar el nuevo credito
-        var SendCredito: any;
-        /*SendCredito.push("Folio : "  + this.folioMayorString,
-        'RGI: ' + this.ClienteVenta.RGI,
-        'Nombre: ' + this.ClienteVenta.Nombre,
-        'Total: ' + this.cambio,
-        'Fecha: ' + fecha.getDate() + '/' + (fecha.getMonth() + 1) + '/' + fecha.getFullYear(),
-        'Concepto:  Compra ')*/
-
-
-        /*SendCredito = ('{ '
-          + 'Folio:  ' + this.folioMayorString
-          + ', RGI: ' + this.ClienteVenta.RGI
-          + ', Nombre: ' + this.ClienteVenta.Nombre
-          + ', Total: ' + this.cambio
-          + ', Fecha: ' + fecha.getDate() + '/' + (fecha.getMonth() + 1) + '/' + fecha.getFullYear()
-          + ', Concepto : Compra }');*/
-
-        //console.log(this.folioMayorString);
-        SendCredito = {
-          "Folio": this.folioMayorString,
-          "RGI": this.ClienteVenta.RGI,
-          "Nombre": this.ClienteVenta.Nombre,
-          "Total": String(this.cambio),
-          "Fecha": fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear(),
-          "Concepto": "Compra"
-        };
-        console.log(SendCredito);
-        this.serviceCreditos.PostCredito(SendCredito).subscribe(
-          data => {
-          if(data.status == 200){
-            alert("Compra añadida a credito");
-            location.reload();
-          }else{
-            alert("Error al añadir Credito");
-          } console.log(data);
-        }, 
-        error => {
-          console.log(error);
-        }
-        )
-
-      }
+  public RegistroVenta(Efectivo: string) {
+    var fecha = new Date();
+    var RegistroVenta: any;
+    RegistroVenta = {
+      Total: this.TotalCobrar,
+      Dia: String(fecha.getDate()),
+      Mes: String(fecha.getMonth() + 1),
+      Año: String(fecha.getFullYear()),
+      Vendedor: "Toño",
+      Efectivo: Efectivo
 
     }
+
+    return RegistroVenta;
+
   }
 
 
+  public Cobrar() {
+    var registro;
+    if (this.TotalCobrar != "" && this.TotalCobrar != "0") {
+      if (this.recibido >= parseInt(this.TotalCobrar)) {
+        this.cambio = this.recibido - parseInt(this.TotalCobrar);
+        this.compra();
+        //REGISTRANDO VENTA
+        registro = this.RegistroVenta(this.TotalCobrar);
 
+        this.serviceRegistro.PostRegistroVenta(registro).subscribe(
+          data => {
+            if (data.status == 200) {
+              console.log("Compra registrada")
+            }
+            else {
+              console.log(data.status)
+            }
+          },
+          error => {
+            console.log(error);
+          });
+        location.reload();
 
+      } else {
+        if (this.ClienteVenta == 0) {
+          alert("Selecciona un cliente")
+        } else {
+
+          this.compra();
+          this.cambio = parseInt(this.TotalCobrar) - this.recibido;
+          //Obteniendo Fecha
+          const fecha = new Date();
+          //Obtengo ultimo Folio
+          this.nextFolio();
+          //Genero el dato para mandar el nuevo credito
+          var SendCredito: any;
+
+          SendCredito = {
+            "Folio": this.folioMayorString,
+            "RGI": this.ClienteVenta.RGI,
+            "Nombre": this.ClienteVenta.Nombre,
+            "Total": String(this.cambio),
+            "Fecha": fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear(),
+            "Concepto": "Compra"
+          };
+          console.log(SendCredito);
+          this.serviceCreditos.PostCredito(SendCredito).subscribe(
+            data => {
+              if (data.status == 200) {
+                alert("Compra añadida a credito");
+                location.reload();
+              } else {
+                alert("Error al añadir Credito");
+              } console.log(data);
+            },
+            error => {
+              console.log(error);
+            }
+          )
+
+          //REGISTRANDO VENTAS
+          registro = this.RegistroVenta(String(this.recibido));
+
+          this.serviceRegistro.PostRegistroVenta(registro).subscribe(
+            data => {
+              if (data.status == 200) {
+                console.log("Compra registrada")
+              }
+              else {
+                console.log(data.status)
+              }
+            },
+            error => {
+              console.log(error);
+            });
+
+        }
+
+      }
+    }else{
+      alert("Selecciona un producto")
+    }
+  }
+  //===============REPORTES====================
+
+  public reportes: any = [];
+
+  public getReportes() {
+    this.serviceRegistro.getRegistrosVentas().subscribe(
+      (resp) => {
+        this.reportes = resp;
+      }
+    );
+  }
+
+  public Reportes: any = [];
+
+  public generarReportesDiarios(){
+    this.Reportes = [];
+    var fecha = new Date();
+    for (const reporte of this.reportes) {
+      if(reporte.Dia == String(fecha.getDate()) && reporte.Mes == String(fecha.getMonth() + 1)){
+        this.Reportes.push(reporte);
+      }  
+    }
+  }
+
+  public generarReportesMensuales(){
+    this.Reportes = [];
+    var fecha = new Date();
+    for (const reporte of this.reportes) {
+      if(reporte.Mes == String(fecha.getMonth() + 1)){
+        this.Reportes.push(reporte);
+      }  
+    }
+  }
+
+  public generarReportesAnteriores(){
+    this.Reportes = [];
+    var fecha = new Date();
+    for (const reporte of this.reportes) {
+      if(reporte.Mes != String(fecha.getMonth() + 1) ){
+        this.Reportes.push(reporte);
+      }  
+    }
+  }
 }
 
 
