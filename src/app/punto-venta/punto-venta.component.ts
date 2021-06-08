@@ -141,7 +141,7 @@ export class PuntoVentaComponent implements OnInit {
     if (this.recibido >= parseInt(this.TotalCobrar)) {
       this.cambio = this.recibido - parseInt(this.TotalCobrar);
       this.compra();
-
+      
     } else {
       if (this.ClienteVenta == 0) {
         alert("Selecciona un cliente")

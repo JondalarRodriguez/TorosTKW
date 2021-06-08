@@ -127,7 +127,7 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body ">
-                                            
+
                                             <div class="input-group mb-3">
                                                 <span class="input-group-text ancho letrasBlancas contenedor"
                                                     name="Nombre">Total</span>
@@ -141,23 +141,21 @@
                                                     name="Ingreso">Recibido</span>
                                                 <input type="number" class="form-control"
                                                     aria-label="Sizing example input"
-                                                    aria-describedby="inputGroup-sizing-default"
-                                                    [(ngModel)]="recibido">
+                                                    aria-describedby="inputGroup-sizing-default" [(ngModel)]="recibido">
                                             </div>
                                             <div class="input-group mb-3">
                                                 <span class="input-group-text ancho letrasBlancas contenedor"
                                                     name="Direccion">Cambio</span>
                                                 <input type="number" class="form-control"
                                                     aria-label="Sizing example input"
-                                                    aria-describedby="inputGroup-sizing-default"
-                                                    [(ngModel)]="cambio">
+                                                    aria-describedby="inputGroup-sizing-default" [(ngModel)]="cambio">
                                             </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Cancelar</button>
                                             <button type="button" class="btn btn-primary"
-                                            (click) = "Cobrar()">Cobrar</button>
+                                                (click)="Cobrar()">Cobrar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -203,42 +201,58 @@
             </div>
         </div>
     </div>
-    <!-- Button trigger modal -->
-    <div class="AjusteDerecha">
-        <button type="button" class="btn buttonSize" data-bs-toggle="modal" data-bs-target="#Reportes">
-            Reportes
-        </button>
-    </div>
+   
+    <!-- ===== PRUEBA MODALES DOBLES =============-->
 
-
-    <!-- Modal -->
-    <div class="modal fade" id="Reportes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal fade" id="Reportes" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+        tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">Reportes</h4>
+                    <h5 class="modal-title" id="exampleModalToggleLabel">Reportes</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <h5>
                         Reporte a Generar
                     </h5>
-                    <button type="button" class="btn buttonSize">
+                    <button type="button" class="btn buttonSize"data-bs-target="#Detalles" data-bs-toggle="modal"
+                    data-bs-dismiss="modal">
                         Día
                     </button>
-                    <button type="button" class="btn buttonSize">
-                        Semana
-                    </button>
-                    <button type="button" class="btn buttonSize">
+                    <button type="button" class="btn buttonSize" data-bs-target="#Detalles" data-bs-toggle="modal"
+                    data-bs-dismiss="modal">
                         Mes
                     </button>
-
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                    <button class="btn btn-gray" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- =============SEGUNDO MODAL ====================== -->
+    <div class="modal fade" id="Detalles" aria-hidden="true" aria-labelledby="Detalles"
+        tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Detalles">Detalles</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Hide this modal and show the first with the button below.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-gray" data-bs-target="#Reportes" data-bs-toggle="modal"
+                        data-bs-dismiss="modal">Volver</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class = "AjusteDerecha">
+        <a class="btn buttonSize" data-bs-toggle="modal" href="#Reportes" role="button">Reportes</a>
     </div>
 
 </div>
