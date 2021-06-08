@@ -29,7 +29,7 @@ export class UsuariosComponent implements OnInit {
     direccion: new FormControl(''),
     telefono: new FormControl('')
   });
-  
+
   public usuarios: any = [];
   public forUpdate: any = [];
   public Busqueda: string = "";
@@ -44,11 +44,18 @@ export class UsuariosComponent implements OnInit {
         this.usuarios = resp;
       }
     );
-
+    this.comprobarSesion();
 
   }
 
-  public nuevoUsuario(form:UsuarioI) {
+
+  public comprobarSesion() {
+    if (sessionStorage.getItem('sesion') == undefined) {
+      this.router.navigate(['login'])
+    }
+  }
+
+  public nuevoUsuario(form: UsuarioI) {
 
     this.sesionUsuario.PostUsuario(form).subscribe(
       data => {
@@ -67,7 +74,7 @@ export class UsuariosComponent implements OnInit {
 
   }
 
-  public obtenerDato(usuario:UsuarioI) {
+  public obtenerDato(usuario: UsuarioI) {
     this.forUpdate = usuario;
     console.log(usuario);
   }
@@ -87,7 +94,7 @@ export class UsuariosComponent implements OnInit {
     location.reload();
   }
 
-  public eliminarUsuario(id: String){
+  public eliminarUsuario(id: String) {
     this.sesionUsuario.deleteUsuario(id).subscribe(
       data => {
         console.log("result: ", data);

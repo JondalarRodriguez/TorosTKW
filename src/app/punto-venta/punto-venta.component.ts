@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ClientesService } from '../services/clienteservice/clientes.service';
 import { CreditoService } from '../services/creditosService/credito.service';
 import { InventarioService } from '../services/inventarioService/inventario.service';
@@ -28,16 +29,23 @@ export class PuntoVentaComponent implements OnInit {
     private sesioncliente: ClientesService,
     private serviceInventario: InventarioService,
     private serviceCreditos: CreditoService,
-    private serviceRegistro: RegistroVentasService
+    private serviceRegistro: RegistroVentasService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.getClientes();
     this.getProducts();
     this.getCreditos();
+    this.comprobarSesion();
   }
 
 
+  public comprobarSesion() {
+    if (sessionStorage.getItem('sesion') == undefined) {
+      this.router.navigate(['login'])
+    }
+  }
 
   public getClientes() {
     this.sesioncliente.getCliente().subscribe(
@@ -256,7 +264,7 @@ export class PuntoVentaComponent implements OnInit {
         }
 
       }
-    }else{
+    } else {
       alert("Selecciona un producto")
     }
   }
@@ -274,33 +282,33 @@ export class PuntoVentaComponent implements OnInit {
 
   public Reportes: any = [];
 
-  public generarReportesDiarios(){
+  public generarReportesDiarios() {
     this.Reportes = [];
     var fecha = new Date();
     for (const reporte of this.reportes) {
-      if(reporte.Dia == String(fecha.getDate()) && reporte.Mes == String(fecha.getMonth() + 1)){
+      if (reporte.Dia == String(fecha.getDate()) && reporte.Mes == String(fecha.getMonth() + 1)) {
         this.Reportes.push(reporte);
-      }  
+      }
     }
   }
 
-  public generarReportesMensuales(){
+  public generarReportesMensuales() {
     this.Reportes = [];
     var fecha = new Date();
     for (const reporte of this.reportes) {
-      if(reporte.Mes == String(fecha.getMonth() + 1)){
+      if (reporte.Mes == String(fecha.getMonth() + 1)) {
         this.Reportes.push(reporte);
-      }  
+      }
     }
   }
 
-  public generarReportesAnteriores(){
+  public generarReportesAnteriores() {
     this.Reportes = [];
     var fecha = new Date();
     for (const reporte of this.reportes) {
-      if(reporte.Mes != String(fecha.getMonth() + 1) ){
+      if (reporte.Mes != String(fecha.getMonth() + 1)) {
         this.Reportes.push(reporte);
-      }  
+      }
     }
   }
 }

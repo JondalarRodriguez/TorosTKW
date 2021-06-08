@@ -22,8 +22,14 @@ export class LoginComponent implements OnInit {
     private sesionService: SesionService) { }
 
   ngOnInit(): void {
+    this.comprobarSesion()
   }
 
+  public comprobarSesion() {
+    if (sessionStorage.getItem('sesion') != undefined) {
+      this.router.navigate(['ventas'])
+    }
+  }
   public iniciarSesion(form: loginI) {
     var id = form.username;
     var user = form.username;
@@ -36,6 +42,9 @@ export class LoginComponent implements OnInit {
         this.usuarioEncontrado = data.body[0];
         //console.log("usuario del servidor",this.usuarioEncontrado.usuario);
         //console.log("contraseña del servidor",this.usuarioEncontrado.password);
+
+
+
         if (this.usuarioEncontrado === undefined) {
           alert("Usuario no encontrado");
         } else if (data.status === 200) {
@@ -44,9 +53,11 @@ export class LoginComponent implements OnInit {
           var passS = this.usuarioEncontrado.password;
           if (userS === user && passS === pass) {
             alert("Usuario encontrado y autenticado")
-            this.router.navigate(['admin']);
+            this.router.navigate(['ventas'])
+            sessionStorage.setItem('sesion', userS);
+            console.log(sessionStorage.getItem('sesion'))
           } else {
-            alert("Usuario encontrado, usuario y contraseña incorrecto")
+            alert("Contraseña incorrecta")
           }
         } else {
           alert("Error en el servidor");
@@ -60,6 +71,7 @@ export class LoginComponent implements OnInit {
 
     );
 
+    //CODIGO GUARDADO PARA CUANDO SE ENCRIPTE LA INFORMACIÓN
 
     /*
     .toPromise().then(
