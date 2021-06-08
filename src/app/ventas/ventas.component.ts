@@ -61,10 +61,7 @@ export class VentasComponent implements OnInit {
     this.folioNumero += 1;
     this.folioInventario = String(this.folioNumero);
   }
-    public direccionCredito() {
-    this.router.navigate(['credito']);
 
-  }
 /* se añaden nuevos producto a la tabla de inventario */
   public nuevoProducto(form: String) {
 
