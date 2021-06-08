@@ -65,7 +65,7 @@ export class CreditoComponent implements OnInit {
 
   public obtenerDato(credito: any) {
     this.forUpdate = credito;
-    console.log(credito);
+    console.log(this.forUpdate.Nombre);
 
   }
 

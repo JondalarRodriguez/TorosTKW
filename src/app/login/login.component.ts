@@ -36,9 +36,6 @@ export class LoginComponent implements OnInit {
         this.usuarioEncontrado = data.body[0];
         //console.log("usuario del servidor",this.usuarioEncontrado.usuario);
         //console.log("contraseña del servidor",this.usuarioEncontrado.password);
-
-
-
         if (this.usuarioEncontrado === undefined) {
           alert("Usuario no encontrado");
         } else if (data.status === 200) {
@@ -47,6 +44,7 @@ export class LoginComponent implements OnInit {
           var passS = this.usuarioEncontrado.password;
           if (userS === user && passS === pass) {
             alert("Usuario encontrado y autenticado")
+            this.router.navigate(['admin']);
           } else {
             alert("Usuario encontrado, usuario y contraseña incorrecto")
           }

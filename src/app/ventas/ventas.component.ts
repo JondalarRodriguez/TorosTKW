@@ -94,6 +94,7 @@ export class VentasComponent implements OnInit {
   public actualizarProducto(form: any) {
     console.log(this.forUpdate);
     alert("actualizado")
+    location.reload();
     var id: string = this.forUpdate.Folio;
     console.log(form);
     console.log(id);
