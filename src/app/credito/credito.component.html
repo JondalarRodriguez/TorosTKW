@@ -11,7 +11,7 @@
 
 
         <!-- Modal -->
-        <div #printThis> 
+        <div #printThis>
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-dialog-scrollable">
@@ -52,8 +52,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
-                            <button type="button" class="btn btn-primary"
-                            (click)="onPrint()">Imprimir</button>
+                            <button type="button" class="btn btn-primary" (click)="onPrint()">Imprimir</button>
                         </div>
                     </div>
                 </div>
@@ -70,7 +69,7 @@
             </div>
             <div class="col btn-group btn-group-toggle mb-6 botones align-items-center" data-toggle="buttons">
                 <h5>Total</h5>
-                <input type="text" class="form-control margen-izq alinear" id="Total" aria-label="Buscar">
+                <input type="text" class="form-control margen-izq alinear" readonly="readonly" [(ngModel)]="forUpdate.Total" id="Total" aria-label="Buscar">
             </div>
             <div class="col btn-group btn-group-toggle mb-6 botones align-items-center" data-toggle="buttons">
                 <button type="button" class="btn btn-danger btns borde-boton margen-izq"
@@ -86,27 +85,27 @@
                 <h3 class="clientes">Clientes</h3>
             </div>
 
-            <div #printThis> 
+            <div #printThis>
                 <table>
                     <thead>
                         <tr>
                             <th scope="col">RGI</th>
                             <th scope="col">Nombre</th>
-                            <th scope="col">Total</th>
                             <th scope="col">Fecha</th>
                             <th scope="col">Concepto</th>
                             <th scope="col">Historial</th>
+                            <th scope="col"> </th>
                         </tr>
                     </thead>
 
                     <tr *ngFor="let credito of creditos">
                         <td>{{credito.RGI}}</td>
                         <td>{{credito.Nombre}}</td>
-                        <td>{{credito.Total}}</td>
                         <td>{{credito.Fecha}}</td>
                         <td>{{credito.Concepto}}</td>
                         <td><input type="submit" name="envio" value="Ver" class="boton2 ancho" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal"></td>
+                        <td><input type="submit" name="envio" value="Selecionar" data-bs-target="#exampleModal" (click)="obtenerDato(credito)"></td>
                     </tr>
                 </table>
             </div>
