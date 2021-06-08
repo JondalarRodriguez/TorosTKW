@@ -96,10 +96,10 @@
                         <td>{{cliente.Precio}}</td>
                         <td>{{cliente.Existencia}}</td>
                         <td>
-                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-warning btnT" data-bs-toggle="modal"
                                 (click)="obtenerDato(cliente)" data-bs-target="#exampleModalEDITAR">Editar</button>
 
-                            <button type="button" class="btn btn-danger"
+                            <button type="button" class="btn btn-danger btnT"
                                 (click)="deleteProducto(cliente.Folio)">eliminar</button>
                         </td>
 
@@ -157,7 +157,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-primary">Guardar</button>
                         </div>
                     </div>
