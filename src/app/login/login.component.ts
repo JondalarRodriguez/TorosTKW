@@ -28,37 +28,38 @@ export class LoginComponent implements OnInit {
     var id = form.username;
     var user = form.username;
     var pass = form.password;
-console.log("usuario que estoy mandando", user)
-console.log("contraseña que estoy mandando", pass)
+    //console.log("usuario que estoy mandando", user)
+    //console.log("contraseña que estoy mandando", pass)
     //console.log(id);
     this.sesionService.iniciarSesion(id, form).toPromise().then(
-      data =>{
+      data => {
         this.usuarioEncontrado = data.body[0];
-          //console.log("usuario del servidor",this.usuarioEncontrado.usuario);
-          //console.log("contraseña del servidor",this.usuarioEncontrado.password);
+        //console.log("usuario del servidor",this.usuarioEncontrado.usuario);
+        //console.log("contraseña del servidor",this.usuarioEncontrado.password);
 
+
+
+        if (this.usuarioEncontrado === undefined) {
+          alert("Usuario no encontrado");
+        } else if (data.status === 200) {
+          //alert("Usuario encontrado");
           var userS = this.usuarioEncontrado.usuario;
           var passS = this.usuarioEncontrado.password;
-
-          if (this.usuarioEncontrado === undefined) {
-            alert("Usuario no encontrado");
-          } else if(data.status === 200){
-              //alert("Usuario encontrado");
-              if(userS === user && passS === pass){
-                alert("Usuario encontrado y autenticado")
-              }else{
-                alert("Usuario encontrado, usuario y contraseña incorrecto")
-              }
+          if (userS === user && passS === pass) {
+            alert("Usuario encontrado y autenticado")
           } else {
-              alert("Error en el servidor");
-            }
-
+            alert("Usuario encontrado, usuario y contraseña incorrecto")
           }
+        } else {
+          alert("Error en el servidor");
+        }
+
+      }
     ).catch(
-      error =>{
+      error => {
         console.log(error);
       }
-      
+
     );
 
 
@@ -73,8 +74,8 @@ console.log("contraseña que estoy mandando", pass)
       }
       );
       */
-    
-    
+
+
     /*
     .subscribe(
         data => {
@@ -95,7 +96,7 @@ console.log("contraseña que estoy mandando", pass)
         error => {
           console.log(error);
         });*/
-    }
+  }
 
 
   private limpiarCampos() {
