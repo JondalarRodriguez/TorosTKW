@@ -32,22 +32,11 @@
                                     </tr>
                                 </thead>
 
-                                <tr>
-                                    <td>01/01/2021</td>
-                                    <td>300</td>
+                                <tr *ngFor = "let abono of Abonos">
+                                    <td> {{abono.Fecha}} </td>
+                                    <td> {{abono.Monto}} </td>
                                 </tr>
-                                <tr>
-                                    <td>01/02/2021</td>
-                                    <td>200</td>
-                                </tr>
-                                <tr>
-                                    <td>01/03/2021</td>
-                                    <td>100</td>
-                                </tr>
-                                <tr>
-                                    <td>01/04/2021</td>
-                                    <td>0</td>
-                                </tr>
+                                
                             </table>
                         </div>
                         <div class="modal-footer">
@@ -64,7 +53,8 @@
         <div class="row align-items-center contenedor3 justify-content-around">
             <div class="col input-group mb-6 align-items-center">
                 <h5>Abono</h5>
-                <input type="text" class="form-control margen-izq alinear" id="Abono" aria-label="Buscar">
+                <input type="text" class="form-control margen-izq alinear" id="Abono" aria-label="Buscar"
+                [(ngModel)]="AbonoString">
                 <button type="button" class="btn btn-danger margen-izq">Aceptar</button>
             </div>
             <div class="col btn-group btn-group-toggle mb-6 botones align-items-center" data-toggle="buttons">
@@ -104,7 +94,7 @@
                         <td>{{credito.Fecha}}</td>
                         <td>{{credito.Concepto}}</td>
                         <td><input type="submit" name="envio" value="Ver" class="boton2 ancho" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal"></td>
+                                data-bs-target="#exampleModal" (click) = "obtenerAbonos(credito)"></td>
                         <td><input type="submit" name="envio" value="Selecionar" data-bs-target="#exampleModal" (click)="obtenerDato(credito)"></td>
                     </tr>
                 </table>

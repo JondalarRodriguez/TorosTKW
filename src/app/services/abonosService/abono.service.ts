@@ -12,8 +12,8 @@ export class AbonoService {
     private http: HttpClient
   ) { }
 
-  getAbonos(){
-    return this.http.get<Abono>('http://localhost:4000/Abonos');
+  getAbonos(id: String){
+    return this.http.get<Abono>('http://localhost:4000/Abonos/' + id);
   }
 
   PostAbono(Abono: any){
@@ -25,8 +25,8 @@ export class AbonoService {
     return this.http.delete<boolean>("http://localhost:4000/product/" + id, {observe: 'response'});
     
   }*/
-  public putAbono(id: String, Abono: any){
-    return this.http.put<boolean>("http://localhost:4000/Abono/" + id, Abono, {observe: 'response'});
+  public deleteAbono(id: String, Abono: any){
+    return this.http.delete<boolean>("http://localhost:4000/Abono/" + id, {observe: 'response'});
     
   }
 

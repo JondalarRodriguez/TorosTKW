@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CreditoService } from '../services/creditosService/credito.service';
 import { Credito } from '../interfaces/creditos.interface';
 import { FormGroup, FormControl } from '@angular/forms';
+import { AbonoService } from '../services/abonosService/abono.service';
 
 @Component({
   selector: 'app-credito',
@@ -24,9 +25,13 @@ export class CreditoComponent implements OnInit {
   public forUpdate: any = [];
   public folioMayorString = "";
   public folioNumero: number = 0;
+  public AbonoString: string = "";
+  public Abonos: any = [];
 
   constructor(private router: Router,
-    private sesioncredito: CreditoService) { }
+    private sesioncredito: CreditoService,
+    private abonosService: AbonoService
+    ) { }
 
   ngOnInit(): void {
     this.sesioncredito.getCreditos().subscribe(
@@ -73,7 +78,7 @@ export class CreditoComponent implements OnInit {
 
   public obtenerDato(credito: any) {
     this.forUpdate = credito;
-    console.log(this.forUpdate.Nombre);
+    console.log(this.forUpdate.Folio);
 
   }
 
@@ -84,6 +89,17 @@ export class CreditoComponent implements OnInit {
 
   onPrint() {
     window.print();
+  }
+
+  public obtenerAbonos(credito: any){
+    this.forUpdate = credito;
+    this.abonosService.getAbonos(this.forUpdate.Folio).subscribe(
+      (resp) => {
+        
+        this.Abonos = resp;
+        console.log(this.Abonos);
+      }
+    );
   }
 
 }

@@ -1,6 +1,6 @@
 export interface Abono{
     id: String;
-    folio: String;
+    Folio: String;
     Nombre: String;
     Fecha: String;
     Monto: String;
