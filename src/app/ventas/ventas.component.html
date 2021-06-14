@@ -11,19 +11,21 @@
 
 
         <div class="row align-items-center contenedor3 justify-content-around">
+
             <div class="col input-group mb-6 align-items-center">
                 <h5>Buscar</h5>
                 <input type="text" class="form-control margen-izq alinear" [(ngModel)]="Busqueda" name="pipeInventario"
                     id="Abono" id="Abono" aria-label="Buscar">
-
             </div>
+
             <div class="col btn-group btn-group-toggle mb-6 botones align-items-center" data-toggle="buttons">
                 <button type="button" class="btn btn-danger btns borde-boton" data-bs-toggle="modal"
                     data-bs-target="#exampleModalAÑADIR">Nuevo producto</button>
             </div>
+
         </div>
 
-        <!-- Modal Nuevo Producto-->
+        <!--=========================== Modal Nuevo Producto==================================0-->
         <form (ngSubmit)="nuevoProducto(inventarioForm.value)" [formGroup]="inventarioForm">
             <div class="modal fade" id="exampleModalAÑADIR" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
@@ -36,38 +38,69 @@
 
                         <div class="modal-body">
                             <h6 class="titulo2">Datos del producto</h6>
+
                             <div class="input-group mb-3">
                                 <span class="input-group-text ancho letrasBlancas contenedor" name="Folio">Folio</span>
-                                <input type="text" [(ngModel)]="folioInventario" formControlName="Folio" class="form-control" 
-                             aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly="readonly">
+                                <input type="text" [(ngModel)]="folioInventario" formControlName="Folio"
+                                    class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" readonly="readonly">
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text ancho letrasBlancas contenedor"
                                     name="Nombre">Nombre</span>
                                 <input type="text" formControlName="Nombre" class="form-control"
                                     aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <div
+                                    *ngIf="inventarioForm.controls.Nombre.errors && inventarioForm.controls.Nombre.touched">
+                                    <div *ngIf="inventarioForm.controls.Nombre.errors.required"
+                                        class="alert alert-danger">
+                                        El campo es requerido
+                                    </div>
+                                </div>
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text ancho letrasBlancas contenedor" name="Nombre">Costo</span>
                                 <input type="text" formControlName="Costo" class="form-control"
                                     aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <div
+                                    *ngIf="inventarioForm.controls.Costo.errors && inventarioForm.controls.Costo.touched">
+                                    <div *ngIf="inventarioForm.controls.Costo.errors.required"
+                                        class="alert alert-danger">
+                                        El campo es requerido
+                                    </div>
+                                </div>
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text ancho letrasBlancas contenedor" name="Ingreso">Precio de
                                     venta</span>
                                 <input type="text" formControlName="Precio" class="form-control"
                                     aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <div
+                                    *ngIf="inventarioForm.controls.Precio.errors && inventarioForm.controls.Precio.touched">
+                                    <div *ngIf="inventarioForm.controls.Precio.errors.required"
+                                        class="alert alert-danger">
+                                        El campo es requerido
+                                    </div>
+                                </div>
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text ancho letrasBlancas contenedor"
                                     name="Direccion">Exitencia</span>
                                 <input type="text" formControlName="Existencia" class="form-control"
                                     aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <div
+                                    *ngIf="inventarioForm.controls.Existencia.errors && inventarioForm.controls.Existencia.touched">
+                                    <div *ngIf="inventarioForm.controls.Existencia.errors.required"
+                                        class="alert alert-danger">
+                                        El campo es requerido
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <button type="submit" class="btn btn-primary"
+                                [disabled]="!inventarioForm.valid">Guardar</button>
                         </div>
                     </div>
                 </div>
@@ -124,9 +157,9 @@
                             <h6 class="titulo2">Datos del producto</h6>
                             <div class="input-group mb-3">
                                 <span class="input-group-text ancho letrasBlancas contenedor" name="folio">Folio</span>
-                                <input type="text" [(ngModel)]="forUpdate.Folio" formControlName="Folio" class="form-control" placeholder="folio"
-                                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
-                                    readonly="readonly">
+                                <input type="text" [(ngModel)]="forUpdate.Folio" formControlName="Folio"
+                                    class="form-control" placeholder="folio" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" readonly="readonly">
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text ancho letrasBlancas contenedor"

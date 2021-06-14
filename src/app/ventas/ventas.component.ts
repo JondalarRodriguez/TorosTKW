@@ -11,19 +11,19 @@ import { InventarioService } from '../services/inventarioService/inventario.serv
 export class VentasComponent implements OnInit {
 
   public inventarioForm = new FormGroup({
-    Folio: new FormControl(''),
-    Nombre: new FormControl(''),
-    Costo: new FormControl(''),
-    Precio: new FormControl(''),
-    Existencia: new FormControl('')
+    Folio: new FormControl('', Validators.required),
+    Nombre: new FormControl('', Validators.required),
+    Costo: new FormControl('', Validators.required),
+    Precio: new FormControl('', Validators.required),
+    Existencia: new FormControl('', Validators.required)
   });
 
   public inventarioFormActualizar = new FormGroup({
-    Folio: new FormControl(''),
-    Nombre: new FormControl(''),
-    Costo: new FormControl(''),
-    Precio: new FormControl(''),
-    Existencia: new FormControl('')
+    Folio: new FormControl('', Validators.required),
+    Nombre: new FormControl('', Validators.required),
+    Costo: new FormControl('', Validators.required),
+    Precio: new FormControl('', Validators.required),
+    Existencia: new FormControl('', Validators.required)
   });
 
   public productos: any = [];
