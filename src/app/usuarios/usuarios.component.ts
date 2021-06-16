@@ -55,8 +55,31 @@ export class UsuariosComponent implements OnInit {
     }
   }
 
+  public comprobarUsuario(form: any, actualizar: number){
+    let existe = 0
+    let usuarios = this.usuarios
+    for (const usuario of usuarios) {
+
+    if (form.usuario === usuario.usuario) {
+      existe += 1;
+    }else{
+      existe = existe
+    }
+     
+   }
+   if(existe >= (1 + actualizar)){
+    return true
+   }else{
+     return false
+   }
+
+  }
+
   public nuevoUsuario(form: UsuarioI) {
 
+    let seRepite = this.comprobarUsuario(form, 0);
+
+    if (seRepite == false){
     this.sesionUsuario.PostUsuario(form).subscribe(
       data => {
         if (data.status == 200) {
@@ -71,6 +94,9 @@ export class UsuariosComponent implements OnInit {
         console.log(error);
       }
     );
+    }else{
+      alert('Usuario ya existe')
+    }
 
   }
 

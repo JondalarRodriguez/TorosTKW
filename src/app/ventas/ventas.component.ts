@@ -93,6 +93,8 @@ export class VentasComponent implements OnInit {
    }
 
   }
+
+  
   /* se añaden nuevos producto a la tabla de inventario */
   public nuevoProducto(form: any) {
     let formulario = form;
