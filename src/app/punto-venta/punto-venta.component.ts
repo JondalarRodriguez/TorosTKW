@@ -24,6 +24,7 @@ export class PuntoVentaComponent implements OnInit {
   public TotalCobrar: string = "";
   public recibido: number = 0;
   public cambio: number = 0;
+  public usuarioVenta: string = "";
 
   constructor(
     private sesioncliente: ClientesService,
@@ -44,6 +45,8 @@ export class PuntoVentaComponent implements OnInit {
   public comprobarSesion() {
     if (sessionStorage.getItem('sesion') == undefined) {
       this.router.navigate(['login'])
+    }else{
+      this.usuarioVenta = String(sessionStorage.getItem('sesion'))
     }
   }
 
@@ -175,7 +178,7 @@ export class PuntoVentaComponent implements OnInit {
       Dia: String(fecha.getDate()),
       Mes: String(fecha.getMonth() + 1),
       Año: String(fecha.getFullYear()),
-      Vendedor: "Toño",
+      Vendedor: String(this.usuarioVenta),
       Efectivo: Efectivo
 
     }
