@@ -28,8 +28,8 @@
 							<div class="form-group mb-3">
 								<span class="input-group-text letrasBlancas contenedor" name="folio">Folio</span>
 								<input type="text" formControlName="folio" class="form-control" placeholder="folio"
-								[(ngModel)]="folioMayorString" aria-label="Sizing example input" 
-								aria-describedby="inputGroup-sizing-default" readonly="readonly">
+									[(ngModel)]="folioMayorString" aria-label="Sizing example input"
+									aria-describedby="inputGroup-sizing-default" readonly="readonly">
 							</div>
 							<div class="form-group mb-3">
 								<span class="input-group-text letrasBlancas contenedor" name="RGI">RGI</span>
@@ -37,37 +37,38 @@
 									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 							</div>
 							<div class="form-group mb-3">
-								<span class="input-group-text letrasBlancas contenedor"
-									name="Nombre">Nombre</span>
+								<span class="input-group-text letrasBlancas contenedor" name="Nombre">Nombre</span>
 								<input type="text" class="form-control" formControlName="Nombre" placeholder="Nombre"
 									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 							</div>
 							<div class="form-group mb-3">
 								<span class="input-group-text letrasBlancas contenedor" name="Ingreso">Fecha de
 									Ingreso</span>
-								<input type="text" class="form-control" formControlName="FechaIngreso" placeholder="Fecha de Ingreso"
-									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+								<input type="text" class="form-control" formControlName="FechaIngreso"
+									placeholder="dd/mm/aaaa" aria-label="Sizing example input"
+									aria-describedby="inputGroup-sizing-default" required>
+
 							</div>
 							<div class="form-group mb-3">
 								<span class="input-group-text letrasBlancas contenedor"
 									name="Direccion">Dirección</span>
-								<input type="text" class="form-control" formControlName="Direccion" placeholder="Dirección"
-									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+								<input type="text" class="form-control" formControlName="Direccion"
+									placeholder="Dirección" aria-label="Sizing example input"
+									aria-describedby="inputGroup-sizing-default">
 							</div>
 							<div class="form-group mb-3">
-								<span class="input-group-text letrasBlancas contenedor"
-									name="Telefono">Teléfono</span>
-								<input type="text" class="form-control" formControlName="Telefono" placeholder="Teléfono"
-									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+								<span class="input-group-text letrasBlancas contenedor" name="Telefono">Teléfono</span>
+								<input type="text" class="form-control" formControlName="Telefono"
+									placeholder="Teléfono" aria-label="Sizing example input"
+									aria-describedby="inputGroup-sizing-default">
 							</div>
 							<div class="form-group mb-3">
 								<span class="input-group-text letrasBlancas contenedor" name="Edad">Edad</span>
-								<input type="text" class="form-control" formControlName="Edad" placeholder="Edad"
+								<input type="number" class="form-control" formControlName="Edad" placeholder="Edad"
 									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 							</div>
 							<div class="form-group mb-3">
-								<span class="input-group-text letrasBlancas contenedor"
-									name="Horario">Horario</span>
+								<span class="input-group-text letrasBlancas contenedor" name="Horario">Horario</span>
 								<input type="text" class="form-control" formControlName="Horario" placeholder="Horario"
 									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 							</div>
@@ -79,8 +80,9 @@
 							<div class="form-group mb-3">
 								<span class="input-group-text letrasBlancas contenedor"
 									name="Mensualidad">Mensualidad</span>
-								<input type="text" class="form-control" formControlName="Mensualidad" placeholder="Mensualidad"
-									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+								<input type="text" class="form-control" formControlName="Mensualidad"
+									placeholder="Mensualidad" aria-label="Sizing example input"
+									aria-describedby="inputGroup-sizing-default">
 							</div>
 
 
@@ -97,24 +99,24 @@
 
 		<!--=====================FINAL DEL MODAL=======================-->
 
-		
+
 
 		<div class="row align-items-center contenedor3 justify-content-around">
 			<div class="col input-group mb-6 align-items-center">
 				<h5>Buscar</h5>
 				<input type="text" class="form-control margen-izq alinear" [(ngModel)]="Busqueda" name="pipeClientes"
-				id="Abono" aria-label="Buscar" > 
-				
+					id="Abono" aria-label="Buscar">
+
 			</div>
 			<div class="col btn-group btn-group-toggle mb-6 botones align-items-center" data-toggle="buttons">
 				<!-- Button trigger modal -->
 				<button type="button" class="btn btn-danger btns borde-boton" data-bs-toggle="modal"
 					data-bs-target="#exampleModal">Nuevo cliente</button>
 				<!--=========-->
-		
+
 				<button type="button" class="btn btn-danger btns borde-boton margen-izq"
 					(click)="direccionCredito()">Crédito</button>
-				
+
 			</div>
 		</div>
 
@@ -137,7 +139,8 @@
 									<th>{{cliente.RGI}}</th>
 									<td>{{cliente.Nombre }}</td>
 									<td>
-										<button type="button" class="btn btn-warning btnT" (click)="obtenerDato(cliente)">
+										<button type="button" class="btn btn-warning btnT"
+											(click)="obtenerDato(cliente)">
 											Editar</button>
 										<button type="button" class="btn btn-danger btnT"
 											(click)="deleteCliente(cliente.folio)">
@@ -157,12 +160,13 @@
 						<div class="contenedor opaco margen">
 							<p class="Center letrasBlancas">Detalles de clientes</p>
 							<!---->
-								<div class="input-group mb-3">
-								<span class="input-group-text ancho letrasBlancas contenedor"  id="Folio">Folio</span>
-								<input type="text" readonly="readonly" [(ngModel)]="forUpdate.folio"class="form-control" formControlName="folio"
-									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+							<div class="input-group mb-3">
+								<span class="input-group-text ancho letrasBlancas contenedor" id="Folio">Folio</span>
+								<input type="text" readonly="readonly" [(ngModel)]="forUpdate.folio"
+									class="form-control" formControlName="folio" aria-label="Sizing example input"
+									aria-describedby="inputGroup-sizing-default">
 							</div>
-							
+
 
 							<div class="input-group mb-3">
 								<span class="input-group-text ancho letrasBlancas contenedor" id="RGI">RGI</span>

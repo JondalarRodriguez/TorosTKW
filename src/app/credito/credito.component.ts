@@ -97,9 +97,52 @@ export class CreditoComponent implements OnInit {
       (resp) => {
         
         this.Abonos = resp;
-        console.log(this.Abonos);
+        //console.log(this.Abonos);
       }
     );
   }
+
+  public enviarAbono(){
+    
+    let fecha = new Date();
+    var abono;
+
+    if(this.forUpdate.length == 0 || this.AbonoString ==  ""){
+
+      alert("Falta agregar abono o escoger cliente")
+
+    } else{
+      abono = {
+        Folio: this.forUpdate.Folio,
+        Nombre: this.forUpdate.Nombre,
+        Fecha: (fecha.getDate() + '/' + (fecha.getMonth() + 1) + '/' + fecha.getFullYear()),
+        Monto: this.AbonoString
+      }
+      this.abonosService.PostAbono(abono).subscribe(
+        data => {
+          if(data.status == 200){
+            alert("Abono registrado")
+            let resta: number = parseInt(this.forUpdate.Total) - parseInt(this.AbonoString)
+            this.forUpdate.Total = String(resta)
+            
+            this.sesioncredito.putCredito(this.forUpdate.Folio, this.forUpdate).subscribe(
+              data => {
+                console.log(data)
+              }
+            )
+              location.reload()
+          }else{
+            alert('Error')
+          }
+        },error =>{
+          alert(error)
+        }
+      )
+    }
+
+    
+
+  }
+
 
 }

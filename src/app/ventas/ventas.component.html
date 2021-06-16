@@ -60,7 +60,7 @@
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text ancho letrasBlancas contenedor" name="Nombre">Costo</span>
-                                <input type="text" formControlName="Costo" class="form-control"
+                                <input type="number" formControlName="Costo" class="form-control"
                                     aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 <div
                                     *ngIf="inventarioForm.controls.Costo.errors && inventarioForm.controls.Costo.touched">
@@ -73,7 +73,7 @@
                             <div class="input-group mb-3">
                                 <span class="input-group-text ancho letrasBlancas contenedor" name="Ingreso">Precio de
                                     venta</span>
-                                <input type="text" formControlName="Precio" class="form-control"
+                                <input type="number" formControlName="Precio" class="form-control"
                                     aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 <div
                                     *ngIf="inventarioForm.controls.Precio.errors && inventarioForm.controls.Precio.touched">
@@ -86,7 +86,7 @@
                             <div class="input-group mb-3">
                                 <span class="input-group-text ancho letrasBlancas contenedor"
                                     name="Direccion">Exitencia</span>
-                                <input type="text" formControlName="Existencia" class="form-control"
+                                <input type="number" formControlName="Existencia" class="form-control"
                                     aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 <div
                                     *ngIf="inventarioForm.controls.Existencia.errors && inventarioForm.controls.Existencia.touched">
@@ -110,37 +110,41 @@
         <!--            FIN DEL MODAL NUEVO PRODUCTO               -->
 
         <div class="contenedor1">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">Folio</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Costo</th>
-                        <th scope="col">Precio Venta</th>
-                        <th scope="col">Existencia</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let cliente of productos  | pipeInventario:Busqueda">
-                        <th scope="row">{{cliente.Folio}}</th>
-                        <td>{{cliente.Nombre}}</td>
-                        <td>{{cliente.Costo}}</td>
-                        <td>{{cliente.Precio}}</td>
-                        <td>{{cliente.Existencia}}</td>
-                        <td>
-                            <button type="button" class="btn btn-warning btnT" data-bs-toggle="modal"
-                                (click)="obtenerDato(cliente)" data-bs-target="#exampleModalEDITAR">Editar</button>
-
-                            <button type="button" class="btn btn-danger btnT"
-                                (click)="deleteProducto(cliente.Folio)">Eliminar</button>
-                        </td>
-
-                    </tr>
+            <div class="opaco scroll">
 
 
-                </tbody>
-            </table>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Folio</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Costo</th>
+                            <th scope="col">Precio Venta</th>
+                            <th scope="col">Existencia</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let cliente of productos  | pipeInventario:Busqueda">
+                            <th scope="row">{{cliente.Folio}}</th>
+                            <td>{{cliente.Nombre}}</td>
+                            <td>$ {{cliente.Costo}}</td>
+                            <td>$ {{cliente.Precio}}</td>
+                            <td>{{cliente.Existencia}}</td>
+                            <td>
+                                <button type="button" class="btn btn-warning btnT" data-bs-toggle="modal"
+                                    (click)="obtenerDato(cliente)" data-bs-target="#exampleModalEDITAR">Editar</button>
+
+                                <button type="button" class="btn btn-danger btnT"
+                                    (click)="deleteProducto(cliente.Folio)">Eliminar</button>
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
         </div>
         <!---------  Modal Editar Producto  ---------->
         <form (ngSubmit)="actualizarProducto(inventarioFormActualizar.value)" [formGroup]="inventarioFormActualizar">
@@ -170,27 +174,28 @@
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text ancho letrasBlancas contenedor" name="Nombre">Costo</span>
-                                <input type="text" [(ngModel)]="forUpdate.Costo" formControlName="Costo"
+                                <input type="number" [(ngModel)]="forUpdate.Costo" formControlName="Costo"
                                     class="form-control" aria-label="Sizing example input"
                                     aria-describedby="inputGroup-sizing-default">
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text ancho letrasBlancas contenedor" name="Ingreso">Precio de
                                     venta</span>
-                                <input type="text" [(ngModel)]="forUpdate.Precio" formControlName="Precio"
+                                <input type="number" [(ngModel)]="forUpdate.Precio" formControlName="Precio"
                                     class="form-control" aria-label="Sizing example input"
                                     aria-describedby="inputGroup-sizing-default">
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text ancho letrasBlancas contenedor"
                                     name="Direccion">Exitencia</span>
-                                <input type="text" [(ngModel)]="forUpdate.Existencia" formControlName="Existencia"
+                                <input type="number" [(ngModel)]="forUpdate.Existencia" formControlName="Existencia"
                                     class="form-control" aria-label="Sizing example input"
                                     aria-describedby="inputGroup-sizing-default">
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-secondary " data-bs-dismiss="modal"
+                                (click)="limpiarCampos()">Cancelar</button>
                             <button type="submit" class="btn btn-primary">Guardar</button>
                         </div>
                     </div>

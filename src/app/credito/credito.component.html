@@ -22,7 +22,7 @@
                         </div>
                         <div class="modal-body ">
                             <h6 class="titulo2">
-                                Jondalar
+                                {{forUpdate.Nombre}}
                             </h6>
                             <table>
                                 <thead>
@@ -55,7 +55,7 @@
                 <h5>Abono</h5>
                 <input type="text" class="form-control margen-izq alinear" id="Abono" aria-label="Buscar"
                 [(ngModel)]="AbonoString">
-                <button type="button" class="btn btn-danger margen-izq">Aceptar</button>
+                <button type="button" class="btn btn-danger margen-izq" (click) = "enviarAbono()">Aceptar</button>
             </div>
             <div class="col btn-group btn-group-toggle mb-6 botones align-items-center" data-toggle="buttons">
                 <h5>Total</h5>
@@ -75,7 +75,7 @@
                 <h3 class="clientes">Clientes</h3>
             </div>
 
-            <div #printThis>
+            <div #printThis class="opaco scroll"> 
                 <table>
                     <thead>
                         <tr>

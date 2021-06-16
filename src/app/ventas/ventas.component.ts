@@ -37,15 +37,19 @@ export class VentasComponent implements OnInit {
     private inventarioService: InventarioService) { }
 
   ngOnInit(): void {
+    this.comprobarSesion();
+    this.getProductos();
+    
+  }
+
+  public getProductos() {
     this.inventarioService.getProductos().subscribe(
       (resp) => {
         this.productos = resp;
         this.nextFolio();
       }
     );
-    this.comprobarSesion();
   }
-
 
   public comprobarSesion() {
     if (sessionStorage.getItem('sesion') == undefined) {
@@ -70,9 +74,31 @@ export class VentasComponent implements OnInit {
     this.folioInventario = String(this.folioNumero);
   }
 
-  /* se añaden nuevos producto a la tabla de inventario */
-  public nuevoProducto(form: String) {
+  public comprobarNombre(form: any, actualizar: number){
+    let existe = 0
+    let productos = this.productos
+    for (const producto of productos) {
 
+    if (form.Nombre === producto.Nombre) {
+      existe += 1;
+    }else{
+      existe = existe
+    }
+     
+   }
+   if(existe >= (1 + actualizar)){
+    return true
+   }else{
+     return false
+   }
+
+  }
+  /* se añaden nuevos producto a la tabla de inventario */
+  public nuevoProducto(form: any) {
+    let formulario = form;
+    let repetido = this.comprobarNombre(formulario, 0)
+
+    if (repetido == false){
     this.inventarioService.PostProducto(form).subscribe(
       data => {
         if (data.status == 200) {
@@ -87,30 +113,38 @@ export class VentasComponent implements OnInit {
         console.log(error);
       }
     );
+    }else{
+      alert("Producto ya registrado porfavor edita")
+    }
 
+  }
+
+  public limpiarCampos(){
+    location.reload()
   }
 
   /* se obtienen los datos de productos en editar  en inventario*/
   public obtenerDato(inventario: any) {
     this.forUpdate = inventario;
-    console.log(inventario);
   }
 
   public actualizarProducto(form: any) {
-    console.log(this.forUpdate);
-    alert("actualizado")
-    location.reload();
-    var id: string = this.forUpdate.Folio;
-    console.log(form);
-    console.log(id);
+    let formulario = form;
+    let repetido = this.comprobarNombre(formulario, 1)
 
+    if (repetido == false){ 
+    var id: string = this.forUpdate.Folio;
     this.inventarioService.putProducto(id, form).subscribe(
       resp => {
         console.log("result: ", resp);
+        alert("actualizado")
       }
 
     );
     location.reload();
+    } else{
+      alert("Producto ya esta registrado anteriormente, revisa el nombre")
+    }
   }
 
 

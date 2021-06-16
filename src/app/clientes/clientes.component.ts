@@ -42,10 +42,17 @@ export class ClientesComponent implements OnInit {
   public folioMayorString = "";
   public folioNumero: number = 0;
   public Busqueda: string = "";
+  public dias: any = [];
+  public meses: any = [];
+  public anos: any = [];
+  public diaSeleccionado: string = "1";
+  public mesSeleccionado: string = "1";
+  public añoSeleccionado: string = "2021"
 
-
+  
   constructor(private router: Router,
-    private sesioncliente: ClientesService) { }
+    private sesioncliente: ClientesService
+    ) { }
 
   ngOnInit(): void {
     this.sesioncliente.getCliente().subscribe(
@@ -58,6 +65,18 @@ export class ClientesComponent implements OnInit {
       }
     );
     this.comprobarSesion()
+    this.generandoFecha()
+  }
+
+  public generandoFecha(){
+    for (let index = 1; index <= 31; index++) {
+      this.dias.push(String(index))
+    }
+    for (let index = 1; index <= 12; index++) {
+      this.meses.push(String(index))
+    }for (let index = 2021; index <= 2031; index++) {
+      this.anos.push(String(index))
+    }
   }
 
   public comprobarSesion() {
@@ -99,23 +118,37 @@ export class ClientesComponent implements OnInit {
      }
   */
 
-  public nuevoCliente(form: String) {
 
-    this.sesioncliente.PostCliente(form).subscribe(
-      data => {
-        if (data.status == 200) {
-          alert("Datos guardados exitosmente");
-          location.reload();
-        } else {
-          alert("Los datos no se pudieron guardar");
-        }
-        console.log(data);
-      },
-      error => {
-        console.log(error);
+  public nuevoCliente(form: any) {
+    let formulario = form;
+    let comprobacionRGI: number = 0;
+    for (const cliente of this.clientes) {
+      if (cliente.RGI == formulario.RGI) {
+        comprobacionRGI++;
+        console.log(comprobacionRGI)
+        break
       }
-    );
 
+    }
+
+    if (comprobacionRGI == 0) {
+      this.sesioncliente.PostCliente(form).subscribe(
+        data => {
+          if (data.status == 200) {
+            alert("Datos guardados exitosmente");
+            location.reload();
+          } else {
+            alert("Los datos no se pudieron guardar");
+          }
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }else{
+      alert('RGI registrado anteriormente')
+    }
   }
 
 
