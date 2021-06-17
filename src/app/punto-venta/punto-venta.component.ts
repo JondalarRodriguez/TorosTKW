@@ -154,19 +154,15 @@ export class PuntoVentaComponent implements OnInit {
 
 
   public nextFolio() {
-    for (const iterator of this.creditos) {
-      var folioObtener = iterator.Folio;
-      //console.log(folioObtener)
-      if (folioObtener <= iterator.Folio) {
-        this.folioMayorString = iterator.Folio;
-      } else {
-        this.folioMayorString = folioObtener
+    let element = 0;
+    this.getCreditos();
+
+    for (let i of this.creditos) {
+      if (parseInt(i.Folio) > element) {
+        element = parseInt(i.Folio)
       }
     }
-
-    this.folioNumero = parseInt(this.folioMayorString) + 1;
-    this.folioMayorString = String(this.folioNumero);
-    //console.log(this.folioMayorString);  
+    this.folioMayorString = String(element + 1);
   }
 
 

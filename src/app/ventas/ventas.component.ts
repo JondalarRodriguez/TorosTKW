@@ -58,20 +58,13 @@ export class VentasComponent implements OnInit {
   }
 
   public nextFolio() {
-    let element;
-    for (let index = 0; index < this.productos.length; index++) {
-      element = this.productos[index];
-      let folioObtener = element.Folio;
-      if (folioObtener < element.Folio) {
-        this.folioInventario = element.Folio;
-      } else {
-        this.folioInventario = folioObtener
+    let element = 0;
+    for (let i of this.productos) {
+      if (parseInt(i.Folio) > element) {
+        element = parseInt(i.Folio)
       }
     }
-
-    this.folioNumero = parseInt(this.folioInventario);
-    this.folioNumero += 1;
-    this.folioInventario = String(this.folioNumero);
+    this.folioInventario = String(element + 1);
   }
 
   public comprobarNombre(form: any, actualizar: number){

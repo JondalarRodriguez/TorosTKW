@@ -87,20 +87,13 @@ export class ClientesComponent implements OnInit {
 
 
   public nextFolio() {
-    let element;
-    for (let index = 0; index < this.clientes.length; index++) {
-      element = this.clientes[index];
-      let folioObtener = element.folio;
-      if (folioObtener <= element.folio) {
-        this.folioMayorString = element.folio;
-      } else {
-        this.folioMayorString = folioObtener
+    let element = 0;
+    for (let i of this.clientes) {
+      if (parseInt(i.folio) > element) {
+        element = parseInt(i.folio)
       }
     }
-
-    this.folioNumero = parseInt(this.folioMayorString);
-    this.folioNumero += 1;
-    this.folioMayorString = String(this.folioNumero);
+    this.folioMayorString = String(element + 1);
   }
 
   public direccionCredito() {

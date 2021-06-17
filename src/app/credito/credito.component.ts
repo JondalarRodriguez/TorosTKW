@@ -106,16 +106,6 @@ export class CreditoComponent implements OnInit {
       }
     }
     this.folioMayorString = String(element + 1);
-    /*for (let index = 0; index < this.creditos.length; index++) {
-      element = this.creditos[index];
-      let folioObtener = element.Folio;
-      if (folioObtener < element.Folio) {
-        this.folioMayorString = element.Folio;
-      } else {
-        this.folioMayorString = folioObtener
-      }
-    }*/
-
   }
 
   public direccionCliente() {
@@ -189,7 +179,7 @@ export class CreditoComponent implements OnInit {
               alert(error)
             }
           )
-        }else{
+        } else {
           alert('El abono excede la deuda')
         }
       } else {
