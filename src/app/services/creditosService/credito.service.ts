@@ -30,4 +30,8 @@ export class CreditoService {
     
   }
 
+  public deleteCredito(id: String){
+    return this.http.delete<boolean>("http://localhost:4000/credito/" + id, {observe: 'response'})
+  }
+
 }

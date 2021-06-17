@@ -25,7 +25,7 @@ export class AbonoService {
     return this.http.delete<boolean>("http://localhost:4000/product/" + id, {observe: 'response'});
     
   }*/
-  public deleteAbono(id: String, Abono: any){
+  public deleteAbono(id: String){
     return this.http.delete<boolean>("http://localhost:4000/Abono/" + id, {observe: 'response'});
     
   }

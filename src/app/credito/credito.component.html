@@ -32,11 +32,11 @@
                                     </tr>
                                 </thead>
 
-                                <tr *ngFor = "let abono of Abonos">
+                                <tr *ngFor="let abono of Abonos">
                                     <td> {{abono.Fecha}} </td>
                                     <td> {{abono.Monto}} </td>
                                 </tr>
-                                
+
                             </table>
                         </div>
                         <div class="modal-footer">
@@ -54,18 +54,21 @@
             <div class="col input-group mb-6 align-items-center">
                 <h5>Abono</h5>
                 <input type="text" class="form-control margen-izq alinear" id="Abono" aria-label="Buscar"
-                [(ngModel)]="AbonoString">
-                <button type="button" class="btn btn-danger margen-izq" (click) = "enviarAbono()">Aceptar</button>
+                    [(ngModel)]="AbonoString">
+                <button type="button" class="btn btn-danger margen-izq" (click)="enviarAbono()">Aceptar</button>
             </div>
             <div class="col btn-group btn-group-toggle mb-6 botones align-items-center" data-toggle="buttons">
                 <h5>Total</h5>
-                <input type="text" class="form-control margen-izq alinear" readonly="readonly" [(ngModel)]="forUpdate.Total" id="Total" aria-label="Buscar">
+                <input type="text" class="form-control margen-izq alinear" readonly="readonly"
+                    [(ngModel)]="forUpdate.Total" id="Total" aria-label="Buscar">
             </div>
             <div class="col btn-group btn-group-toggle mb-6 botones align-items-center" data-toggle="buttons">
                 <button type="button" class="btn btn-danger btns borde-boton margen-izq"
                     (click)="onPrint()">Imprimir</button>
                 <button type="button" class="btn btn-danger btns borde-boton margen-izq"
                     (click)="direccionCliente()">Cancelar</button>
+                <button type="button" class="btn btn-danger btns borde-boton margen-izq"
+                    (click)="comprobarCrditosVacios()">Eliminar</button>
             </div>
         </div>
 
@@ -75,7 +78,7 @@
                 <h3 class="clientes">Clientes</h3>
             </div>
 
-            <div #printThis class="opaco scroll"> 
+            <div #printThis class="opaco scroll">
                 <table>
                     <thead>
                         <tr>
@@ -94,14 +97,17 @@
                         <td>{{credito.Fecha}}</td>
                         <td>{{credito.Concepto}}</td>
                         <td><input type="submit" name="envio" value="Ver" class="boton2 ancho" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal" (click) = "obtenerAbonos(credito)"></td>
-                        <td><input type="submit" name="envio" value="Selecionar" data-bs-target="#exampleModal" (click)="obtenerDato(credito)"></td>
+                                data-bs-target="#exampleModal" (click)="obtenerAbonos(credito)"></td>
+                        <td><input type="submit" name="envio" value="Selecionar" data-bs-target="#exampleModal"
+                                (click)="obtenerDato(credito)"></td>
                     </tr>
                 </table>
             </div>
 
         </div>
     </div>
+    <button type="button" class="btn btn-danger butonMensualida" (click)=genararMensualidades()>Agregar
+        Mensualidades</button>
 </div>
 
 <app-footer-admin></app-footer-admin>
