@@ -16,32 +16,35 @@
                 aria-hidden="true">
                 <div class="modal-dialog modal-dialog-scrollable">
                     <div class="modal-content">
-                        <div class="modal-header modalColor">
-                            <h5 class="modal-title" id="exampleModalLabel">Historial de pagos</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body ">
-                            <h6 class="titulo2">
-                                {{forUpdate.Nombre}}
-                            </h6>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Fecha</th>
-                                        <th>Monto</th>
+                        <div id="DataAbonosTable">
+                            <div class="modal-header modalColor">
+                                <h5 class="modal-title" id="exampleModalLabel">Historial de pagos</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body ">
+                                <h6 class="titulo2">
+                                    {{forUpdate.Nombre}}
+                                </h6>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Monto</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tr *ngFor="let abono of Abonos">
+                                        <td> {{abono.Fecha}} </td>
+                                        <td> {{abono.Monto}} </td>
                                     </tr>
-                                </thead>
 
-                                <tr *ngFor="let abono of Abonos">
-                                    <td> {{abono.Fecha}} </td>
-                                    <td> {{abono.Monto}} </td>
-                                </tr>
-
-                            </table>
+                                </table>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
-                            <button type="button" class="btn btn-primary" (click)="onPrint()">Imprimir</button>
+                            <button type="button" class="btn btn-primary" (click)="imprimirAbonos()">Imprimir</button>
                         </div>
                     </div>
                 </div>
@@ -64,7 +67,7 @@
             </div>
             <div class="col btn-group btn-group-toggle mb-6 botones align-items-center" data-toggle="buttons">
                 <button type="button" class="btn btn-danger btns borde-boton margen-izq"
-                    (click)="onPrint()">Imprimir</button>
+                    (click)="imprimirCreditos()">Imprimir</button>
                 <button type="button" class="btn btn-danger btns borde-boton margen-izq"
                     (click)="direccionCliente()">Cancelar</button>
                 <button type="button" class="btn btn-danger btns borde-boton margen-izq"
@@ -74,34 +77,38 @@
 
 
         <div class="container2">
-            <div class="d-grid gap-1">
-                <h3 class="clientes">Clientes</h3>
-            </div>
+            <div id="htmlData">
+                <div class="d-grid gap-1">
+                    <h3 class="clientes">Clientes</h3>
+                </div>
 
-            <div #printThis class="opaco scroll">
-                <table>
-                    <thead>
-                        <tr>
-                            <th scope="col">RGI</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Concepto</th>
-                            <th scope="col">Historial</th>
-                            <th scope="col"> </th>
+                <div #printThis class="opaco scroll">
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">RGI</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Concepto</th>
+                                <th scope="col">Historial</th>
+                                <th scope="col"> </th>
+                            </tr>
+                        </thead>
+
+                        <tr *ngFor="let credito of creditos">
+                            <td>{{credito.RGI}}</td>
+                            <td>{{credito.Nombre}}</td>
+                            <td>{{credito.Fecha}}</td>
+                            <td>{{credito.Concepto}}</td>
+                            <td><input type="submit" name="envio" value="Ver" class="boton2 ancho"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                    (click)="obtenerAbonos(credito)"></td>
+                            <td><input type="submit" name="envio" value="Selecionar" data-bs-target="#exampleModal"
+                                    (click)="obtenerDato(credito)"></td>
                         </tr>
-                    </thead>
-
-                    <tr *ngFor="let credito of creditos">
-                        <td>{{credito.RGI}}</td>
-                        <td>{{credito.Nombre}}</td>
-                        <td>{{credito.Fecha}}</td>
-                        <td>{{credito.Concepto}}</td>
-                        <td><input type="submit" name="envio" value="Ver" class="boton2 ancho" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal" (click)="obtenerAbonos(credito)"></td>
-                        <td><input type="submit" name="envio" value="Selecionar" data-bs-target="#exampleModal"
-                                (click)="obtenerDato(credito)"></td>
-                    </tr>
-                </table>
+                    </table>
+                </div>
             </div>
 
         </div>

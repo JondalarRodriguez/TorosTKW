@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CreditoService } from '../services/creditosService/credito.service';
-import { Credito } from '../interfaces/creditos.interface';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AbonoService } from '../services/abonosService/abono.service';
 import { ClientesService } from '../services/clienteservice/clientes.service';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-credito',
@@ -32,8 +33,11 @@ export class CreditoComponent implements OnInit {
   constructor(private router: Router,
     private sesioncredito: CreditoService,
     private abonosService: AbonoService,
-    private ServiceClientes: ClientesService
+    private ServiceClientes: ClientesService,
+    
   ) { }
+
+  
 
   ngOnInit(): void {
     this.comprobarSesion();
@@ -128,6 +132,54 @@ export class CreditoComponent implements OnInit {
   onPrint() {
     window.print();
   }
+
+  public imprimirCreditos(): void{
+    const DATA = document.getElementById('htmlData')!;
+    const doc = new jsPDF('p', 'pt', 'a4');
+    const options = {
+      background: 'white',
+      scale: 3
+    };
+    html2canvas(DATA, options).then((canvas) => {
+      const img = canvas.toDataURL('image/PNG');
+
+      const bufferX = 15;
+      const bufferY = 15;
+      const imgProps = (doc as any).getImageProperties(img);
+      const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+      doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
+      return doc;
+    }).then((docResult) => {
+      docResult.save(`${new Date().toISOString()}_tutorial.pdf`);
+    });
+  }
+
+  public imprimirAbonos(): void{
+    const DATA = document.getElementById('DataAbonosTable')!;
+    const doc = new jsPDF('p', 'pt', 'a4');
+    const options = {
+      background: 'white',
+      scale: 3
+    };
+    html2canvas(DATA, options).then((canvas) => {
+      const img = canvas.toDataURL('image/PNG');
+
+      const bufferX = 15;
+      const bufferY = 15;
+      const imgProps = (doc as any).getImageProperties(img);
+      const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+      doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
+      return doc;
+    }).then((docResult) => {
+      docResult.save(`${new Date().toISOString()}_tutorial.pdf`);
+    });
+  }
+
+  
 
   public obtenerAbonos(credito: any) {
     this.forUpdate = credito;
