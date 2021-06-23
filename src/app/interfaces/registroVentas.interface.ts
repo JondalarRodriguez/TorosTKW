@@ -1,9 +1,11 @@
 export interface registroVentas {
-    _id : string,
-    Total: string,
-    Dia: string,
-    Mes: string,
-    Año: string,
-    Vendedor: string,
-    Efectivo: string
+    results: {
+        _id: string,
+        Total: string,
+        Dia: string,
+        Mes: string,
+        Año: string,
+        Vendedor: string,
+        Efectivo: string
+    }
 }

@@ -45,7 +45,7 @@ export class VentasComponent implements OnInit {
   public getProductos() {
     this.inventarioService.getProductos().subscribe(
       (resp) => {
-        this.productos = resp;
+        this.productos = resp.results;
         this.nextFolio();
       }
     );
@@ -128,7 +128,7 @@ export class VentasComponent implements OnInit {
     let repetido = this.comprobarNombre(formulario, 1)
 
     if (repetido == false){ 
-    var id: string = this.forUpdate.Folio;
+    var id: string = this.forUpdate._id;
     this.inventarioService.putProducto(id, form).subscribe(
       resp => {
         console.log("result: ", resp);
@@ -145,9 +145,9 @@ export class VentasComponent implements OnInit {
 
 
   /* borrar datos de la tabla de inventario */
-  public deleteProducto(Folio: String) {
-    console.log("valor", Folio);
-    this.inventarioService.eliminarProducto(Folio).subscribe(
+  public deleteProducto(_id: String) {
+    console.log("valor", _id);
+    this.inventarioService.eliminarProducto(_id).subscribe(
       data => {
         console.log("result: ", data);
       }

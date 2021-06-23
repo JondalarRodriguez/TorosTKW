@@ -21,15 +21,15 @@ export class InventarioService {
   }
 
   PostProducto(product: any){
-    return this.http.post<any>("http://localhost:4000/add/Inventario", product, {observe: "response"});
+    return this.http.post<any>(this.url + 'inventario/add', product, {observe: "response"});
   }
 
   public eliminarProducto(id: String){
-    return this.http.delete<boolean>("http://localhost:4000/product/" + id, {observe: 'response'});
+    return this.http.delete<boolean>(this.url + 'inventario/product/' + id, {observe: 'response'});
     
   }
   public putProducto(id: String, product: any){
-    return this.http.put<boolean>("http://localhost:4000/product/" + id, product, {observe: 'response'});
+    return this.http.post<any>(this.url + 'inventario/update/' + id, product, {observe: 'response'});
     
   }
 }

@@ -93,10 +93,10 @@ export class CreditoComponent implements OnInit {
       for (let Abono of this.arrayAbonosEliminar) {
         this.abonosService.getAbonos(Abono).subscribe(
           resp => {
-            this.Abonos = resp;
+            this.Abonos = resp.results;
             console.log(this.Abonos)
             for (const iterator of this.Abonos) {
-              this.abonosService.deleteAbono(iterator.Folio).subscribe(
+              this.abonosService.deleteAbono(iterator._id).subscribe(
                 data => {
                   console.log(data)
                 }
@@ -197,11 +197,12 @@ export class CreditoComponent implements OnInit {
 
   public obtenerAbonos(credito: any) {
     this.forUpdate = credito;
+    //console.log(this.forUpdate.Folio)
     this.abonosService.getAbonos(this.forUpdate.Folio).subscribe(
       (resp) => {
 
-        this.Abonos = resp;
-        //console.log(this.Abonos);
+        this.Abonos = resp.results;
+        console.log(this.Abonos);
       }
     );
   }

@@ -54,7 +54,7 @@ export class PuntoVentaComponent implements OnInit {
     this.sesioncliente.getCliente().subscribe(
       (resp) => {
 
-        this.clientes = resp;
+        this.clientes = resp.results;
 
       }
     );
@@ -66,7 +66,7 @@ export class PuntoVentaComponent implements OnInit {
     this.serviceInventario.getProductos().subscribe(
       (resp) => {
 
-        this.productos = resp;
+        this.productos = resp.results;
 
       }
     );
@@ -78,7 +78,7 @@ export class PuntoVentaComponent implements OnInit {
 
     this.serviceCreditos.getCreditos().subscribe(
       (resp) => {
-        this.creditos = resp;
+        this.creditos = resp.results;
       }
     );
   }
@@ -133,12 +133,12 @@ export class PuntoVentaComponent implements OnInit {
 
 
   public compra() {
-    for (var i of this.Productventas) {
+    for (let i of this.Productventas) {
       var restandoExistencia = parseInt(i.Existencia) - 1;
       i.Existencia = String(restandoExistencia);
       //console.log(i.Folio)
       //console.log(i)
-      this.serviceInventario.putProducto(i.Folio, i).subscribe(
+      this.serviceInventario.putProducto(i._id, i).subscribe(
         resp => {
           var respuestaCompra = resp;
         }
@@ -274,7 +274,7 @@ export class PuntoVentaComponent implements OnInit {
   public getReportes() {
     this.serviceRegistro.getRegistrosVentas().subscribe(
       (resp) => {
-        this.reportes = resp;
+        this.reportes = resp.results;
       }
     );
   }
