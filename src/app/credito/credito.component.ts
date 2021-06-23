@@ -29,15 +29,16 @@ export class CreditoComponent implements OnInit {
   public folioNumero: number = 0;
   public AbonoString: string = "";
   public Abonos: any = [];
+  public arrayAbonosEliminar: any = [];
 
   constructor(private router: Router,
     private sesioncredito: CreditoService,
     private abonosService: AbonoService,
     private ServiceClientes: ClientesService,
-    
+
   ) { }
 
-  
+
 
   ngOnInit(): void {
     this.comprobarSesion();
@@ -60,38 +61,60 @@ export class CreditoComponent implements OnInit {
       }
     )
   }
+
+
   public comprobarCrditosVacios() {
-    let borrado = 0;
-
-    console.log('comprobando Creditos')
-
     for (let credito of this.creditos) {
-
       if (credito.Total == "0") {
-        console.log(credito.Folio)
-        this.deleteCredito(credito.Folio)
-        borrado++
-        this.obtenerAbonos(credito.Folio)
-        for (const Abono of this.Abonos) {
-          this.abonosService.deleteAbono(Abono.Folio).subscribe(
-            data => {
-              console.log(data)
-            }
-          )
-        }
+
+        this.arrayAbonosEliminar.push(credito.Folio);
+        this.deleteCredito(credito.Folio);
       }
     }
 
-    if (borrado >= 1) {
-      location.reload()
+    if (this.arrayAbonosEliminar.length > 0) {
+      this.deleteAbono()
     }
   }
+
+
   public deleteCredito(id: string) {
     this.sesioncredito.deleteCredito(id).subscribe(
       data => {
         console.log(data)
       }
     )
+    for (const iterator of this.creditos) {
+      if(iterator.Folio == id){
+        this.creditos.splice(iterator, 1)
+      }
+    }
+
+  }
+
+  public deleteAbono() {
+    console.log(this.arrayAbonosEliminar)
+    if (this.arrayAbonosEliminar.length > 0) {
+      console.log('borrando')
+      for (let Abono of this.arrayAbonosEliminar) {
+        this.abonosService.getAbonos(Abono).subscribe(
+          resp => {
+            this.Abonos = resp;
+            console.log(this.Abonos)
+            for (const iterator of this.Abonos) {
+              this.abonosService.deleteAbono(iterator.Folio).subscribe(
+                data => {
+                  console.log(data)
+                }
+              )
+              console.log('abono borrado')
+            }
+          });
+      }
+    } else {
+      console.log('array vacio')
+    }
+    
   }
 
   public comprobarSesion() {
@@ -133,7 +156,7 @@ export class CreditoComponent implements OnInit {
     window.print();
   }
 
-  public imprimirCreditos(): void{
+  public imprimirCreditos(): void {
     const DATA = document.getElementById('htmlData')!;
     const doc = new jsPDF('p', 'pt', 'a4');
     const options = {
@@ -141,7 +164,7 @@ export class CreditoComponent implements OnInit {
       scale: 3
     };
     html2canvas(DATA, options).then((canvas) => {
-      const img = canvas.toDataURL('image/PNG');
+      const img = canvas.toDataURL('image/png');
 
       const bufferX = 15;
       const bufferY = 15;
@@ -149,14 +172,15 @@ export class CreditoComponent implements OnInit {
       const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
 
-      doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
+      doc.addImage(img, 'JPEG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
       return doc;
     }).then((docResult) => {
       docResult.save(`${new Date().toISOString()}_tutorial.pdf`);
     });
   }
 
-  public imprimirAbonos(): void{
+
+  public imprimirAbonos(): void {
     const DATA = document.getElementById('DataAbonosTable')!;
     const doc = new jsPDF('p', 'pt', 'a4');
     const options = {
@@ -179,7 +203,7 @@ export class CreditoComponent implements OnInit {
     });
   }
 
-  
+
 
   public obtenerAbonos(credito: any) {
     this.forUpdate = credito;
@@ -223,7 +247,7 @@ export class CreditoComponent implements OnInit {
                     console.log(data)
                   }
                 )
-                location.reload()
+                //location.reload()
               } else {
                 alert('Error')
               }

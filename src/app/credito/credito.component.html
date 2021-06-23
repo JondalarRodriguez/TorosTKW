@@ -33,12 +33,10 @@
                                             <th>Monto</th>
                                         </tr>
                                     </thead>
-
                                     <tr *ngFor="let abono of Abonos">
                                         <td> {{abono.Fecha}} </td>
                                         <td> {{abono.Monto}} </td>
                                     </tr>
-
                                 </table>
                             </div>
                         </div>
@@ -81,36 +79,30 @@
                 <div class="d-grid gap-1">
                     <h3 class="clientes">Clientes</h3>
                 </div>
-
-                <div #printThis class="opaco scroll">
-
-                    <table>
-                        <thead>
-                            <tr>
-                                <th scope="col">RGI</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Fecha</th>
-                                <th scope="col">Concepto</th>
-                                <th scope="col">Historial</th>
-                                <th scope="col"> </th>
-                            </tr>
-                        </thead>
-
-                        <tr *ngFor="let credito of creditos">
-                            <td>{{credito.RGI}}</td>
-                            <td>{{credito.Nombre}}</td>
-                            <td>{{credito.Fecha}}</td>
-                            <td>{{credito.Concepto}}</td>
-                            <td><input type="submit" name="envio" value="Ver" class="boton2 ancho"
-                                    data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                    (click)="obtenerAbonos(credito)"></td>
-                            <td><input type="submit" name="envio" value="Selecionar" data-bs-target="#exampleModal"
-                                    (click)="obtenerDato(credito)"></td>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">RGI</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Concepto</th>
+                            <th scope="col">Historial</th>
+                            <th scope="col"> </th>
                         </tr>
-                    </table>
-                </div>
-            </div>
+                    </thead>
 
+                    <tr *ngFor="let credito of creditos">
+                        <td>{{credito.RGI}}</td>
+                        <td>{{credito.Nombre}}</td>
+                        <td>{{credito.Fecha}}</td>
+                        <td>{{credito.Concepto}}</td>
+                        <td><input type="submit" name="envio" value="Ver" class="boton2 ancho" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" (click)="obtenerAbonos(credito)"></td>
+                        <td><input type="submit" name="envio" value="Selecionar" data-bs-target="#exampleModal"
+                                (click)="obtenerDato(credito)"></td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
     <button type="button" class="btn btn-danger butonMensualida" (click)=genararMensualidades()>Agregar
