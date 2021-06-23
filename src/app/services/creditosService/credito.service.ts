@@ -1,37 +1,37 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Credito } from 'src/app/interfaces/creditos.interface';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CreditoService {
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) { }
+  url = environment.url;
 
   getCreditos(){
-    return this.http.get<Credito>('http://localhost:4000/Creditos');
+    return this.http.get<Credito>(this.url + 'credito/creditos')
+    .pipe(map((data: Credito) =>{
+      //console.log(data)
+      return data;
+    }));
   }
 
   PostCredito(Credito: any){
-    return this.http.post<any>("http://localhost:4000/add/Credito", Credito, {observe: "response"});
+    return this.http.post<any>(this.url +'credito/add', Credito, {observe: "response"});
   }
-  ///Eliminar no esta disponible en el back end hay que ver como eliminar
-  // los creditos en abonos no en creditos
-  /*public eliminarProducto(id: String){
-    return this.http.delete<boolean>("http://localhost:4000/product/" + id, {observe: 'response'});
-    
-  }*/
+
   public putCredito(id: String, Credito: any){
-    return this.http.put<boolean>("http://localhost:4000/Credito/" + id, Credito, {observe: 'response'});
+    return this.http.post<any>(this.url + 'credito/update/' + id, Credito, {observe: 'response'});
     
   }
 
   public deleteCredito(id: String){
-    return this.http.delete<boolean>("http://localhost:4000/credito/" + id, {observe: 'response'})
+    return this.http.delete<boolean>(this.url + 'credito/delete/' + id, {observe: 'response'})
   }
 
 }

@@ -58,7 +58,7 @@ export class ClientesComponent implements OnInit {
     this.sesioncliente.getCliente().subscribe(
       (resp) => {
         //console.log(resp);
-        this.clientes = resp;
+        this.clientes = resp.results;
         //console.log(this.clientes);
 
         this.nextFolio();
@@ -153,7 +153,7 @@ export class ClientesComponent implements OnInit {
   }
 
   public actualizarCliente(form: any) {
-    var id = this.forUpdate.folio;
+    var id = this.forUpdate._id;
     console.log(form);
     console.log(id);
 
@@ -163,13 +163,12 @@ export class ClientesComponent implements OnInit {
       }
 
     );
-    location.reload();
+    //location.reload();
   }
 
 
-  public deleteCliente(folio: String) {
-    console.log("valor", folio);
-    this.sesioncliente.eliminarCliente(folio).subscribe(
+  public deleteCliente(id: String) {
+    this.sesioncliente.eliminarCliente(id).subscribe(
       data => {
         console.log("result: ", data);
       }

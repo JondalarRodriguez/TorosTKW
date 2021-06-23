@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Inventario } from 'src/app/interfaces/inventario.interface';
+import { map } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +10,14 @@ import { Inventario } from 'src/app/interfaces/inventario.interface';
 export class InventarioService {
 
   constructor(private http: HttpClient) { }
+  url = environment.url;
 
   getProductos(){
-    return this.http.get<Inventario>('http://localhost:4000/inventario');
+    return this.http.get<Inventario>(this.url + 'inventario/inventario')
+    .pipe(map((data: Inventario) =>{
+      //console.log(data)
+      return data;
+    }));
   }
 
   PostProducto(product: any){

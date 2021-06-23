@@ -1,5 +1,6 @@
 export interface Cliente{
-    id: String;
+    results:{
+    _id: String;
     folio: String;
     RGI: String;
     Nombre: String;
@@ -9,4 +10,5 @@ export interface Cliente{
     Horario: String;
     Clase: String;
     Mensualidad: String;
+    }
 }

@@ -42,13 +42,7 @@ export class CreditoComponent implements OnInit {
 
   ngOnInit(): void {
     this.comprobarSesion();
-    this.sesioncredito.getCreditos().subscribe(
-      (resp) => {
-        //console.log(resp);
-        this.creditos = resp;
-        //console.log(this.clientes); 
-      }
-    )
+    this.getCreditos();
     this.getClientes();
   }
 
@@ -56,7 +50,7 @@ export class CreditoComponent implements OnInit {
     this.sesioncredito.getCreditos().subscribe(
       (resp) => {
         //console.log(resp);
-        this.creditos = resp;
+        this.creditos = resp.results;
         //console.log(this.clientes); 
       }
     )
@@ -68,7 +62,7 @@ export class CreditoComponent implements OnInit {
       if (credito.Total == "0") {
 
         this.arrayAbonosEliminar.push(credito.Folio);
-        this.deleteCredito(credito.Folio);
+        this.deleteCredito(credito._id);
       }
     }
 
@@ -85,7 +79,7 @@ export class CreditoComponent implements OnInit {
       }
     )
     for (const iterator of this.creditos) {
-      if(iterator.Folio == id){
+      if(iterator._id == id){
         this.creditos.splice(iterator, 1)
       }
     }
@@ -151,10 +145,6 @@ export class CreditoComponent implements OnInit {
     ngOnInit(): void {
     }
   */
-
-  onPrint() {
-    window.print();
-  }
 
   public imprimirCreditos(): void {
     const DATA = document.getElementById('htmlData')!;
@@ -242,7 +232,7 @@ export class CreditoComponent implements OnInit {
                 let resta: number = parseInt(this.forUpdate.Total) - parseInt(this.AbonoString)
                 this.forUpdate.Total = String(resta)
 
-                this.sesioncredito.putCredito(this.forUpdate.Folio, this.forUpdate).subscribe(
+                this.sesioncredito.putCredito(this.forUpdate._id, this.forUpdate).subscribe(
                   data => {
                     console.log(data)
                   }
@@ -273,7 +263,7 @@ export class CreditoComponent implements OnInit {
   public getClientes() {
     this.ServiceClientes.getCliente().subscribe(
       data => {
-        this.clientes = data
+        this.clientes = data.results
       }, error => {
         console.log(error)
       }
@@ -296,7 +286,7 @@ export class CreditoComponent implements OnInit {
           "Concepto": "Mensualidad"
         };
         this.folioMayorString = String(parseInt(this.folioMayorString) + 1)
-
+        console.log(SendCredito)
         this.sesioncredito.PostCredito(SendCredito).subscribe(
           data => {
             if (data.status == 200) {

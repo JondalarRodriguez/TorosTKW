@@ -1,9 +1,11 @@
 export interface Credito{
-    id: String;
+    results:{
+    _id: String;
     Folio: String;
     RGI: String;
     Nombre: String;
     Total: String;
     Fecha: String;
     Concepto: String;
+    }
 }

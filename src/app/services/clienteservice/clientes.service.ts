@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Cliente } from '../../interfaces/clientes.interface';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,22 +11,28 @@ import { Cliente } from '../../interfaces/clientes.interface';
 export class ClientesService {
 
   constructor( private http: HttpClient) { }
+  url = environment.url;
 
   getCliente(){
-    return this.http.get<Cliente>('http://localhost:4000/clientes');
+    return this.http.get<Cliente>(this.url +'cliente/clientes')
+    .pipe(map((data: Cliente) => {
+      //console.log(data)
+      return data;
+    }));
+    
   }
 
   PostCliente(cliente: any){
     console.log(cliente);
-    return this.http.post<any>("http://localhost:4000/add", cliente, {observe: "response"});
+    return this.http.post<any>(this.url + 'cliente/add', cliente, {observe: "response"});
   }
 
-  public eliminarCliente(id: String){
-    return this.http.delete<boolean>("http://localhost:4000/clientes/" + id, {observe: 'response'});
+  public eliminarCliente(id: any){
+    return this.http.delete<boolean>(this.url + 'cliente/delete/' + id, {observe: 'response'});
     
   }
-  public putCliente(id: String, cliente: any){
-    return this.http.put<boolean>("http://localhost:4000/clientes/" + id, cliente, {observe: 'response'});
+  public putCliente(_id: String, cliente: any){
+    return this.http.post<any>(this.url + 'cliente/update/'+ _id, cliente, {observe: 'response'});
     
   }
 
