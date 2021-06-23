@@ -20,7 +20,7 @@ export class RegistroVentasService {
   }
 
   PostRegistroVenta(registro: any){
-    return this.http.post<any>(this.url + '/ventas/add', registro, {observe: "response"});
+    return this.http.post<any>(this.url + 'ventas/add', registro, {observe: "response"});
   }
 
 
