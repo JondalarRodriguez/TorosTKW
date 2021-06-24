@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { UsuarioI } from '../../interfaces/usuarios.interface';
+import { map } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,23 +10,34 @@ import { UsuarioI } from '../../interfaces/usuarios.interface';
 export class UsuariosService {
 
   constructor(private http: HttpClient) { }
+  url = environment.url;
+  header = sessionStorage.getItem('sesion');
+  opciones = {
+    headers: new HttpHeaders({
+      'miToken': this.header!
+    })
+  };
 
-  getUsuario(){
-    return this.http.get<UsuarioI>('http://localhost:4000/usuarios');
+  getUsuario() {
+    return this.http.get<UsuarioI>(this.url + 'user/users')
+      .pipe(map((data: UsuarioI) => {
+        return data;
+      }));
   }
 
-  PostUsuario(usuario:UsuarioI){
-    return this.http.post<any>("http://localhost:4000/nUsuario", usuario, {observe: "response"});
+  PostUsuario(usuario: UsuarioI) {
+    
+    return this.http.post<any>(this.url + 'user/create', usuario, this.opciones);
   }
 
   public deleteUsuario(id: String){
-    return this.http.delete<boolean>("http://localhost:4000/usuario/" + id, {observe: 'response'});
-    
-  }
-  public putUsuario(id: String, cliente:UsuarioI){
-    return this.http.put<boolean>("http://localhost:4000/usuarios/" + id, cliente, {observe: 'response'});
-    
-  }
+  return this.http.delete<boolean>(this.url + 'user/delete/' + id, this.opciones);
+
+}
+  public putUsuario(id: String, cliente: UsuarioI){
+  return this.http.post<any>(this.url + 'user/update/' + id, cliente, this.opciones);
+
+}
 
 
 }

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { loginI } from 'src/app/interfaces/login.interface';
+import { environment } from '../../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,9 @@ import { loginI } from 'src/app/interfaces/login.interface';
 export class SesionService {
 
   constructor(private http: HttpClient) { }
+  url = environment.url
 
-
-  public iniciarSesion(id: String, sesion: loginI){
-    return this.http.post<any>("http://localhost:4000/login/" + id, sesion, {observe: "response"});
+  public iniciarSesion(sesion: loginI){
+    return this.http.post<any>(this.url + 'user/login', sesion, {observe: "response"});
   }
 }

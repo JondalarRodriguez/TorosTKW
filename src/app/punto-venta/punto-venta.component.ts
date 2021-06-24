@@ -46,7 +46,7 @@ export class PuntoVentaComponent implements OnInit {
     if (sessionStorage.getItem('sesion') == undefined) {
       this.router.navigate(['login'])
     }else{
-      this.usuarioVenta = String(sessionStorage.getItem('sesion'))
+      this.usuarioVenta = String(sessionStorage.getItem('usuario'))
     }
   }
 

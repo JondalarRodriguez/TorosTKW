@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['ventas'])
     }
   }
+
   public iniciarSesion(form: loginI) {
     var id = form.username;
     var user = form.username;
@@ -37,14 +38,25 @@ export class LoginComponent implements OnInit {
     //console.log("usuario que estoy mandando", user)
     //console.log("contraseña que estoy mandando", pass)
     //console.log(id);
-    this.sesionService.iniciarSesion(id, form).toPromise().then(
+    this.sesionService.iniciarSesion(form).toPromise().then(
       data => {
-        this.usuarioEncontrado = data.body[0];
+        
+        let variable = data.body
+        if (variable.ok == false){
+          alert("Datos incorrectos")
+        }else if (variable.ok == true){
+          sessionStorage.setItem('sesion', variable.token);
+          sessionStorage.setItem('usuario', form.username)      
+          alert("Usuario encontrado y autenticado")
+          this.router.navigate(['ventas'])
+        }
+
+        //this.usuarioEncontrado = data.body[0];
         //console.log("usuario del servidor",this.usuarioEncontrado.usuario);
         //console.log("contraseña del servidor",this.usuarioEncontrado.password);
 
 
-
+/*
         if (this.usuarioEncontrado === undefined) {
           alert("Usuario no encontrado");
         } else if (data.status === 200) {
@@ -62,7 +74,7 @@ export class LoginComponent implements OnInit {
         } else {
           alert("Error en el servidor");
         }
-
+*/
       }
     ).catch(
       error => {

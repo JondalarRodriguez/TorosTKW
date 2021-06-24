@@ -41,7 +41,7 @@ export class UsuariosComponent implements OnInit {
 
     this.sesionUsuario.getUsuario().subscribe(
       (resp) => {
-        this.usuarios = resp;
+        this.usuarios = resp.results;
       }
     );
     this.comprobarSesion();
@@ -82,7 +82,7 @@ export class UsuariosComponent implements OnInit {
     if (seRepite == false){
     this.sesionUsuario.PostUsuario(form).subscribe(
       data => {
-        if (data.status == 200) {
+        if (data.ok == true) {
           alert("Datos guardados exitosmente");
           location.reload();
         } else {
@@ -107,7 +107,7 @@ export class UsuariosComponent implements OnInit {
 
 
   public actualizarUsuario(form: UsuarioI) {
-    var id = this.forUpdate.usuario;
+    var id = this.forUpdate._id;
     console.log(form);
     console.log(id);
 
