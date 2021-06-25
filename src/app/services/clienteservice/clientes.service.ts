@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -13,8 +13,15 @@ export class ClientesService {
   constructor( private http: HttpClient) { }
   url = environment.url;
 
+  header = sessionStorage.getItem('sesion');
+  encabezado = {
+    headers: new HttpHeaders({
+      'miToken': this.header!
+    })
+  };
+
   getCliente(){
-    return this.http.get<Cliente>(this.url +'cliente/clientes')
+    return this.http.get<Cliente>(this.url +'cliente/clientes', this.encabezado)
     .pipe(map((data: Cliente) => {
       //console.log(data)
       return data;
@@ -24,15 +31,15 @@ export class ClientesService {
 
   PostCliente(cliente: any){
     console.log(cliente);
-    return this.http.post<any>(this.url + 'cliente/add', cliente, {observe: "response"});
+    return this.http.post<any>(this.url + 'cliente/add', cliente, this.encabezado);
   }
 
   public eliminarCliente(id: any){
-    return this.http.delete<boolean>(this.url + 'cliente/delete/' + id, {observe: 'response'});
+    return this.http.delete<any>(this.url + 'cliente/delete/' + id, this.encabezado);
     
   }
   public putCliente(_id: String, cliente: any){
-    return this.http.post<any>(this.url + 'cliente/update/'+ _id, cliente, {observe: 'response'});
+    return this.http.post<any>(this.url + 'cliente/update/'+ _id, cliente, this.encabezado);
     
   }
 
