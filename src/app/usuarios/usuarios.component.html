@@ -22,12 +22,12 @@
 							<div class="input-group mb-3">
 								<span class="input-group-text ancho letrasBlancas" name="usuario">Usuario</span>
 								<input type="text" formControlName="usuario" class="form-control" aria-label="Sizing example input"
-									aria-describedby="inputGroup-sizing-default">
+									aria-describedby="inputGroup-sizing-default" required>
 							</div>
 							<div class="input-group mb-3">
 								<span class="input-group-text ancho letrasBlancas" name="contraseña">Contraseña</span>
 								<input type="text" formControlName="password" class="form-control" aria-label="Sizing example input"
-									aria-describedby="inputGroup-sizing-default">
+									aria-describedby="inputGroup-sizing-default" required>
 							</div>
 							<div class="input-group mb-3">
 								<span class="input-group-text ancho letrasBlancas" name="Nombre">Nombre</span>
@@ -37,7 +37,7 @@
 							<div class="input-group mb-3">
 								<span class="input-group-text ancho letrasBlancas" name="apellido">Apellido</span>
 								<input type="text" formControlName="apellido" class="form-control" aria-label="Sizing example input"
-									aria-describedby="inputGroup-sizing-default">
+									aria-describedby="inputGroup-sizing-default" required>
 							</div>
 							<div class="input-group mb-3">
 								<span class="input-group-text ancho letrasBlancas" name="Direccion">Dirección</span>
@@ -47,12 +47,13 @@
 							<div class="input-group mb-3">
 								<span class="input-group-text ancho letrasBlancas" name="Telefono">Teléfono</span>
 								<input type="text" formControlName="telefono" class="form-control" aria-label="Sizing example input"
-									aria-describedby="inputGroup-sizing-default">
+									aria-describedby="inputGroup-sizing-default" required>
 							</div>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-							<button type="submit" class="btn btn-primary">Guardar</button>
+							<button type="submit" class="btn btn-primary" 
+							[disabled]="!usuarioForm.valid">Guardar</button>
 						</div>
 					</div>
 				</div>
