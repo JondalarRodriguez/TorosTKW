@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -13,6 +13,14 @@ export class AbonoService {
   constructor(private http: HttpClient) { }
   url = environment.url
 
+  header = sessionStorage.getItem('sesion');
+  encabezado = {
+    headers: new HttpHeaders({
+      'miToken': this.header!
+    })
+  };
+
+
   getAbonos(_id: String){
     return this.http.get<Abono>(this.url + 'abono/abonos/' + _id)
     .pipe(map((data: Abono) =>{
@@ -22,7 +30,7 @@ export class AbonoService {
   }
 
   PostAbono(Abono: any){
-    return this.http.post<any>(this.url + 'abono/add', Abono, {observe: "response"});
+    return this.http.post<any>(this.url + 'abono/add', Abono, this.encabezado);
   }
   ///Eliminar no esta disponible en el back end hay que ver como eliminar
   // los creditos en abonos no en creditos
@@ -32,7 +40,7 @@ export class AbonoService {
   }*/
 
   public deleteAbono(_id: String){
-    return this.http.delete<boolean>(this.url + 'abono/delete/' + _id, {observe: 'response'})
+    return this.http.delete<boolean>(this.url + 'abono/delete/' + _id, this.encabezado)
   }
 
 }

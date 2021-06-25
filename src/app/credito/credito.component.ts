@@ -228,7 +228,7 @@ export class CreditoComponent implements OnInit {
           }
           this.abonosService.PostAbono(abono).subscribe(
             data => {
-              if (data.status == 200) {
+              if (data.ok == true) {
                 alert("Abono registrado")
                 let resta: number = parseInt(this.forUpdate.Total) - parseInt(this.AbonoString)
                 this.forUpdate.Total = String(resta)
@@ -290,7 +290,7 @@ export class CreditoComponent implements OnInit {
         console.log(SendCredito)
         this.sesioncredito.PostCredito(SendCredito).subscribe(
           data => {
-            if (data.status == 200) {
+            if (data.ok == true) {
               console.log(data.status)
             } else {
 
