@@ -19,14 +19,13 @@ export class UsuariosService {
   };
 
   getUsuario() {
-    return this.http.get<UsuarioI>(this.url + 'user/users')
+    return this.http.get<UsuarioI>(this.url + 'user/users', this.opciones)
       .pipe(map((data: UsuarioI) => {
         return data;
       }));
   }
 
   PostUsuario(usuario: UsuarioI) {
-    
     return this.http.post<any>(this.url + 'user/create', usuario, this.opciones);
   }
 

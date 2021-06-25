@@ -96,7 +96,7 @@ export class VentasComponent implements OnInit {
     if (repetido == false){
     this.inventarioService.PostProducto(form).subscribe(
       data => {
-        if (data.status == 200) {
+        if (data.ok == true) {
           alert("Datos guardados exitosmente");
           location.reload();
         } else {
