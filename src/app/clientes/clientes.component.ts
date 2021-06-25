@@ -159,7 +159,12 @@ export class ClientesComponent implements OnInit {
 
     this.sesioncliente.putCliente(id, form).subscribe(
       resp => {
-        console.log("result: ", resp);
+        if (resp.ok == true){
+          alert('Cliente Actualizado')
+        }else{
+          alert('error al actualizar')
+          location.reload();
+        }
       }
 
     );
