@@ -70,3 +70,8 @@
 .btnsTabla{
 	margin: 5px;
 }
+
+.scroll{
+	overflow:scroll;
+    height:400px;
+}
