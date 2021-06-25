@@ -22,7 +22,7 @@ export class AbonoService {
 
 
   getAbonos(_id: String){
-    return this.http.get<Abono>(this.url + 'abono/abonos/' + _id)
+    return this.http.get<Abono>(this.url + 'abono/abonos/' + _id, this.encabezado)
     .pipe(map((data: Abono) =>{
       //console.log(data)
       return data;
