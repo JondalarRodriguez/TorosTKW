@@ -45,10 +45,6 @@ export class ClientesComponent implements OnInit {
   public dias: any = [];
   public meses: any = [];
   public anos: any = [];
-  public diaSeleccionado: string = "1";
-  public mesSeleccionado: string = "1";
-  public añoSeleccionado: string = "2021"
-
   
   constructor(private router: Router,
     private sesioncliente: ClientesService
@@ -65,18 +61,6 @@ export class ClientesComponent implements OnInit {
       }
     );
     this.comprobarSesion()
-    this.generandoFecha()
-  }
-
-  public generandoFecha(){
-    for (let index = 1; index <= 31; index++) {
-      this.dias.push(String(index))
-    }
-    for (let index = 1; index <= 12; index++) {
-      this.meses.push(String(index))
-    }for (let index = 2021; index <= 2031; index++) {
-      this.anos.push(String(index))
-    }
   }
 
   public comprobarSesion() {
@@ -118,7 +102,7 @@ export class ClientesComponent implements OnInit {
     for (const cliente of this.clientes) {
       if (cliente.RGI == formulario.RGI) {
         comprobacionRGI++;
-        console.log(comprobacionRGI)
+        //console.log(comprobacionRGI)
         break
       }
 
@@ -127,13 +111,13 @@ export class ClientesComponent implements OnInit {
     if (comprobacionRGI == 0) {
       this.sesioncliente.PostCliente(form).subscribe(
         data => {
-          if (data.status == 200) {
+          if (data.ok == true) {
             alert("Datos guardados exitosmente");
             location.reload();
           } else {
             alert("Los datos no se pudieron guardar");
           }
-          console.log(data);
+          //console.log(data);
         },
         error => {
           console.log(error);
@@ -148,14 +132,14 @@ export class ClientesComponent implements OnInit {
 
   public obtenerDato(cliente: any) {
     this.forUpdate = cliente;
-    console.log(cliente);
+    //console.log(cliente);
 
   }
 
   public actualizarCliente(form: any) {
     var id = this.forUpdate._id;
-    console.log(form);
-    console.log(id);
+    //console.log(form);
+    //console.log(id);
 
     this.sesioncliente.putCliente(id, form).subscribe(
       resp => {
@@ -175,10 +159,14 @@ export class ClientesComponent implements OnInit {
   public deleteCliente(id: String) {
     this.sesioncliente.eliminarCliente(id).subscribe(
       data => {
-        console.log("result: ", data);
+        if (data.ok == true){
+          location.reload();
+        }
+        else{
+          alert('Error al eliminar')
+        }
       }
 
     );
-    location.reload();
   }
 }
