@@ -54,42 +54,43 @@
 									name="Direccion">Dirección</span>
 								<input type="text" class="form-control" formControlName="Direccion"
 									placeholder="Dirección" aria-label="Sizing example input"
-									aria-describedby="inputGroup-sizing-default">
+									aria-describedby="inputGroup-sizing-default" required>
 							</div>
 							<div class="form-group mb-3">
 								<span class="input-group-text letrasBlancas contenedor" name="Telefono">Teléfono</span>
 								<input type="text" class="form-control" formControlName="Telefono"
 									placeholder="Teléfono" aria-label="Sizing example input"
-									aria-describedby="inputGroup-sizing-default">
+									aria-describedby="inputGroup-sizing-default" required>
 							</div>
 							<div class="form-group mb-3">
 								<span class="input-group-text letrasBlancas contenedor" name="Edad">Edad</span>
 								<input type="number" class="form-control" formControlName="Edad" placeholder="Edad"
-									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
 							</div>
 							<div class="form-group mb-3">
 								<span class="input-group-text letrasBlancas contenedor" name="Horario">Horario</span>
 								<input type="text" class="form-control" formControlName="Horario" placeholder="Horario"
-									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
 							</div>
 							<div class="form-group mb-3">
 								<span class="input-group-text letrasBlancas contenedor" name="Clase">Clase</span>
 								<input type="text" class="form-control" formControlName="Clase" placeholder="Clase"
-									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
 							</div>
 							<div class="form-group mb-3">
 								<span class="input-group-text letrasBlancas contenedor"
 									name="Mensualidad">Mensualidad</span>
 								<input type="text" class="form-control" formControlName="Mensualidad"
 									placeholder="Mensualidad" aria-label="Sizing example input"
-									aria-describedby="inputGroup-sizing-default">
+									aria-describedby="inputGroup-sizing-default" required>
 							</div>
 
 
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-							<button type="submit" class="btn btn-primary">Guardar</button>
+							<button type="submit" class="btn btn-primary"
+							[disabled]="!clienteForm.valid">Guardar</button>
 						</div>
 
 					</div>
