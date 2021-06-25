@@ -195,7 +195,7 @@ export class PuntoVentaComponent implements OnInit {
 
         this.serviceRegistro.PostRegistroVenta(registro).subscribe(
           data => {
-            if (data.status == 200) {
+            if (data.ok == true) {
               console.log("Compra registrada")
             }
             else {
@@ -232,7 +232,7 @@ export class PuntoVentaComponent implements OnInit {
           console.log(SendCredito);
           this.serviceCreditos.PostCredito(SendCredito).subscribe(
             data => {
-              if (data.status == 200) {
+              if (data.ok == true) {
                 alert("Compra añadida a credito");
                 location.reload();
               } else {
@@ -249,7 +249,7 @@ export class PuntoVentaComponent implements OnInit {
 
           this.serviceRegistro.PostRegistroVenta(registro).subscribe(
             data => {
-              if (data.status == 200) {
+              if (data.ok == true) {
                 console.log("Compra registrada")
               }
               else {
