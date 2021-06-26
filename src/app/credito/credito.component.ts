@@ -62,24 +62,25 @@ export class CreditoComponent implements OnInit {
       if (credito.Total == "0") {
 
         this.arrayAbonosEliminar.push(credito.Folio);
-        this.deleteCredito(credito._id);
+        this.deleteCredito(credito);
       }
     }
 
     if (this.arrayAbonosEliminar.length > 0) {
       this.deleteAbono()
     }
+    
   }
 
 
-  public deleteCredito(id: string) {
-    this.sesioncredito.deleteCredito(id).subscribe(
+  public deleteCredito(id: any) {
+    this.sesioncredito.deleteCredito(id._id).subscribe(
       data => {
         console.log(data)
       }
     )
     for (const iterator of this.creditos) {
-      if(iterator._id == id){
+      if(iterator.Folio == id.Folio){
         this.creditos.splice(iterator, 1)
       }
     }
