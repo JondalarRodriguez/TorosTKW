@@ -11,7 +11,7 @@ import { environment } from '../../../environments/environment';
 export class AbonoService {
 
   constructor(private http: HttpClient) { }
-  url = environment.url
+  url = 'http://3.18.46.141:3000/'
 
   header = sessionStorage.getItem('sesion');
   encabezado = {
