@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClientesService } from '../services/clienteservice/clientes.service';
 import { Cliente } from '../interfaces/clientes.interface';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-clientes',
@@ -13,28 +13,28 @@ export class ClientesComponent implements OnInit {
 
   public clienteForm = new FormGroup({
     folio: new FormControl(''),
-    RGI: new FormControl(''),
-    Nombre: new FormControl(''),
+    RGI: new FormControl('',Validators.compose([Validators.required, Validators.minLength(4), Validators.maxLength(10)])),
+    Nombre: new FormControl('',Validators.compose([Validators.required, Validators.minLength(4), Validators.maxLength(40)])),
     FechaIngreso: new FormControl(''),
-    Direccion: new FormControl(''),
-    Telefono: new FormControl(''),
-    Edad: new FormControl(''),
-    Horario: new FormControl(''),
-    Clase: new FormControl(''),
-    Mensualidad: new FormControl('')
+    Direccion: new FormControl('',Validators.compose([Validators.required, Validators.minLength(4), Validators.maxLength(35)])),
+    Telefono: new FormControl('',Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(10)])),
+    Edad: new FormControl('',Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(3)])),
+    Horario: new FormControl('',Validators.compose([Validators.required, Validators.minLength(4), Validators.maxLength(10)])),
+    Clase: new FormControl('',Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(10)])),
+    Mensualidad: new FormControl('',Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(4)]))
   });
 
   public clienteFormActualizar = new FormGroup({
     folio: new FormControl(''),
-    RGI: new FormControl(''),
-    Nombre: new FormControl(''),
+    RGI: new FormControl('',Validators.compose([Validators.required, Validators.minLength(4), Validators.maxLength(10)])),
+    Nombre: new FormControl('',Validators.compose([Validators.required, Validators.minLength(4), Validators.maxLength(40)])),
     FechaIngreso: new FormControl(''),
-    Direccion: new FormControl(''),
-    Telefono: new FormControl(''),
-    Edad: new FormControl(''),
-    Horario: new FormControl(''),
-    Clase: new FormControl(''),
-    Mensualidad: new FormControl('')
+    Direccion: new FormControl('',Validators.compose([Validators.required, Validators.minLength(4), Validators.maxLength(35)])),
+    Telefono: new FormControl('',Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(10)])),
+    Edad: new FormControl('',Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(3)])),
+    Horario: new FormControl('',Validators.compose([Validators.required, Validators.minLength(4), Validators.maxLength(10)])),
+    Clase: new FormControl('',Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(10)])),
+    Mensualidad: new FormControl('',Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(4)]))
   });
 
   public clientes: any = [];
@@ -45,10 +45,10 @@ export class ClientesComponent implements OnInit {
   public dias: any = [];
   public meses: any = [];
   public anos: any = [];
-  
+
   constructor(private router: Router,
     private sesioncliente: ClientesService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.sesioncliente.getCliente().subscribe(
@@ -98,17 +98,8 @@ export class ClientesComponent implements OnInit {
 
   public nuevoCliente(form: any) {
     let formulario = form;
-    let comprobacionRGI: number = 0;
-    for (const cliente of this.clientes) {
-      if (cliente.RGI == formulario.RGI) {
-        comprobacionRGI++;
-        //console.log(comprobacionRGI)
-        break
-      }
-
-    }
-
-    if (comprobacionRGI == 0) {
+    let comprobacionRGI = this.comprobarRGI(form, 0);
+    if (comprobacionRGI == false) {
       this.sesioncliente.PostCliente(form).subscribe(
         data => {
           if (data.ok == true) {
@@ -123,12 +114,27 @@ export class ClientesComponent implements OnInit {
           console.log(error);
         }
       );
-    }else{
+    } else {
       alert('RGI registrado anteriormente')
     }
   }
 
 
+  public comprobarRGI(formulario: any, actualizar: number) {
+    let comprobacionRGI: number = 0;
+    for (const cliente of this.clientes) {
+      if (cliente.RGI == formulario.RGI) {
+        comprobacionRGI += 1;
+        //console.log(comprobacionRGI)
+      }
+    }
+    //console.log(comprobacionRGI);
+    if (comprobacionRGI >= (1 + actualizar)) {
+      return true
+    } else {
+      return false
+    }
+  }
 
   public obtenerDato(cliente: any) {
     this.forUpdate = cliente;
@@ -140,29 +146,34 @@ export class ClientesComponent implements OnInit {
     var id = this.forUpdate._id;
     //console.log(form);
     //console.log(id);
-
-    this.sesioncliente.putCliente(id, form).subscribe(
-      resp => {
-        if (resp.ok == true){
-          alert('Cliente Actualizado')
-        }else{
-          alert('error al actualizar')
-          location.reload();
+    let repetido = this.comprobarRGI(form, 1)
+    //console.log(repetido);
+    if (repetido == false) {
+      this.sesioncliente.putCliente(id, form).subscribe(
+        resp => {
+          if (resp.ok == true) {
+            alert('Cliente Actualizado')
+          } else {
+            alert('error al actualizar')
+            location.reload();
+          }
         }
-      }
 
-    );
-    //location.reload();
+      );
+      //location.reload();
+    } else {
+      alert('RGI repetido')
+    }
   }
 
 
   public deleteCliente(id: String) {
     this.sesioncliente.eliminarCliente(id).subscribe(
       data => {
-        if (data.ok == true){
+        if (data.ok == true) {
           location.reload();
         }
-        else{
+        else {
           alert('Error al eliminar')
         }
       }
