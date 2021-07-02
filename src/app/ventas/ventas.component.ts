@@ -12,18 +12,18 @@ export class VentasComponent implements OnInit {
 
   public inventarioForm = new FormGroup({
     Folio: new FormControl('', Validators.required),
-    Nombre: new FormControl('', Validators.required),
-    Costo: new FormControl('', Validators.required),
-    Precio: new FormControl('', Validators.required),
-    Existencia: new FormControl('', Validators.required)
+    Nombre: new FormControl('',Validators.compose([Validators.required, Validators.minLength(4), Validators.maxLength(20)])),
+    Costo: new FormControl('',Validators.compose([Validators.required, Validators.minLength(1), Validators.maxLength(5)])),
+    Precio: new FormControl('',Validators.compose([Validators.required, Validators.minLength(1), Validators.maxLength(5)])),
+    Existencia: new FormControl('',Validators.compose([Validators.required, Validators.minLength(1), Validators.maxLength(5)]))
   });
 
   public inventarioFormActualizar = new FormGroup({
     Folio: new FormControl('', Validators.required),
-    Nombre: new FormControl('', Validators.required),
-    Costo: new FormControl('', Validators.required),
-    Precio: new FormControl('', Validators.required),
-    Existencia: new FormControl('', Validators.required)
+    Nombre: new FormControl('',Validators.compose([Validators.required, Validators.minLength(4), Validators.maxLength(20)])),
+    Costo: new FormControl('',Validators.compose([Validators.required, Validators.minLength(1), Validators.maxLength(5)])),
+    Precio: new FormControl('',Validators.compose([Validators.required, Validators.minLength(1), Validators.maxLength(5)])),
+    Existencia: new FormControl('',Validators.compose([Validators.required, Validators.minLength(1), Validators.maxLength(5)]))
   });
 
   public productos: any = [];

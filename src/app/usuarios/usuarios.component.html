@@ -42,7 +42,7 @@
 							<div class="input-group mb-3">
 								<span class="input-group-text ancho letrasBlancas" name="Direccion">Dirección</span>
 								<input type="text" formControlName="direccion" class="form-control" aria-label="Sizing example input"
-									aria-describedby="inputGroup-sizing-default">
+									aria-describedby="inputGroup-sizing-default" required>
 							</div>
 							<div class="input-group mb-3">
 								<span class="input-group-text ancho letrasBlancas" name="Telefono">Teléfono</span>
@@ -86,37 +86,37 @@
 							<div class="input-group mb-3">
 								<span class="input-group-text ancho letrasBlancas" name="usuario">Usuario</span>
 								<input type="text" formControlName="usuario" [(ngModel)]="forUpdate.usuario" class="form-control"
-									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly="readonly">
+									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly="readonly" required>
 							</div>
 							<div class="input-group mb-3">
 								<span class="input-group-text ancho letrasBlancas" name="contraseña">Contraseña</span>
 								<input type="text" formControlName="password" [(ngModel)]="forUpdate.password" class="form-control"
-									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
 							</div>
 							<div class="input-group mb-3">
 								<span class="input-group-text ancho letrasBlancas" name="Nombre">Nombre</span>
 								<input type="text" formControlName="nombre" [(ngModel)]="forUpdate.nombre" class="form-control"
-									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
 							</div>
 							<div class="input-group mb-3">
 								<span class="input-group-text ancho letrasBlancas" name="apellido">Apellido</span>
 								<input type="text" formControlName="apellido" [(ngModel)]="forUpdate.apellido" class="form-control"
-									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
 							</div>
 							<div class="input-group mb-3">
 								<span class="input-group-text ancho letrasBlancas" name="Direccion">Dirección</span>
 								<input type="text" formControlName="direccion" [(ngModel)]="forUpdate.direccion" class="form-control"
-									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
 							</div>
 							<div class="input-group mb-3">
 								<span class="input-group-text ancho letrasBlancas" name="Telefono">Teléfono</span>
 								<input type="text" formControlName="telefono" [(ngModel)]="forUpdate.telefono" class="form-control"
-									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+									aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
 							</div>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-							<button type="submit" class="btn btn-primary">Guardar</button>
+							<button type="submit" class="btn btn-primary" [disabled]="!actualizarUsuarioForm.valid">Guardar</button>
 						</div>
 					</div>
 				</div>
