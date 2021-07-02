@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-admin-nav',
@@ -14,7 +15,13 @@ export class AdminNavComponent implements OnInit {
   }
 
   public CerrarSesion(){
-    alert("Sesión Cerrada");
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Sesión cerrada',
+      showConfirmButton: false,
+      timer: 1500
+    })
 
     sessionStorage.removeItem('sesion');
 
