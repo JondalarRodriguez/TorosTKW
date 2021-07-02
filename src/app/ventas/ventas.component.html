@@ -170,33 +170,33 @@
                                     name="Nombre">Nombre</span>
                                 <input type="text" [(ngModel)]="forUpdate.Nombre" formControlName="Nombre"
                                     class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default">
+                                    aria-describedby="inputGroup-sizing-default" required>
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text ancho letrasBlancas contenedor" name="Nombre">Costo</span>
                                 <input type="number" [(ngModel)]="forUpdate.Costo" formControlName="Costo"
                                     class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default">
+                                    aria-describedby="inputGroup-sizing-default" required>
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text ancho letrasBlancas contenedor" name="Ingreso">Precio de
                                     venta</span>
                                 <input type="number" [(ngModel)]="forUpdate.Precio" formControlName="Precio"
                                     class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default">
+                                    aria-describedby="inputGroup-sizing-default" required>
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text ancho letrasBlancas contenedor"
                                     name="Direccion">Exitencia</span>
                                 <input type="number" [(ngModel)]="forUpdate.Existencia" formControlName="Existencia"
                                     class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default">
+                                    aria-describedby="inputGroup-sizing-default" required>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary " data-bs-dismiss="modal"
                                 (click)="limpiarCampos()">Cancelar</button>
-                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <button type="submit" class="btn btn-primary" [disabled]="!inventarioFormActualizar.valid">Guardar</button>
                         </div>
                     </div>
                 </div>
