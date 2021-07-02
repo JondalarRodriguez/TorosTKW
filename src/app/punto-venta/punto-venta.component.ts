@@ -4,6 +4,7 @@ import { ClientesService } from '../services/clienteservice/clientes.service';
 import { CreditoService } from '../services/creditosService/credito.service';
 import { InventarioService } from '../services/inventarioService/inventario.service';
 import { RegistroVentasService } from '../services/registroVentasService/registro-ventas.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-punto-venta',
@@ -41,7 +42,6 @@ export class PuntoVentaComponent implements OnInit {
     this.comprobarSesion();
   }
 
-
   public comprobarSesion() {
     if (sessionStorage.getItem('sesion') == undefined) {
       this.router.navigate(['login'])
@@ -53,29 +53,20 @@ export class PuntoVentaComponent implements OnInit {
   public getClientes() {
     this.sesioncliente.getCliente().subscribe(
       (resp) => {
-
         this.clientes = resp.results;
-
       }
     );
   }
-
-
 
   public getProducts() {
     this.serviceInventario.getProductos().subscribe(
       (resp) => {
-
         this.productos = resp.results;
-
       }
     );
   }
 
-
-
   public getCreditos() {
-
     this.serviceCreditos.getCreditos().subscribe(
       (resp) => {
         this.creditos = resp.results;
@@ -88,13 +79,16 @@ export class PuntoVentaComponent implements OnInit {
   public obtenerDatoCliente(cliente: any) {
     //Obtiene el cliente seleccionado y lo guarda para mandarlo en caso de ser necesario
     this.ClienteVenta = cliente;
-    alert("Cliente seleccionado " + this.ClienteVenta.Nombre);
+    Swal.fire({
+      position: 'center',
+      icon: 'info',
+      title: this.ClienteVenta.Nombre,
+      text: 'Cliente seleccionado',
+      showConfirmButton: false,
+      timer: 1500
+    })
     this.clientes = [];
-    //console.log(this.ClienteVenta);
-
   }
-
-
 
   public calcularTotal() {
     var precio = 0;
@@ -104,14 +98,9 @@ export class PuntoVentaComponent implements OnInit {
       for (var suma of this.Productventas) {
         precio = parseInt(suma.Precio) + precio;
       };
-
       this.TotalCobrar = String(precio);
     }
-
   }
-
-
-
 
   public eliminarVenta(venta: any) {
     this.Productventas.splice(venta, 1);
@@ -119,29 +108,27 @@ export class PuntoVentaComponent implements OnInit {
     this.calcularTotal();
   }
 
-
-
-
   public obtenerDatoProducto(producto: any) {
     this.Productventas.push(producto);
-    alert(producto.Nombre + " agregado");
+    /*Swal.fire({
+      position: 'center',
+      icon: 'info',
+      title: producto.Nombre + ' agregado',
+      showConfirmButton: false,
+      timer: 1500
+    })*/
 
     this.calcularTotal();
   }
-
-
-
 
   public compra() {
     for (let i of this.Productventas) {
       var restandoExistencia = parseInt(i.Existencia) - 1;
       i.Existencia = String(restandoExistencia);
-      //console.log(i.Folio)
-      //console.log(i)
       this.serviceInventario.putProducto(i._id, i).subscribe(
         resp => {
           var respuestaCompra = resp;
-          console.log(respuestaCompra);
+          //console.log(respuestaCompra);
         }
 
       );
@@ -184,20 +171,22 @@ export class PuntoVentaComponent implements OnInit {
       Vendedor: String(this.usuarioVenta),
       Efectivo: Efectivo,
       Cliente: this.ClienteVenta.Nombre
-
     }
-    
     return RegistroVenta;
-
   }
-
 
   public Cobrar() {
     var registro;
     if (this.TotalCobrar != "" && this.TotalCobrar != "0") {
       if (this.recibido >= parseInt(this.TotalCobrar)) {
         if (this.ClienteVenta == 0) {
-          alert("Selecciona un cliente")
+          Swal.fire({
+            position: 'center',
+            icon: 'info',
+            title: 'Selecciona un cliente',
+            showConfirmButton: false,
+            timer: 1500
+          })
         } else {
           this.cambio = this.recibido - parseInt(this.TotalCobrar);
           this.compra();
@@ -207,21 +196,32 @@ export class PuntoVentaComponent implements OnInit {
           this.serviceRegistro.PostRegistroVenta(registro).subscribe(
             data => {
               if (data.ok == true) {
-                console.log("Compra registrada")
+                Swal.fire({
+                  position: 'center',
+                  icon: 'success',
+                  title: 'Compra registrada',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
               }
               else {
-                console.log(data.status)
+                //console.log(data.status)
               }
             },
             error => {
               console.log(error);
             });
-          //location.reload();
           this.limpiarTodo();
         }
       } else {
         if (this.ClienteVenta == 0) {
-          alert("Selecciona un cliente")
+          Swal.fire({
+            position: 'center',
+            icon: 'info',
+            title: 'Selecciona un cliente',
+            showConfirmButton: false,
+            timer: 1500
+          })
         } else {
 
           this.compra();
@@ -245,11 +245,23 @@ export class PuntoVentaComponent implements OnInit {
           this.serviceCreditos.PostCredito(SendCredito).subscribe(
             data => {
               if (data.ok == true) {
-                alert("Compra añadida a credito");
+                Swal.fire({
+                  position: 'center',
+                  icon: 'success',
+                  title: 'Compra añadida a crédito',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
                 location.reload();
               } else {
-                alert("Error al añadir Credito");
-              } console.log(data);
+                Swal.fire({
+                  position: 'center',
+                  icon: 'error',
+                  title: 'Error al añadir crédito',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
+              } //console.log(data);
             },
             error => {
               console.log(error);
@@ -262,10 +274,16 @@ export class PuntoVentaComponent implements OnInit {
           this.serviceRegistro.PostRegistroVenta(registro).subscribe(
             data => {
               if (data.ok == true) {
-                console.log("Compra registrada")
+                Swal.fire({
+                  position: 'center',
+                  icon: 'success',
+                  title: 'Compra registrada',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
               }
               else {
-                console.log(data.status)
+                //console.log(data.status)
               }
             },
             error => {
@@ -276,11 +294,17 @@ export class PuntoVentaComponent implements OnInit {
 
       }
     } else {
-      alert("Selecciona un producto")
+      Swal.fire({
+        position: 'center',
+        icon: 'info',
+        title: 'Selecciona un producto',
+        showConfirmButton: false,
+        timer: 1500
+      })
     }
   }
-  //===============REPORTES====================
 
+  //===============REPORTES====================
   public reportes: any = [];
 
   public getReportes() {
@@ -323,6 +347,3 @@ export class PuntoVentaComponent implements OnInit {
     }
   }
 }
-
-
-

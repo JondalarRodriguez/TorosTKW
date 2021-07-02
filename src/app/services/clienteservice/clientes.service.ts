@@ -30,7 +30,7 @@ export class ClientesService {
   }
 
   PostCliente(cliente: any){
-    console.log(cliente);
+    //console.log(cliente);
     return this.http.post<any>(this.url + 'cliente/add', cliente, this.encabezado);
   }
 

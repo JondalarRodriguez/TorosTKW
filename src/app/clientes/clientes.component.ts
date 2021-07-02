@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ClientesService } from '../services/clienteservice/clientes.service';
 import { Cliente } from '../interfaces/clientes.interface';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-clientes',
@@ -53,10 +54,7 @@ export class ClientesComponent implements OnInit {
   ngOnInit(): void {
     this.sesioncliente.getCliente().subscribe(
       (resp) => {
-        //console.log(resp);
         this.clientes = resp.results;
-        //console.log(this.clientes);
-
         this.nextFolio();
       }
     );
@@ -84,17 +82,6 @@ export class ClientesComponent implements OnInit {
     this.router.navigate(['credito']);
 
   }
-  /*
-     public obtenerClientes(){
-       console.log("obtener cliente");
-       this.sesioncliente.getCliente().subscribe(
-         data =>{
-           console.log(data);
-         }
-       );
-     }
-  */
-
 
   public nuevoCliente(form: any) {
     let formulario = form;
@@ -103,19 +90,36 @@ export class ClientesComponent implements OnInit {
       this.sesioncliente.PostCliente(form).subscribe(
         data => {
           if (data.ok == true) {
-            alert("Datos guardados exitosmente");
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Datos guardados correctamente',
+              showConfirmButton: false,
+              timer: 1500
+            })
             location.reload();
           } else {
-            alert("Los datos no se pudieron guardar");
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: 'los datos no se pudieron guardar',
+              showConfirmButton: false,
+              timer: 1500
+            })
           }
-          //console.log(data);
         },
         error => {
           console.log(error);
         }
       );
     } else {
-      alert('RGI registrado anteriormente')
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'RGI registrado anteriormente',
+        showConfirmButton: false,
+        timer: 1500
+      })
     }
   }
 
@@ -125,7 +129,6 @@ export class ClientesComponent implements OnInit {
     for (const cliente of this.clientes) {
       if (cliente.RGI == formulario.RGI) {
         comprobacionRGI += 1;
-        //console.log(comprobacionRGI)
       }
     }
     //console.log(comprobacionRGI);
@@ -138,31 +141,43 @@ export class ClientesComponent implements OnInit {
 
   public obtenerDato(cliente: any) {
     this.forUpdate = cliente;
-    //console.log(cliente);
-
   }
 
   public actualizarCliente(form: any) {
     var id = this.forUpdate._id;
-    //console.log(form);
-    //console.log(id);
     let repetido = this.comprobarRGI(form, 1)
-    //console.log(repetido);
     if (repetido == false) {
       this.sesioncliente.putCliente(id, form).subscribe(
         resp => {
           if (resp.ok == true) {
-            alert('Cliente Actualizado')
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Cliente actualizado',
+              showConfirmButton: false,
+              timer: 1500
+            })
           } else {
-            alert('error al actualizar')
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: 'Error al actualizar cliente',
+              showConfirmButton: false,
+              timer: 1500
+            })
             location.reload();
           }
         }
 
       );
-      //location.reload();
     } else {
-      alert('RGI repetido')
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'RGI existente',
+        showConfirmButton: false,
+        timer: 1500
+      })
     }
   }
 
@@ -174,7 +189,13 @@ export class ClientesComponent implements OnInit {
           location.reload();
         }
         else {
-          alert('Error al eliminar')
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Error al eliminar cliente',
+            showConfirmButton: false,
+            timer: 1500
+          })
         }
       }
 

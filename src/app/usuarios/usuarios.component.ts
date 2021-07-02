@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuariosService } from '../services/usuarioservice/usuarios.service';
 import { UsuarioI } from '../interfaces/usuarios.interface';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-usuarios',
@@ -83,19 +84,37 @@ export class UsuariosComponent implements OnInit {
     this.sesionUsuario.PostUsuario(form).subscribe(
       data => {
         if (data.ok == true) {
-          alert("Datos guardados exitosmente");
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Datos guardados exitosamente',
+            showConfirmButton: false,
+            timer: 1500
+          })
           location.reload();
         } else {
-          alert("Los datos no se pudieron guardr");
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Los datos no se pudieron guardar',
+            showConfirmButton: false,
+            timer: 1500
+          })
         }
-        console.log(data);
+        //console.log(data);
       },
       error => {
         console.log(error);
       }
     );
     }else{
-      alert('Usuario ya existe')
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'Usuario existente',
+        showConfirmButton: false,
+        timer: 1500
+      })
     }
 
   }
@@ -113,7 +132,7 @@ export class UsuariosComponent implements OnInit {
 
     this.sesionUsuario.putUsuario(id, form).subscribe(
       resp => {
-        console.log("result: ", resp);
+        //console.log("result: ", resp);
       }
 
     );
@@ -123,7 +142,7 @@ export class UsuariosComponent implements OnInit {
   public eliminarUsuario(id: String) {
     this.sesionUsuario.deleteUsuario(id).subscribe(
       data => {
-        console.log("result: ", data);
+        //console.log("result: ", data);
       }
 
     );

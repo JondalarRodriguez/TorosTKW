@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { InventarioService } from '../services/inventarioService/inventario.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-ventas',
@@ -87,7 +88,6 @@ export class VentasComponent implements OnInit {
 
   }
 
-  
   /* se añaden nuevos producto a la tabla de inventario */
   public nuevoProducto(form: any) {
     let formulario = form;
@@ -97,27 +97,41 @@ export class VentasComponent implements OnInit {
     this.inventarioService.PostProducto(form).subscribe(
       data => {
         if (data.ok == true) {
-          alert("Datos guardados exitosmente");
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Datos guardados exitosamente',
+            showConfirmButton: false,
+            timer: 1500
+          })
           location.reload();
         } else {
-          alert("Los datos no se pudieron guardar");
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Los datos no se pudieron guardar',
+            showConfirmButton: false,
+            timer: 1500
+          })
         }
-        console.log(data);
       },
       error => {
         console.log(error);
       }
     );
     }else{
-      alert("Producto ya registrado porfavor edita")
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'Producto existente',
+        showConfirmButton: false,
+        timer: 1500
+      })
     }
-
   }
-
   public limpiarCampos(){
     location.reload()
   }
-
   /* se obtienen los datos de productos en editar  en inventario*/
   public obtenerDato(inventario: any) {
     this.forUpdate = inventario;
@@ -132,13 +146,25 @@ export class VentasComponent implements OnInit {
     this.inventarioService.putProducto(id, form).subscribe(
       resp => {
         console.log("result: ", resp);
-        alert("actualizado")
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Actualizado',
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
 
     );
     location.reload();
     } else{
-      alert("Producto ya esta registrado anteriormente, revisa el nombre")
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'Nombre de producto existente',
+        showConfirmButton: false,
+        timer: 1500
+      })
     }
   }
 
@@ -146,10 +172,10 @@ export class VentasComponent implements OnInit {
 
   /* borrar datos de la tabla de inventario */
   public deleteProducto(_id: String) {
-    console.log("valor", _id);
+
     this.inventarioService.eliminarProducto(_id).subscribe(
       data => {
-        console.log("result: ", data);
+
       }
 
     );

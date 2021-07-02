@@ -6,6 +6,7 @@ import { AbonoService } from '../services/abonosService/abono.service';
 import { ClientesService } from '../services/clienteservice/clientes.service';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-credito',
@@ -38,8 +39,6 @@ export class CreditoComponent implements OnInit {
 
   ) { }
 
-
-
   ngOnInit(): void {
     this.comprobarSesion();
     this.getCreditos();
@@ -55,7 +54,6 @@ export class CreditoComponent implements OnInit {
       }
     )
   }
-
 
   public comprobarCrditosVacios() {
     for (let credito of this.creditos) {
@@ -90,24 +88,21 @@ export class CreditoComponent implements OnInit {
   public deleteAbono() {
     console.log(this.arrayAbonosEliminar)
     if (this.arrayAbonosEliminar.length > 0) {
-      console.log('borrando')
       for (let Abono of this.arrayAbonosEliminar) {
         this.abonosService.getAbonos(Abono).subscribe(
           resp => {
             this.Abonos = resp.results;
-            console.log(this.Abonos)
             for (const iterator of this.Abonos) {
               this.abonosService.deleteAbono(iterator._id).subscribe(
                 data => {
-                  console.log(data)
                 }
               )
-              console.log('abono borrado')
+              //console.log('abono borrado')
             }
           });
       }
     } else {
-      console.log('array vacio')
+      //console.log('array vacio')
     }
     
   }
@@ -138,14 +133,9 @@ export class CreditoComponent implements OnInit {
 
   public obtenerDato(credito: any) {
     this.forUpdate = credito;
-    console.log(this.forUpdate.Folio);
+    //console.log(this.forUpdate.Folio);
 
   }
-
-  /*
-    ngOnInit(): void {
-    }
-  */
 
   public imprimirCreditos(): void {
     const DATA = document.getElementById('htmlData')!;
@@ -156,7 +146,6 @@ export class CreditoComponent implements OnInit {
     };
     html2canvas(DATA, options).then((canvas) => {
       const img = canvas.toDataURL('image/png');
-
       const bufferX = 15;
       const bufferY = 15;
       const imgProps = (doc as any).getImageProperties(img);
@@ -180,7 +169,6 @@ export class CreditoComponent implements OnInit {
     };
     html2canvas(DATA, options).then((canvas) => {
       const img = canvas.toDataURL('image/PNG');
-
       const bufferX = 15;
       const bufferY = 15;
       const imgProps = (doc as any).getImageProperties(img);
@@ -201,22 +189,23 @@ export class CreditoComponent implements OnInit {
     //console.log(this.forUpdate.Folio)
     this.abonosService.getAbonos(this.forUpdate.Folio).subscribe(
       (resp) => {
-
         this.Abonos = resp.results;
-        console.log(this.Abonos);
+        //console.log(this.Abonos);
       }
     );
   }
 
   public enviarAbono() {
-
     let fecha = new Date();
     var abono;
-
     if (this.forUpdate.length == 0 || this.AbonoString == "") {
-
-      alert("Falta agregar abono o escoger cliente")
-
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'Falta agregar abono o escoger cliente',
+        showConfirmButton: false,
+        timer: 1500
+      })
     } else {
       if (this.forUpdate.Total > "0") {
         let correctoAbono = parseInt(this.forUpdate.Total) - parseInt(this.AbonoString)
@@ -230,35 +219,61 @@ export class CreditoComponent implements OnInit {
           this.abonosService.PostAbono(abono).subscribe(
             data => {
               if (data.ok == true) {
-                alert("Abono registrado")
+                Swal.fire({
+                  position: 'center',
+                  icon: 'success',
+                  title: 'Abono registrado',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
                 let resta: number = parseInt(this.forUpdate.Total) - parseInt(this.AbonoString)
                 this.forUpdate.Total = String(resta)
 
                 this.sesioncredito.putCredito(this.forUpdate._id, this.forUpdate).subscribe(
                   data => {
-                    console.log(data)
+                    //console.log(data)
                   }
                 )
-                //location.reload()
               } else {
-                alert('Error')
+                Swal.fire({
+                  position: 'center',
+                  icon: 'error',
+                  title: 'Error',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
               }
             }, error => {
-              alert(error)
+              Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Error',
+                showConfirmButton: false,
+                timer: 1500
+              })
             }
           )
         } else {
-          alert('El abono excede la deuda')
+          Swal.fire({
+            position: 'center',
+            icon: 'warning',
+            title: 'Abono excede la deuda',
+            showConfirmButton: false,
+            timer: 1500
+          })
         }
       } else {
-        alert('El cliente a pagado toda su deuda, para eliminar presiona Eliminar')
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Cliente sin adeudo',
+          text: 'Presiona Eliminar para quitar de la lista',
+          showConfirmButton: false,
+          timer: 2000
+        })
       }
     }
-
-
-
   }
-
 
   public clientes: any = [];
 
@@ -267,7 +282,7 @@ export class CreditoComponent implements OnInit {
       data => {
         this.clientes = data.results
       }, error => {
-        console.log(error)
+        //console.log(error)
       }
     );
   }
@@ -292,30 +307,17 @@ export class CreditoComponent implements OnInit {
         this.sesioncredito.PostCredito(SendCredito).subscribe(
           data => {
             if (data.ok == true) {
-              console.log(data.status)
+              //console.log(data.status)
             } else {
-
-              console.log(data.status)
+              //console.log(data.status)
             }
           },
           error => {
             console.log(error);
           }
-
         )
-
       }
-
-
     }
     location.reload()
-    //if (exito == true){
-    //location.reload()
-    //}else{
-    // alert('Ocurrio un error inesperado al generar los creditos')
-    //}
-
   }
-
-
 }
