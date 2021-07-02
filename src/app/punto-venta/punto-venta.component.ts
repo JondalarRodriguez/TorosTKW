@@ -45,7 +45,7 @@ export class PuntoVentaComponent implements OnInit {
   public comprobarSesion() {
     if (sessionStorage.getItem('sesion') == undefined) {
       this.router.navigate(['login'])
-    }else{
+    } else {
       this.usuarioVenta = String(sessionStorage.getItem('usuario'))
     }
   }
@@ -141,6 +141,7 @@ export class PuntoVentaComponent implements OnInit {
       this.serviceInventario.putProducto(i._id, i).subscribe(
         resp => {
           var respuestaCompra = resp;
+          console.log(respuestaCompra);
         }
 
       );
@@ -150,6 +151,12 @@ export class PuntoVentaComponent implements OnInit {
 
   }
 
+  public limpiarTodo(){
+    this.TotalCobrar = '0';
+    this.Productventas = [];
+    this.getClientes();
+    this.ClienteVenta = [];
+  }
 
 
 
@@ -175,10 +182,11 @@ export class PuntoVentaComponent implements OnInit {
       Mes: String(fecha.getMonth() + 1),
       Año: String(fecha.getFullYear()),
       Vendedor: String(this.usuarioVenta),
-      Efectivo: Efectivo
+      Efectivo: Efectivo,
+      Cliente: this.ClienteVenta.Nombre
 
     }
-
+    
     return RegistroVenta;
 
   }
@@ -188,25 +196,29 @@ export class PuntoVentaComponent implements OnInit {
     var registro;
     if (this.TotalCobrar != "" && this.TotalCobrar != "0") {
       if (this.recibido >= parseInt(this.TotalCobrar)) {
-        this.cambio = this.recibido - parseInt(this.TotalCobrar);
-        this.compra();
-        //REGISTRANDO VENTA
-        registro = this.RegistroVenta(this.TotalCobrar);
+        if (this.ClienteVenta == 0) {
+          alert("Selecciona un cliente")
+        } else {
+          this.cambio = this.recibido - parseInt(this.TotalCobrar);
+          this.compra();
+          //REGISTRANDO VENTA
+          registro = this.RegistroVenta(this.TotalCobrar);
 
-        this.serviceRegistro.PostRegistroVenta(registro).subscribe(
-          data => {
-            if (data.ok == true) {
-              console.log("Compra registrada")
-            }
-            else {
-              console.log(data.status)
-            }
-          },
-          error => {
-            console.log(error);
-          });
-        location.reload();
-
+          this.serviceRegistro.PostRegistroVenta(registro).subscribe(
+            data => {
+              if (data.ok == true) {
+                console.log("Compra registrada")
+              }
+              else {
+                console.log(data.status)
+              }
+            },
+            error => {
+              console.log(error);
+            });
+          //location.reload();
+          this.limpiarTodo();
+        }
       } else {
         if (this.ClienteVenta == 0) {
           alert("Selecciona un cliente")
@@ -229,7 +241,7 @@ export class PuntoVentaComponent implements OnInit {
             "Fecha": fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear(),
             "Concepto": "Compra"
           };
-          console.log(SendCredito);
+          //console.log(SendCredito);
           this.serviceCreditos.PostCredito(SendCredito).subscribe(
             data => {
               if (data.ok == true) {
@@ -259,7 +271,7 @@ export class PuntoVentaComponent implements OnInit {
             error => {
               console.log(error);
             });
-
+            this.limpiarTodo();
         }
 
       }

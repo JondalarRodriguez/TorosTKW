@@ -6,6 +6,7 @@ export interface registroVentas {
         Mes: string,
         Año: string,
         Vendedor: string,
-        Efectivo: string
+        Efectivo: string,
+        Cliente: string
     }
 }
