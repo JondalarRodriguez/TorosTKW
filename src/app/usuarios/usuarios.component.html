@@ -116,7 +116,8 @@
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-							<button type="submit" class="btn btn-primary" [disabled]="!actualizarUsuarioForm.valid">Guardar</button>
+							<button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+							 [disabled]="!actualizarUsuarioForm.valid" (click)="actualizarUsuario(actualizarUsuarioForm.value)">Guardar</button>
 						</div>
 					</div>
 				</div>

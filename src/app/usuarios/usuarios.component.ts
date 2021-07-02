@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuariosService } from '../services/usuarioservice/usuarios.service';
 import { UsuarioI } from '../interfaces/usuarios.interface';
@@ -13,21 +13,21 @@ export class UsuariosComponent implements OnInit {
 
   public usuarioForm = new FormGroup({
     id: new FormControl(''),
-    usuario: new FormControl(''),
-    password: new FormControl(''),
-    nombre: new FormControl(''),
-    apellido: new FormControl(''),
-    direccion: new FormControl(''),
-    telefono: new FormControl('')
+    usuario: new FormControl('', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20)])),
+    password: new FormControl('', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20)])),
+    nombre: new FormControl('', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20)])),
+    apellido: new FormControl('', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20)])),
+    direccion: new FormControl('', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20)])),
+    telefono: new FormControl('', Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(10)]))
   });
   public actualizarUsuarioForm = new FormGroup({
     id: new FormControl(''),
-    usuario: new FormControl(''),
-    password: new FormControl(''),
-    nombre: new FormControl(''),
-    apellido: new FormControl(''),
-    direccion: new FormControl(''),
-    telefono: new FormControl('')
+    usuario: new FormControl('', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20)])),
+    password: new FormControl('', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(60)])),
+    nombre: new FormControl('', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20)])),
+    apellido: new FormControl('', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20)])),
+    direccion: new FormControl('', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20)])),
+    telefono: new FormControl('', Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(10)]))
   });
 
   public usuarios: any = [];
@@ -102,14 +102,14 @@ export class UsuariosComponent implements OnInit {
 
   public obtenerDato(usuario: UsuarioI) {
     this.forUpdate = usuario;
-    console.log(usuario);
+    //console.log(usuario);
   }
 
 
   public actualizarUsuario(form: UsuarioI) {
     var id = this.forUpdate._id;
-    console.log(form);
-    console.log(id);
+    //console.log(form);
+    //console.log(id);
 
     this.sesionUsuario.putUsuario(id, form).subscribe(
       resp => {

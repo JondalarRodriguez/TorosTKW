@@ -13,8 +13,8 @@ import { SesionService } from '../services/loginService/sesion.service';
 export class LoginComponent implements OnInit {
 
   public loginForm = new FormGroup({
-    username: new FormControl('', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(50)])),
-    password: new FormControl('', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(50)]))
+    username: new FormControl('', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20)])),
+    password: new FormControl('', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20)]))
   });
 
   public usuarioEncontrado: any = [];
