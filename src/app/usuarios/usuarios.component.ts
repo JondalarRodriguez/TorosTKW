@@ -117,7 +117,7 @@ export class UsuariosComponent implements OnInit {
       }
 
     );
-    location.reload();
+    //location.reload();
   }
 
   public eliminarUsuario(id: String) {
