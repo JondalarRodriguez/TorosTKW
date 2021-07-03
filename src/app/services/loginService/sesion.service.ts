@@ -9,7 +9,7 @@ import { environment } from '../../../environments/environment'
 export class SesionService {
 
   constructor(private http: HttpClient) { }
-  url = 'http://3.18.46.141:3000/';
+  url = 'http://18.119.49.67:3000/';
 
   public iniciarSesion(sesion: loginI){
     return this.http.post<any>(this.url + 'user/login', sesion, {observe: "response"});
