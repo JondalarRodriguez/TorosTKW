@@ -142,7 +142,6 @@ export class PuntoVentaComponent implements OnInit {
     this.TotalCobrar = '0';
     this.Productventas = [];
     this.getClientes();
-    this.ClienteVenta = [];
   }
 
 
@@ -172,6 +171,7 @@ export class PuntoVentaComponent implements OnInit {
       Efectivo: Efectivo,
       Cliente: this.ClienteVenta.Nombre
     }
+
     return RegistroVenta;
   }
 
@@ -192,7 +192,7 @@ export class PuntoVentaComponent implements OnInit {
           this.compra();
           //REGISTRANDO VENTA
           registro = this.RegistroVenta(this.TotalCobrar);
-
+          
           this.serviceRegistro.PostRegistroVenta(registro).subscribe(
             data => {
               if (data.ok == true) {
@@ -203,6 +203,7 @@ export class PuntoVentaComponent implements OnInit {
                   showConfirmButton: false,
                   timer: 1500
                 })
+                console.log(data);
               }
               else {
                 //console.log(data.status)
@@ -252,7 +253,7 @@ export class PuntoVentaComponent implements OnInit {
                   showConfirmButton: false,
                   timer: 1500
                 })
-                location.reload();
+                //location.reload();
               } else {
                 Swal.fire({
                   position: 'center',

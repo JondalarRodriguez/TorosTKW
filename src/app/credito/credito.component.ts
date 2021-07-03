@@ -232,6 +232,7 @@ export class CreditoComponent implements OnInit {
                 this.sesioncredito.putCredito(this.forUpdate._id, this.forUpdate).subscribe(
                   data => {
                     //console.log(data)
+                    this.AbonoString = '';
                   }
                 )
               } else {

@@ -130,7 +130,7 @@ export class VentasComponent implements OnInit {
     }
   }
   public limpiarCampos(){
-    location.reload()
+    this.forUpdate = [];
   }
   /* se obtienen los datos de productos en editar  en inventario*/
   public obtenerDato(inventario: any) {
@@ -156,7 +156,7 @@ export class VentasComponent implements OnInit {
       }
 
     );
-    location.reload();
+    //location.reload();
     } else{
       Swal.fire({
         position: 'center',
