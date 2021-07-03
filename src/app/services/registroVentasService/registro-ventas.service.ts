@@ -10,7 +10,7 @@ import { environment } from '../../../environments/environment';
 export class RegistroVentasService {
 
   constructor(private http: HttpClient) { }
-  url = 'http://3.18.46.141:3000/';
+  url = 'http://18.119.49.67:3000/';
 
   header = sessionStorage.getItem('sesion');
   encabezado = {
